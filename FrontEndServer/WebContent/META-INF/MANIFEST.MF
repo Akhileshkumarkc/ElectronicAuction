@@ -1,3 +1,16 @@
 Manifest-Version: 1.0
-Class-Path: 
-
+Bundle-ManifestVersion: 2
+Bundle-Name: FrontEndServer
+Bundle-SymbolicName: FrontEndServer
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: WEB-INF/classes/
+Export-Package: .,
+ org.arrow.login
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: javax.el,
+ javax.servlet,
+ javax.servlet.http,
+ javax.servlet.jsp,
+ javax.servlet.jsp.el,
+ javax.servlet.jsp.tagext
+Web-ContextPath: /FrontEndServer
