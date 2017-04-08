@@ -13,5 +13,6 @@
   <property name="hibernate.default_schema">axk167131</property>
   <property name="hibernate.hbm2ddl.auto">create</property>
   <mapping class="org.arrow.micro.db.login.LoginDb"></mapping>
+  <mapping class="org.arrow.micro.db.init.sqlscripts.InitSQL"/>
 </session-factory>
 </hibernate-configuration>
