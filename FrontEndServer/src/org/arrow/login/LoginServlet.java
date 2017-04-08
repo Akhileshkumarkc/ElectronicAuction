@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
+import org.arrow.authenticate.SessionManagement;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -78,8 +80,10 @@ public class LoginServlet extends HttpServlet {
 //			e.printStackTrace();
 //		} 
 		if(status){
-			HttpSession session = request.getSession();
-			session.setAttribute("USER", name);
+			//HttpSession session = request.getSession();
+			//session.setAttribute("USER", name);
+			SessionManagement sm = new SessionManagement();
+			sm.createSessionUser(request, bean);
 			RequestDispatcher rd=request.getRequestDispatcher("welcome-page.jsp");
 			rd.forward(request, response);
 		}
