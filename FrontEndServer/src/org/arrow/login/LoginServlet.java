@@ -56,27 +56,27 @@ public class LoginServlet extends HttpServlet {
 		bean.setName(name);
 		bean.setPassword(password);
 		request.setAttribute("bean",bean);
-		Boolean status = false;
-		try {
-			 
-			Client client = Client.create();
-			WebResource webResource = client.resource("http://localhost:8080/jaxrs-jersey-rest/loginservices/checkuservalidity");
-			MultivaluedMap formData = new MultivaluedMapImpl();
-			formData.add("username", name);
-			formData.add("password", password);
-			ClientResponse restResponse = webResource
-			    .type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
-			    .post(ClientResponse.class, formData);
-			
-			if (restResponse.getStatus() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + restResponse.getStatus());
-			}
- 
-			String statusString = restResponse.getEntity(String.class);
-			status = Boolean.parseBoolean(statusString);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Boolean status = true;
+//		try {
+//			 
+//			Client client = Client.create();
+//			WebResource webResource = client.resource("http://localhost:8080/jaxrs-jersey-rest/loginservices/checkuservalidity");
+//			MultivaluedMap formData = new MultivaluedMapImpl();
+//			formData.add("username", name);
+//			formData.add("password", password);
+//			ClientResponse restResponse = webResource
+//			    .type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
+//			    .post(ClientResponse.class, formData);
+//			
+//			if (restResponse.getStatus() != 200) {
+//				throw new RuntimeException("Failed : HTTP error code : " + restResponse.getStatus());
+//			}
+// 
+//			String statusString = restResponse.getEntity(String.class);
+//			status = Boolean.parseBoolean(statusString);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} 
 		if(status){
 			HttpSession session = request.getSession();
 			session.setAttribute("USER", name);
