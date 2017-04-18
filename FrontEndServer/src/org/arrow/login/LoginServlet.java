@@ -9,24 +9,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
 
+
+import org.arrow.WebServiceCall.WebServiceCallWrapper;
+import org.arrow.WebServiceCall.WebServicesActions;
 import org.arrow.authenticate.SessionManagement;
+import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.core.util.MultivaluedMapImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 1L;   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -47,38 +49,43 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//set the content to html.
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
+		// get the name and password encrypt it.
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");
+		//TODO: Encryption of the password.
 		
+		//Create bean class 
 		LoginBean bean=new LoginBean();
-		bean.setName(name);
+		bean.setuserName(name);
 		bean.setPassword(password);
 		request.setAttribute("bean",bean);
-		Boolean status = true;
-//		try {
-//			 
-//			Client client = Client.create();
-//			WebResource webResource = client.resource("http://localhost:8080/jaxrs-jersey-rest/loginservices/checkuservalidity");
-//			MultivaluedMap formData = new MultivaluedMapImpl();
-//			formData.add("username", name);
-//			formData.add("password", password);
-//			ClientResponse restResponse = webResource
-//			    .type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
-//			    .post(ClientResponse.class, formData);
-//			
-//			if (restResponse.getStatus() != 200) {
-//				throw new RuntimeException("Failed : HTTP error code : " + restResponse.getStatus());
-//			}
-// 
-//			String statusString = restResponse.getEntity(String.class);
-//			status = Boolean.parseBoolean(statusString);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} 
+		
+		Boolean status = false;
+		try {
+			
+			// convert it to jString.
+			ObjectMapper mapper = new ObjectMapper();
+			String jString = mapper.writeValueAsString(bean);
+			 
+			//Make a webservice call to check user validity with login information.			
+			String actionUrl = WebServicesActions.CheckUserValidity;
+			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
+			if(loginResponse.getStatusCode() == HttpStatus.OK){
+				if(loginResponse.getBody().equalsIgnoreCase("true")){
+					status = true;
+				}
+			}
+			
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		if(status){
 			//HttpSession session = request.getSession();
 			//session.setAttribute("USER", name);
@@ -92,5 +99,17 @@ public class LoginServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-
+	
+	public static void main(String args[]) throws JsonProcessingException{
+		LoginBean bean=new LoginBean();
+		bean.setuserName("Akhilesh");
+		bean.setPassword("kumar");
+		
+		Boolean status = true;
+			ObjectMapper mapper = new ObjectMapper();
+			String jString = mapper.writeValueAsString(bean);
+			System.out.println(jString);
+			JSONObject jobj = new JSONObject(jString);
+	
+	}
 }

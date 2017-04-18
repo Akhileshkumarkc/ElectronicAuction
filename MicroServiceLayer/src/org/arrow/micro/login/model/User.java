@@ -1,4 +1,4 @@
-package org.arrow.micro.model.login;
+package org.arrow.micro.login.model;
 /*
  * User class to hold the date of the user.
  * @author Akhilesh

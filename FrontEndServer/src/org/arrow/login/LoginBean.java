@@ -2,22 +2,22 @@ package org.arrow.login;
 
 public class LoginBean {
 
-	private String name;
+	private String userName;
 	private String password;
     /**
      * Default constructor. 
      */
     public LoginBean() {
-    	name = "";
+    	userName = "";
     	password = "";
     }
 	
-	public String getName() {
-		return name;
+	public String getuserName() {
+		return userName;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setuserName(String name) {
+		this.userName = name;
 	}
 	
 	public String getPassword() {

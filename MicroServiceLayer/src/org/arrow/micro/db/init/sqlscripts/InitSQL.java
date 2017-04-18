@@ -1,6 +1,6 @@
 package org.arrow.micro.db.init.sqlscripts;
 
-import org.arrow.micro.db.login.LoginDb;
+import org.arrow.micro.login.model.LoginModel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -8,9 +8,10 @@ import org.hibernate.cfg.Configuration;
 public class InitSQL {
 
 	public static void main(String args[]){
-		LoginDb user = new LoginDb();
+		LoginModel user = new LoginModel();
+		user.setUserName("Akhilesh");
+		user.setPassword("password");
 		user.setUserId(1);
-		user.setUserName("First Name");
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();

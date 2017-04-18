@@ -12,5 +12,6 @@ Import-Package: javax.el,
  javax.servlet.http,
  javax.servlet.jsp,
  javax.servlet.jsp.el,
- javax.servlet.jsp.tagext
+ javax.servlet.jsp.tagext,
+ org.apache.log4j;version="1.2.15"
 Web-ContextPath: /FrontEndServer

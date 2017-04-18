@@ -8,7 +8,7 @@ import org.arrow.login.LoginBean;
 public class SessionManagement {
 	public static void createSessionUser(HttpServletRequest request, LoginBean bean){
 	HttpSession session = request.getSession();
-	session.setAttribute("USER", bean.getName());
+	session.setAttribute("USER", bean.getuserName());
 	
 	}
 	public static int validSessionUser(HttpSession session){
