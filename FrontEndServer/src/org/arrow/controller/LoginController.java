@@ -21,11 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class LoginController {
 
-	// @ExceptionHandler(ResourceNotFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String handleResourceNotFoundException() {
-		return "error404";
-	}
+
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String landingPage(ModelMap model) {
