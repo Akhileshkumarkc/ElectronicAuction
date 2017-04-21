@@ -1,30 +1,40 @@
-package org.arrow.micro.login.model;
+package org.arrow.micro.model;
+
+import java.io.File;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 @Entity
 @Table(name="login")
 public class LoginModel {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int Id;
 
+	@Column(name="Id")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "userids")
+	@SequenceGenerator(name="userids",sequenceName="userids" ,allocationSize = 1)
+	
+	private int Id;
+	@Id
+	@Column(name="userId")
 	private int userId;
 	@Column(name="username")
 	private String userName;
-	
+	@Column(name="password")
 	private String password;
 		
 	public int getId() {
@@ -58,22 +68,28 @@ public class LoginModel {
 		LoginModel user = new LoginModel();
 		user.setUserName("Akhilesh");
 		user.setPassword("password");
-		user.setId(1);
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		user.setUserId(3);
+		user.setId(3);
+		Configuration configuration = new Configuration();
+	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
+	    configuration.addAnnotatedClass(LoginModel.class);
+	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+	            configuration.getProperties()).build();
+	    SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		try{
-			
+			user.setUserName("Akhilesh");
+			user.setPassword("password");
+			user.setId(2);
 			session.save(user);
-			tx.commit();
-			System.out.println("done");
-		}
+			session.getTransaction().commit();
+					}
 		catch (HibernateException e) {
 	         if (tx!=null) tx.rollback();
 	         e.printStackTrace(); 
 	      }finally {
-	    	 session.flush();
-	         session.close();
+	    	 session.close();
 	      }
 	}
 

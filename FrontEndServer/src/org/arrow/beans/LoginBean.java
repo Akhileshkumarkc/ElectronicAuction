@@ -1,4 +1,4 @@
-package org.arrow.login;
+package org.arrow.beans;
 
 public class LoginBean {
 

@@ -1,6 +1,5 @@
 package org.arrow.micro.controller;
 
-import org.arrow.micro.login.model.LoginModel;
 import org.arrow.micro.model.EmailModel;
 import org.arrow.micro.service.EmailService;
 import org.springframework.http.MediaType;

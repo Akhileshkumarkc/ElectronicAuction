@@ -1,10 +1,10 @@
-package org.arrow.micro.login.controller;
+package org.arrow.micro.controller;
 
 import java.util.ArrayList;
 
-import org.arrow.micro.login.model.LoginModel;
-import org.arrow.micro.login.service.LoginService;
-import org.arrow.micro.login.service.LoginServiceImpl;
+import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.service.LoginService;
+import org.arrow.micro.service.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,22 +23,27 @@ import org.springframework.http.ResponseEntity;
 public class LoginController {
 	
 	@Autowired
-	private LoginService loginService;	
+	private LoginServiceImpl loginService;	
 	
 	@RequestMapping(value="/authenicate",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+		
 		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
 		boolean authenicated = false;
+		
 		if(dbLoginModel != null){
+		
 			if(model.getPassword().equals(dbLoginModel.getPassword())){
 				authenicated = true;
 			}
 		}
 		return authenicated;
+		
 	}
 	
 	@RequestMapping(value="/time/1",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody LoginModel sample2(){
+		
 		System.out.println("entered");
 		LoginModel lm = new LoginModel();
 		lm.setUserId(1);

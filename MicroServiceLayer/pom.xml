@@ -4,6 +4,14 @@
   <artifactId>MicroServiceLayer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <properties>
+		<jdk.version>1.6</jdk.version>
+		<spring.version>4.3.7.RELEASE</spring.version>
+		<jstl.version>1.2</jstl.version>
+		<apache.version>3.3.2</apache.version>
+		<hibernate.version>5.2.9.Final</hibernate.version>
+		<!-- <hibernate.version>4.3.5.Final</hibernate.version> -->
+	</properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -25,36 +33,47 @@
     </plugins>
   </build>
   <dependencies>
+  	<!-- hibernate -->
   	<dependency>
   		<groupId>org.hibernate</groupId>
   		<artifactId>hibernate-core</artifactId>
-  		<version>5.2.9.Final</version>
+  		<version>${hibernate.version}</version>
   	</dependency>
   	
-  	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+  	
 	<dependency>
     	<groupId>org.hibernate</groupId>
     	<artifactId>hibernate-entitymanager</artifactId>
-    	<version>5.2.9.Final</version>
+    	<version>${hibernate.version}</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-webmvc</artifactId>
-	    <version>4.3.7.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
-	    <version>4.3.7.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-core</artifactId>
-	    <version>4.3.7.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
+	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-orm</artifactId>
+ 		<version>${spring.version}</version>
+ </dependency>
+ <dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-web</artifactId>
+ 		<version>${spring.version}</version>
+ </dependency>
 	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 	<dependency>
     	<groupId>com.fasterxml.jackson.core</groupId>
@@ -80,5 +99,47 @@
 	    <artifactId>javax.mail-api</artifactId>
 	    <version>1.5.6</version>
 	</dependency>
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>20030825.184428</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-pool</groupId>
+		<artifactId>commons-pool</artifactId>
+		<version>20030825.183949</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+	    <version>${apache.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+	<dependency>
+	    <groupId>commons-collections</groupId>
+	    <artifactId>commons-collections</artifactId>
+	    <version>3.2.2</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
+	<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>2.0.6</version>
+	</dependency>
+	
+
  </dependencies>
 </project>

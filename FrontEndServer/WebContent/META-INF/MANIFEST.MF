@@ -5,7 +5,7 @@ Bundle-SymbolicName: FrontEndServer
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: WEB-INF/classes/
 Export-Package: .,
- org.arrow.login
+ org.arrow.beans
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.el,
  javax.servlet,

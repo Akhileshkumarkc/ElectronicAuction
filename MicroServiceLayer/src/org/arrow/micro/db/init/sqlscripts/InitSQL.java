@@ -1,6 +1,6 @@
 package org.arrow.micro.db.init.sqlscripts;
 
-import org.arrow.micro.login.model.LoginModel;
+import org.arrow.micro.model.LoginModel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

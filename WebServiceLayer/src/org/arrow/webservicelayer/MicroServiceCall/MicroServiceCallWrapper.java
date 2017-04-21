@@ -7,6 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 
+ * @author Akhilesh
+ *
+ */
 public class MicroServiceCallWrapper {
 	
 	public static String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";

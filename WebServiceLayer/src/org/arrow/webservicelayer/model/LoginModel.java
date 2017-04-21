@@ -1,5 +1,11 @@
 package org.arrow.webservicelayer.model;
 
+/**
+ * 
+ * @author Akhilesh
+ *
+ */
+
 public class LoginModel {
 	
 	private String userName;

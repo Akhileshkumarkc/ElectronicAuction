@@ -3,7 +3,7 @@ package org.arrow.authenticate;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.arrow.login.LoginBean;
+import org.arrow.beans.LoginBean;
 
 public class SessionManagement {
 	public static void createSessionUser(HttpServletRequest request, LoginBean bean){

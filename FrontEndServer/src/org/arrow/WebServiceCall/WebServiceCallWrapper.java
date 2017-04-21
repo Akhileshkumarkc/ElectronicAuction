@@ -2,7 +2,7 @@ package org.arrow.WebServiceCall;
 
 
 
-import org.arrow.login.LoginBean;
+import org.arrow.beans.LoginBean;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

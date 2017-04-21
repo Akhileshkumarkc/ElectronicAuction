@@ -1,4 +1,4 @@
-package org.arrow.micro.login.model;
+package org.arrow.micro.model;
 
 import org.arrow.micro.resource.enums.UserTypeEnum;
 
