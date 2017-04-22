@@ -19,6 +19,6 @@ public class SessionManagement {
 		}
 	}
 	public void logoutSessionUser(HttpSession session){
-		session.invalidate();;
+		session.invalidate();
 	}
 }
