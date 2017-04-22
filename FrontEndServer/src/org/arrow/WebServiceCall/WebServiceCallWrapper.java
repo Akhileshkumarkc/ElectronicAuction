@@ -3,7 +3,7 @@ package org.arrow.WebServiceCall;
 
 
 import org.arrow.beans.LoginBean;
-import org.json.JSONObject;
+//import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -34,14 +34,14 @@ public class WebServiceCallWrapper {
 
 	public static void main(String args[]){
 		LoginBean bean=new LoginBean();
-		bean.setuserName("akhilesh");
-		bean.setPassword("kumar");
+		bean.setuserName("Vivek");
+		bean.setPassword("password");
 		Boolean status = true;
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String jString = mapper.writeValueAsString(bean);
 			System.out.println(jString);
-			JSONObject jObj = new JSONObject(jString);
+			//JSONObject jObj = new JSONObject(jString);
 			
 //			MultivaluedMap formData = new MultivaluedMapImpl();
 //			formData.add("username", name);

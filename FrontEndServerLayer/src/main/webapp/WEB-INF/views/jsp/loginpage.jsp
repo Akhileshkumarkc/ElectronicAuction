@@ -3,10 +3,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="http://localhost:8080/FrontEndServerLayer/login" method="post">
+
+	<form action="login" method="post">
 		Name:<input type="text" name="name"><br>
 		Password:<input type="password" name="password"><br>
 		<input type="submit" value="login">
 	</form>
+	
 </body>
 </html>

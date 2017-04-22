@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <!-- Configure to plugin JSON as request and response in method handler -->
-	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	<!-- <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<beans:property name="messageConverters">
 			<beans:list>
 				<beans:ref bean="jsonMessageConverter"/>
@@ -19,15 +19,14 @@
 		</beans:property>
 	</beans:bean>
 	 
-		<!-- Configure bean to convert JSON to POJO and vice versa -->
+		Configure bean to convert JSON to POJO and vice versa
 	<beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-	</beans:bean>	
+	</beans:bean>	 -->
 	
 	     
-	<context:component-scan base-package="org.arrow.controller" />
+	<context:component-scan base-package="org.arrow" />
 	<mvc:annotation-driven />
-	<beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix">
 			<beans:value>/WEB-INF/views/jsp/</beans:value>
 		</beans:property>
@@ -37,6 +36,7 @@
 	</beans:bean>
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/jsp/**" location="/WEB-INF/views/jsp/" />
 </beans:beans>
 
 

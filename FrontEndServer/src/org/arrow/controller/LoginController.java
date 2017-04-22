@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.arrow.WebServiceCall.WebServiceCallWrapper;
 import org.arrow.WebServiceCall.WebServicesActions;
 import org.arrow.beans.LoginBean;
-import org.json.JSONObject;
+//import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import javax.servlet.http.HttpSession;
@@ -72,7 +72,7 @@ public class LoginController {
 			ObjectMapper mapper = new ObjectMapper();
 			String jString = mapper.writeValueAsString(bean);
 			System.out.println(jString);
-			JSONObject jobj = new JSONObject(jString);
+			//JSONObject jobj = new JSONObject(jString);
 	
 	}
 }
