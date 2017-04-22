@@ -34,22 +34,22 @@
       <div class="row" style="margin-bottom:0">
           
           <div id="footer_one">
-            <a href="#" class="logo" title="Back to homepage"><img src="images/bid.jpg" height="50px" width="50px" alt="logo"></a>             
+            <a href="#" class="logo" title="Back to homepage"><img src="resources/images/bid.jpg" height="50px" width="50px" alt="logo"></a>             
           </div>
           
           <div id="footer_two">
-            <span class="row1"><img src="./images/email.jpg" height="25px" width="25px"> - hey@electronicauction.com</span>
+            <span class="row1"><img src="resources/images/email.jpg" height="25px" width="25px"> - hey@electronicauction.com</span>
             <br>
-             <span class="row2"><img src="images/contact.jpg" height="25px" width="25px"> - +1 (210)-712-9966</span>   
+             <span class="row2"><img src="resources/images/contact.jpg" height="25px" width="25px"> - +1 (210)-712-9966</span>   
              
             
           </div>
           
           <div id="footer_three">
             
-              <a href="https://www.facebook.com/"><img src="images/facebook.jpg" height="30px" width="30px"></a> 
+              <a href="https://www.facebook.com/"><img src="resources/images/facebook.jpg" height="30px" width="30px"></a> 
               <br><br>
-              <a href="https://twitter.com/"><img src="images/twitter.jpg" height="30px" width="30px"></a>
+              <a href="https://twitter.com/"><img src="resources/images/twitter.jpg" height="30px" width="30px"></a>
           </div>
           
       </div>

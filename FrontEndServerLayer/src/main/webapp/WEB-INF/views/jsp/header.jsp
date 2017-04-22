@@ -7,7 +7,7 @@
             <div class="span12">
                 <div class="span6">
                 <h3 class="muted">
-                   <a href="#" class="logo" title="Back to homepage"><img src="images/bid.jpg" height="50px" width="50px" alt="logo"></a>
+                   <a href="#" class="logo" title="Back to homepage"><img src="resources/images/bid.jpg" height="50px" width="50px" alt="logo"></a>
                    Electronic Bid
                    </h3>
                 </div>
