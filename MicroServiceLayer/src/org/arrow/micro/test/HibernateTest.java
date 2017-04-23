@@ -1,15 +1,9 @@
-package org.arrow.micro.model;
+package org.arrow.micro.test;
 
 import java.io.File;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
+import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.model.UserDetailsModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,45 +12,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-@Entity
-@Table(name="login")
-public class LoginModel {
+public class HibernateTest {
 	
-
-	@Column(name="LoginId")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "loginids")
-	@SequenceGenerator(name="loginids",sequenceName="userids" ,allocationSize = 1)
-	@Id
-	private int loginId;
-	@Column(name="username", unique =true)
-	private String userName;
-	@Column(name="password")
-	private String password;
-		
-	public int getLoginId() {
-		return loginId;
-	}
-	public void setLoginId(int id) {
-		loginId = id;
-	}
-	
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public static void main(String args[]){
 		LoginModel user = new LoginModel();
 		user.setUserName("Akhilesh");
 		user.setPassword("password");
+		
 		Configuration configuration = new Configuration();
 	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
 	    configuration.addAnnotatedClass(LoginModel.class);
@@ -77,6 +39,15 @@ public class LoginModel {
 	      }finally {
 	    	 session.close();
 	      }
-	}
+		
+		//getting the information.
+		session = sessionFactory.openSession();
+		//proxy class get.
+		UserDetailsModel user1 =(UserDetailsModel) session.get(UserDetailsModel.class, 1);
+		user1.getShippingAddress();
 
+	}
+	
 }
+
+

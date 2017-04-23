@@ -1,20 +1,37 @@
 package org.arrow.micro.model;
 import java.sql.Timestamp;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+@Entity
 public class BidModel {
-
-	private Timestamp dateTime;
+	
+	@Column(name="BidId")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "Bidids")
+	@SequenceGenerator(name="Bidids",sequenceName="Bidids" ,allocationSize = 1)
+	@Id
+	private int bidid;
+	
+	private Date dateTime;
 	private Double amount;
 	private String transactionId;
+	private int userId;//AuctionEvent.close();
 	
-	public BidModel(Timestamp dateTime, Double amount, String transactionId) {
-		super();
-		this.dateTime = dateTime;
-		this.amount = amount;
-		this.transactionId = transactionId;
+	
+	
+	public BidModel(int userid) {
+		//TODO: is to fetch the db object and display the bid model.
+		//if it doesnot exist then create a new.
+		this.userId = userid;
 	}
 
-	public Timestamp getDateTime() {
+
+	public Date getDateTime() {
 		return dateTime;
 	}
 
@@ -22,11 +39,11 @@ public class BidModel {
 		this.dateTime = dateTime;
 	}
 
-	public Double getAmount() {
+	public Double getBid() {
 		return amount;
 	}
 
-	public void setAmount(Double amount) {
+	public void setBid(Double amount) {
 		this.amount = amount;
 	}
 
@@ -37,7 +54,15 @@ public class BidModel {
 	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
-	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		userId = userId;
+	}
+
 	
 }
 

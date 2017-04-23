@@ -1,25 +1,76 @@
 package org.arrow.micro.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class UserDetailsModel {
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
+public class UserDetailsModel {
+	
+	//*******************************************
+	//Members
+	//*****************************
+	@Column(name="userId")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "userids")
+	@SequenceGenerator(name="userids",sequenceName="userids" ,allocationSize = 1)
+	@Id
+	private int userId;
 	private String firstName;
 	private String lastName;
-	private AddressModel Shippingaddress;
+	@Embedded
+	@AttributeOverrides({
+	@AttributeOverride(name="streetName", column=@Column(name="ship_street_name")),	
+	@AttributeOverride(name="houseNumber", column=@Column(name="ship_house_no")),
+	@AttributeOverride(name="city", column=@Column(name="ship_city")),
+	@AttributeOverride(name="state", column=@Column(name="ship_state")),
+	@AttributeOverride(name="pinCode", column=@Column(name="ship_pincode"))
+	})
+	private AddressModel shippingaddress;
+	@Embedded
+	@AttributeOverrides({
+	@AttributeOverride(name="streetName", column=@Column(name="user_street_name")),	
+	@AttributeOverride(name="houseNumber", column=@Column(name="user_house_no")),
+	@AttributeOverride(name="city", column=@Column(name="user_city")),
+	@AttributeOverride(name="state", column=@Column(name="user_state")),
+	@AttributeOverride(name="pinCode", column=@Column(name="user_pincode"))
+	})
+	private AddressModel useraddress;
 	private String company;
 	private String phoneNumber;
-	private List<UserLoginHistoryModel> userHistory = new ArrayList<UserLoginHistoryModel>();
+	private String email;
+	
+	//*******************************************
+	//Collections
+	//*****************************
 	
 	
-	public UserDetailsModel(String firstName, String lastName, AddressModel address, String company, String phoneNumber) {
+	@ElementCollection
+	@JoinTable(name="USER_HISTORY",joinColumns=@JoinColumn(name="USER_ID"))
+	@GenericGenerator(name="native-gen", strategy="native")
+	@CollectionId(columns = { @Column(name="LOGIN_HISTORY_ID")}, generator = "native-gen",
+							type = @Type(type="long"))
+	private Collection<UserLoginHistoryModel> userHistory = new ArrayList<UserLoginHistoryModel>();
+	@OneToOne
+	private LoginModel loginInfo;
+	
+	public UserDetailsModel() {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.Shippingaddress = address;
-		this.company = company;
-		this.phoneNumber = phoneNumber;
 	}
 	
 	public String getFirstName() {
@@ -35,10 +86,10 @@ public class UserDetailsModel {
 		this.lastName = lastName;
 	}
 	public AddressModel getShippingAddress() {
-		return Shippingaddress;
+		return shippingaddress;
 	}
 	public void setShippingAddress(AddressModel address) {
-		this.Shippingaddress = address;
+		this.shippingaddress = address;
 	}
 	public String getCompany() {
 		return company;
@@ -52,6 +103,52 @@ public class UserDetailsModel {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public AddressModel getUseraddress() {
+		return useraddress;
+	}
+
+	public void setUseraddress(AddressModel useraddress) {
+		this.useraddress = useraddress;
+	}
+
+	public List<UserLoginHistoryModel> getUserHistory() {
+		return (List<UserLoginHistoryModel>) userHistory;
+	}
+
+	public void setUserHistory(List<UserLoginHistoryModel> userHistory) {
+		this.userHistory = userHistory;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public void setUserHistory(Collection<UserLoginHistoryModel> userHistory) {
+		this.userHistory = userHistory;
+	}
+
+	public LoginModel getLoginInfo() {
+		return loginInfo;
+	}
+
+	public void setLoginInfo(LoginModel loginInfo) {
+		this.loginInfo = loginInfo;
+	}
+
 	
 	
 }

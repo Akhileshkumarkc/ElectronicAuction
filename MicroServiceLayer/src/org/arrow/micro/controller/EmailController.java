@@ -1,6 +1,6 @@
 package org.arrow.micro.controller;
 
-import org.arrow.micro.model.EmailModel;
+import org.arrow.micro.email.EmailModel;
 import org.arrow.micro.service.EmailService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;

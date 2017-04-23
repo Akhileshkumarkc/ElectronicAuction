@@ -1,5 +1,8 @@
 package org.arrow.micro.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class AddressModel {
 
 	private String streetName;

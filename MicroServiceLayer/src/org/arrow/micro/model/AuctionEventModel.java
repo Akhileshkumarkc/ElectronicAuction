@@ -1,32 +1,54 @@
 package org.arrow.micro.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+@Entity
 public class AuctionEventModel {
-
+	@Column(name="auctionId")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "auctionids")
+	@SequenceGenerator(name="auctionids",sequenceName="auctionids" ,allocationSize = 1)
+	@Id
+	private int auctionId;
 	private String name;
 	private String description;
-	private String status;
+	private int status;
 	private Double startingBid;
-	private Timestamp startDateTime;
-	private Timestamp scheduledEndDate;
-	private Timestamp actualEndDate;
+	private Date startDateTime;
+	private Date scheduledEndDate;
+	private Date actualEndDate;
 	private Double reserveAmount;
 	private Double minBidIncrement;
 	
+	@OneToOne
+	private ItemModel item;
 	
-	public AuctionEventModel(String name, String description, String status, Double startingBid, Timestamp startDateTime,
-			Timestamp scheduledEndDate, Timestamp actualEndDate, Double reserveAmount, Double minBidIncrement) {
+	@ElementCollection
+	@JoinTable(name="Bids",joinColumns=@JoinColumn(name="AuctionId"))
+	@GenericGenerator(name="native-gen", strategy="native")
+	@CollectionId(columns = { @Column(name="BidId")}, generator = "native-gen",
+							type = @Type(type="long"))
+	private Collection<BidModel> bidModels = new ArrayList<BidModel>();
+	
+	public AuctionEventModel() {
 		super();
-		this.name = name;
-		this.description = description;
-		this.status = status;
-		this.startingBid = startingBid;
-		this.startDateTime = startDateTime;
-		this.scheduledEndDate = scheduledEndDate;
-		this.actualEndDate = actualEndDate;
-		this.reserveAmount = reserveAmount;
-		this.minBidIncrement = minBidIncrement;
 	}
 	
 	public String getName() {
@@ -41,10 +63,10 @@ public class AuctionEventModel {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public Double getStartingBid() {
@@ -53,19 +75,19 @@ public class AuctionEventModel {
 	public void setStartingBid(Double startingBid) {
 		this.startingBid = startingBid;
 	}
-	public Timestamp getStartDateTime() {
+	public Date getStartDateTime() {
 		return startDateTime;
 	}
-	public void setStartDateTime(Timestamp startDateTime) {
-		this.startDateTime = startDateTime;
+	public void setStartDateTime(Date date) {
+		this.startDateTime = date;
 	}
-	public Timestamp getScheduledEndDate() {
+	public Date getScheduledEndDate() {
 		return scheduledEndDate;
 	}
-	public void setScheduledEndDate(Timestamp scheduledEndDate) {
-		this.scheduledEndDate = scheduledEndDate;
+	public void setScheduledEndDate(Date date) {
+		this.scheduledEndDate = date;
 	}
-	public Timestamp getActualEndDate() {
+	public Date getActualEndDate() {
 		return actualEndDate;
 	}
 	public void setActualEndDate(Timestamp actualEndDate) {
@@ -83,6 +105,44 @@ public class AuctionEventModel {
 	public void setMinBidIncrement(Double minBidIncrement) {
 		this.minBidIncrement = minBidIncrement;
 	}
+
+	public ItemModel getItem() {
+		return item;
+	}
+
+	public void setItem(ItemModel item) {
+		this.item = item;
+	}
+	
+	public int getAuctionId() {
+		return this.auctionId;
+	}
+
+	public void setAuctionId(int auctionId) {
+		this.auctionId = auctionId;
+	}
+
+	public void setActualEndDate(Date actualEndDate) {
+		this.actualEndDate = actualEndDate;
+	}
+
+	public Collection<BidModel> getBidModel() {
+		return bidModels;
+	}
+
+	public void setBidModel(List<BidModel> bidModels) {
+		this.bidModels = bidModels;
+	}
+	
+	//special functions.
+	public void addBidModel(BidModel bm){
+		bidModels.add(bm);
+	}
+	public void delBidModel(UserDetailsModel um){
+		//BidModel bm = new BidModel(um.getUserId());
+	//	bidModels.remove(bm);
+	}
+	
 	
 	
 }

@@ -1,6 +1,6 @@
 package org.arrow.micro.service;
 
-import org.arrow.micro.model.EmailModel;
+import org.arrow.micro.email.EmailModel;
 
 public class EmailService {
 	

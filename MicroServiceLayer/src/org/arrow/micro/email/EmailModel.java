@@ -1,4 +1,4 @@
-package org.arrow.micro.model;
+package org.arrow.micro.email;
 
 public class EmailModel {
 
@@ -6,4 +6,5 @@ public class EmailModel {
 	public String senderEmailAddress;
 	public String messageBody;
 	public String subject;
+	
 }
