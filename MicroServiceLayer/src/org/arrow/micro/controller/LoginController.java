@@ -4,7 +4,9 @@ package org.arrow.micro.controller;
 
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
+import org.arrow.micro.service.LoginService;
 import org.arrow.micro.service.LoginServiceImpl;
+import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -44,8 +46,9 @@ public class LoginController {
 			){
 		
 		System.out.println("enteredregister");
+		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
+		loginService.Register(userDetailModel);
 		boolean status = true;
-		//boolean status = loginService.Register(userDetails);
 		return status;
 	}
 

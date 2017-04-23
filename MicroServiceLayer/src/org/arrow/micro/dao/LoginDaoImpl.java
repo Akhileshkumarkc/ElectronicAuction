@@ -1,5 +1,7 @@
 package org.arrow.micro.dao;
 import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.model.UserDetailsModel;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -45,8 +47,25 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		
 		return querylist;
 	}
-
-
+	@Override
+	public List getAllUserName(){
+		 return getAllLoginData();
+	}
+	
+	public boolean save(UserDetailsModel UDM) throws HibernateException{
+		try{
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(UDM);
+		session.getTransaction().commit();
+		}
+		catch(Exception e){
+			System.out.println(e);
+			throw e;
+		}
+		return true;
+		
+	}
 
 }
 

@@ -6,6 +6,8 @@ import org.arrow.micro.model.AddressModel;
 public class SimpleUserModel {
 	
 	private int userId;
+	private String username;
+	private String password;
 	private String firstName;
 	private String lastName;
 	
@@ -120,6 +122,18 @@ public class SimpleUserModel {
 	}
 	public void setShipping_pinCode(String shipping_pinCode) {
 		this.shipping_pinCode = shipping_pinCode;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

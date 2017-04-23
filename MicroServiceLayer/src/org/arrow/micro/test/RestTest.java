@@ -37,21 +37,27 @@ public class RestTest {
 		sum.setUserId(1);
 		sum.setFirstName("Akhilesh");
 		sum.setLastName("Kumar");
+		sum.setEmail("akhi.x319@gmail.com");
+		sum.setPhoneNumber("4696644745");
+		sum.setCompany("SAP");
+		
 		//	this.streetName = streetName;
 		//	this.houseNumber = houseNumber;
 		//	this.city = city;
 		//	this.state = state;
 		//	this.pinCode = pinCode;
-		sum.getUser_streetName()
-		sum.get
-		sum.
-		sum.
-		sum.
-		sum.
-		//sum.setShippingaddress(new AddressModel("7815","16101","Richardson","Texas","75252"));
-		sum.setEmail("akhi.x319@gmail.com");
-		sum.setPhoneNumber("4696644745");
-		sum.setCompany("SAP");
+		sum.setUser_streetName("7815");
+		sum.setUser_houseNumber("16101");
+		sum.setUser_city("Richardson");
+		sum.setUser_pinCode("75252");
+		sum.setUser_state("Texas");
+
+		sum.setShipping_streetName("7825");
+		sum.setShipping_houseNumber("16101");
+		sum.setShipping_city("Richardson");
+		sum.setShipping_pinCode("75252");
+		sum.setShipping_state("Texas");
+		
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String jString = null;

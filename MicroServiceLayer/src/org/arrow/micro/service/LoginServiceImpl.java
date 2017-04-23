@@ -25,8 +25,12 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public boolean Register(UserDetailsModel userDetails) {
-		// TODO Auto-generated method stub
-		return false;
+		return loginDao.save(userDetails);
+	}
+
+	private String checkall(UserDetailsModel userDetails) throws Exception {
+		 return "checked";		
+		
 	}
 	
 
