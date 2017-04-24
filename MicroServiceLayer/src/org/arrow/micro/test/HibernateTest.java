@@ -16,8 +16,7 @@ public class HibernateTest {
 	
 	public static void main(String args[]){
 		LoginModel user = new LoginModel();
-		user.setUserName("Akhilesh");
-		user.setPassword("password");
+		
 		
 		Configuration configuration = new Configuration();
 	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
@@ -28,7 +27,7 @@ public class HibernateTest {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		try{
-			user.setUserName("Akhilesh");
+			user.setUserName("Arvind");
 			user.setPassword("password");
 			session.save(user);
 			session.getTransaction().commit();
@@ -40,11 +39,11 @@ public class HibernateTest {
 	    	 session.close();
 	      }
 		
-		//getting the information.
-		session = sessionFactory.openSession();
-		//proxy class get.
-		UserDetailsModel user1 =(UserDetailsModel) session.get(UserDetailsModel.class, 1);
-		user1.getShippingAddress();
+//		//getting the information.
+//		session = sessionFactory.openSession();
+//		//proxy class get.
+//		UserDetailsModel user1 =(UserDetailsModel) session.get(UserDetailsModel.class, 1);
+//		user1.getShippingAddress();
 
 	}
 	

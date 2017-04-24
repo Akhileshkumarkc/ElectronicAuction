@@ -11,6 +11,9 @@ public class AddressModel {
 	private String state;
 	private String pinCode;
 	
+	public AddressModel(){
+		
+	}
 	public AddressModel(String streetName, String houseNumber, String city, String state, String pinCode) {
 		super();
 		this.streetName = streetName;

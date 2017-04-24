@@ -9,18 +9,20 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-
+@Entity
 public class UserDetailsModel {
 	
 	//*******************************************
@@ -63,10 +65,10 @@ public class UserDetailsModel {
 	@ElementCollection
 	@JoinTable(name="USER_HISTORY",joinColumns=@JoinColumn(name="USER_ID"))
 	@GenericGenerator(name="native-gen", strategy="native")
-	@CollectionId(columns = { @Column(name="LOGIN_HISTORY_ID")}, generator = "native-gen",
+	@CollectionId(columns = { @Column(name="userHistoryId")}, generator = "native-gen",
 							type = @Type(type="long"))
 	private Collection<UserLoginHistoryModel> userHistory = new ArrayList<UserLoginHistoryModel>();
-	@OneToOne
+	@OneToOne @MapsId
 	private LoginModel loginInfo;
 	
 	public UserDetailsModel() {

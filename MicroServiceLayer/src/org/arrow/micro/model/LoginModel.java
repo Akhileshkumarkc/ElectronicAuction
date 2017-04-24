@@ -23,21 +23,21 @@ import org.hibernate.service.ServiceRegistry;
 public class LoginModel {
 	
 
-	@Column(name="LoginId")
+	@Column(name="userId")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "loginids")
 	@SequenceGenerator(name="loginids",sequenceName="userids" ,allocationSize = 1)
 	@Id
-	private int loginId;
+	private int userId;
 	@Column(name="username", unique =true)
 	private String userName;
 	@Column(name="password")
 	private String password;
 		
 	public int getLoginId() {
-		return loginId;
+		return userId;
 	}
 	public void setLoginId(int id) {
-		loginId = id;
+		userId = id;
 	}
 	
 	public String getUserName() {
@@ -59,7 +59,8 @@ public class LoginModel {
 		user.setPassword("password");
 		Configuration configuration = new Configuration();
 	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
-	    configuration.addAnnotatedClass(LoginModel.class);
+	  
+	    
 	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
 	            configuration.getProperties()).build();
 	    SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);

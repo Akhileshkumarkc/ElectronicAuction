@@ -3,6 +3,7 @@ package org.arrow.micro.model;
 import java.sql.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,12 +11,12 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+@Entity
 public class UserLoginHistoryModel {
 	
 	@Column(name="userHistoryId")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "userHistoryIds")
-	@SequenceGenerator(name="userHistoryId",sequenceName="userHistoryIds" ,allocationSize = 1)
+	@SequenceGenerator(name="userHistoryIds",sequenceName="userHistoryIds" ,allocationSize = 1)
 	@Id
 	private int userHistoryId;
 	Date loginDate;
