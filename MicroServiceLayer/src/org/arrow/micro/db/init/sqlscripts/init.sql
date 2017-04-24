@@ -2,9 +2,9 @@ create table axk167131.AuctionEventModel (auctionId number(10,0) not null, actua
 create table axk167131.BidModel (BidId number(10,0) not null, amount double precision, dateTime timestamp, transactionId varchar2(255 char), userId number(10,0) not null, primary key (BidId))
 create table axk167131.Bids (AuctionId number(10,0) not null, bidModels_BidId number(10,0) not null, BidId number(19,0) not null, primary key (BidId))
 create table axk167131.ItemModel (Itemid number(10,0) not null, category varchar2(255 char), description varchar2(255 char), imageURL varchar2(255 char), name varchar2(255 char), primary key (Itemid))
-create table axk167131.login (LoginId number(10,0) not null, password varchar2(255 char), username varchar2(255 char), primary key (LoginId))
-create table axk167131.USER_HISTORY (USER_ID number(10,0) not null, userHistory_userHistoryId number(10,0) not null, LOGIN_HISTORY_ID number(19,0) not null, primary key (LOGIN_HISTORY_ID))
-create table axk167131.UserDetailsModel (userId number(10,0) not null, company varchar2(255 char), email varchar2(255 char), firstName varchar2(255 char), lastName varchar2(255 char), phoneNumber varchar2(255 char), ship_city varchar2(255 char), ship_house_no varchar2(255 char), ship_pincode varchar2(255 char), ship_state varchar2(255 char), ship_street_name varchar2(255 char), user_city varchar2(255 char), user_house_no varchar2(255 char), user_pincode varchar2(255 char), user_state varchar2(255 char), user_street_name varchar2(255 char), loginInfo_LoginId number(10,0), primary key (userId))
+create table axk167131.login (userId number(10,0) not null, password varchar2(255 char), username varchar2(255 char), primary key (userId))
+create table axk167131.USER_HISTORY (USER_ID number(10,0) not null, userHistory_userHistoryId number(10,0) not null, userHistoryId number(19,0) not null, primary key (userHistoryId))
+create table axk167131.UserDetailsModel (company varchar2(255 char), email varchar2(255 char), firstName varchar2(255 char), lastName varchar2(255 char), phoneNumber varchar2(255 char), ship_city varchar2(255 char), ship_house_no varchar2(255 char), ship_pincode varchar2(255 char), ship_state varchar2(255 char), ship_street_name varchar2(255 char), user_city varchar2(255 char), user_house_no varchar2(255 char), user_pincode varchar2(255 char), user_state varchar2(255 char), user_street_name varchar2(255 char), loginInfo_userId number(10,0) not null, primary key (loginInfo_userId))
 create table axk167131.UserLoginHistoryModel (userHistoryId number(10,0) not null, location varchar2(255 char), loginDate date, primary key (userHistoryId))
 alter table axk167131.Bids drop constraint UK_9oc72g4w25qetffc7yjmxdti8
 alter table axk167131.Bids add constraint UK_9oc72g4w25qetffc7yjmxdti8 unique (bidModels_BidId)
@@ -17,4 +17,4 @@ alter table axk167131.Bids add constraint FKrgqixuiubbr9m9ea7e2s71djp foreign ke
 alter table axk167131.Bids add constraint FK93icc0qxj1gc4qe9svga9w0qt foreign key (AuctionId) references axk167131.AuctionEventModel
 alter table axk167131.USER_HISTORY add constraint FKiuex4aw83oknmo5oq2s8b7bhw foreign key (userHistory_userHistoryId) references axk167131.UserLoginHistoryModel
 alter table axk167131.USER_HISTORY add constraint FKln3h26o4wxnda8e4o39f29stw foreign key (USER_ID) references axk167131.UserDetailsModel
-alter table axk167131.UserDetailsModel add constraint FKfec8gmrkytmugadonlf9i33en foreign key (loginInfo_LoginId) references axk167131.login
+alter table axk167131.UserDetailsModel add constraint FKnyhqhqxa0bmv889vdg84rd9k9 foreign key (loginInfo_userId) references axk167131.login

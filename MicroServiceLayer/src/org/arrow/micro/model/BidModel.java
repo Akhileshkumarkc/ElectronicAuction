@@ -13,7 +13,7 @@ public class BidModel {
 	
 	@Column(name="BidId")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "Bidids")
-	@SequenceGenerator(name="Bidids",sequenceName="Bidids" ,allocationSize = 1)
+	@SequenceGenerator(name="Bidids",sequenceName="Bidids" ,allocationSize = 1,initialValue =2000)
 	@Id
 	private int bidid;
 	
