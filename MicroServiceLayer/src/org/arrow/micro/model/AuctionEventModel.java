@@ -138,6 +138,11 @@ public class AuctionEventModel {
 	public void addBidModel(BidModel bm){
 		bidModels.add(bm);
 	}
+	
+	public void getBid(UserDetailsModel uid){
+		uid.getUserId();
+		
+	}
 	public void delBidModel(UserDetailsModel um){
 		//BidModel bm = new BidModel(um.getUserId());
 	//	bidModels.remove(bm);

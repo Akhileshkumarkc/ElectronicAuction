@@ -4,10 +4,14 @@ import org.arrow.micro.model.UserDetailsModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -39,6 +43,8 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 
 	@Override
 	public List getAllLoginData() {
+		
+		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from LoginModel");
@@ -66,7 +72,29 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		return true;
 		
 	}
+	public static void main(String args[]){
+		Configuration configuration = new Configuration();
+	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
+	    configuration.addAnnotatedClass(LoginModel.class);
+	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+	            configuration.getProperties()).build();
+	    SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		try{
+		
+			Query query = session.createQuery("from LoginModel");
+			List querylist =  query.list();
+			session.getTransaction().commit();
+					}
+		catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }finally {
+	    	 session.close();
+	      }
 
+	}
 }
 
 

@@ -1,6 +1,7 @@
 package org.arrow.micro.model;
 
 import java.io.File;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -32,6 +35,10 @@ public class LoginModel {
 	private String userName;
 	@Column(name="password")
 	private String password;
+	
+	@Temporal(TemporalType.DATE)
+	private Date lastLogin;
+	private String Location;
 		
 	public int getLoginId() {
 		return userId;

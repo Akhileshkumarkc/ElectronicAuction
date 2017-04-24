@@ -9,8 +9,8 @@ import org.arrow.micro.model.AuctionStatusModel;
 import org.arrow.micro.model.BidModel;
 import org.arrow.micro.model.ItemModel;
 import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.model.UserDetailsModel;
-import org.arrow.micro.model.UserLoginHistoryModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -80,7 +80,7 @@ public static void main(String args[]){
 	 
 	 AuctionEventIphone.setName("IphoneSell");
 	 AuctionEventIphone.setDescription("Iphone Event");
-	 AuctionEventIphone.setStatus(AuctionStatusModel.START);
+	 AuctionEventIphone.setStatus(AuctionStatusModel.CREATED);
 	 AuctionEventIphone.setStartingBid(new Double(300));
 	 AuctionEventIphone.setMinBidIncrement(new Double(10));
 	 AuctionEventIphone.setStartDateTime(new Date());
@@ -103,7 +103,7 @@ public static void main(String args[]){
 
 	 AuctionEventDell.setName("DellLaptop");
 	 AuctionEventDell.setDescription("Dell Laptop");
-	 AuctionEventDell.setStatus(AuctionStatusModel.START);
+	 AuctionEventDell.setStatus(AuctionStatusModel.CREATED);
 	 AuctionEventDell.setStartingBid(new Double(300));
 	 AuctionEventDell.setMinBidIncrement(new Double(10));
 	 AuctionEventDell.setStartDateTime(new Date());
@@ -132,7 +132,17 @@ public static void main(String args[]){
 	
 	 //on close few more events.
 	 //AuctionEventIphone.setStatus(AuctionStatusModel.CLOSE);
-	//	 AuctionEventGetAllBids();
+	 //AuctionEventclose.
+	 PurchasedItemModel pm = new PurchasedItemModel();
+	 pm.setAuction(AuctionEventIphone);
+	 pm.setUser(VivekUser);
+	 
+	 //TODO:Set price
+	 //pm.setPrice(AuctionEventIphone.getBidModel().);
+	 
+	 
+	 
+	 //	 AuctionEventGetAllBids();
 		 //AuctionEvent.close();
 		 // Award the event to a buyer();
 		// Prepare the bill.
@@ -143,7 +153,6 @@ public static void main(String args[]){
 	    configuration.addAnnotatedClass(LoginModel.class);
 	    configuration.addAnnotatedClass(LoginModel.class);
 	    configuration.addAnnotatedClass(AddressModel.class);
-	    configuration.addAnnotatedClass(UserLoginHistoryModel.class);
 	    configuration.addAnnotatedClass(UserDetailsModel.class);
 	    configuration.addAnnotatedClass(ItemModel.class);
 	    configuration.addAnnotatedClass(AuctionEventModel.class);

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
-import org.arrow.micro.model.UserLoginHistoryModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -142,7 +141,6 @@ public class RestTest {
 		akhileshUser.setUseraddress(new AddressModel("7815","16101","Richardson","Texas","75252"));
 		akhileshUser.setShippingAddress(new AddressModel("7815","16101","Richardson","Texas","75252"));
 		akhileshUser.setEmail("akhi.x319@gmail.com");
-		akhileshUser.setUserHistory( new ArrayList<UserLoginHistoryModel>());
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String jString = null;

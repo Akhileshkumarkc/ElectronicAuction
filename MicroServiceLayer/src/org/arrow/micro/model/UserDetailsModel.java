@@ -1,27 +1,18 @@
 package org.arrow.micro.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+
 @Entity
 public class UserDetailsModel {
 	
@@ -54,20 +45,17 @@ public class UserDetailsModel {
 	})
 	private AddressModel useraddress;
 	private String company;
+	@Column(unique=true)
 	private String phoneNumber;
+	@Column(unique=true)
 	private String email;
+	@Column(unique=true)
+	private String username;
 	
 	//*******************************************
-	//Collections
+	//LoginInfo
 	//*****************************
-	
-	
-	@ElementCollection
-	@JoinTable(name="USER_HISTORY",joinColumns=@JoinColumn(name="USER_ID"))
-	@GenericGenerator(name="native-gen", strategy="native")
-	@CollectionId(columns = { @Column(name="userHistoryId")}, generator = "native-gen",
-							type = @Type(type="long"))
-	private Collection<UserLoginHistoryModel> userHistory = new ArrayList<UserLoginHistoryModel>();
+		
 	@OneToOne @MapsId
 	private LoginModel loginInfo;
 	
@@ -114,14 +102,6 @@ public class UserDetailsModel {
 		this.useraddress = useraddress;
 	}
 
-	public List<UserLoginHistoryModel> getUserHistory() {
-		return (List<UserLoginHistoryModel>) userHistory;
-	}
-
-	public void setUserHistory(List<UserLoginHistoryModel> userHistory) {
-		this.userHistory = userHistory;
-	}
-
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
@@ -136,11 +116,6 @@ public class UserDetailsModel {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-	public void setUserHistory(Collection<UserLoginHistoryModel> userHistory) {
-		this.userHistory = userHistory;
 	}
 
 	public LoginModel getLoginInfo() {

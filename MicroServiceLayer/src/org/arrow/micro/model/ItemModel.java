@@ -15,6 +15,7 @@ public class ItemModel {
 	@SequenceGenerator(name="itemids",sequenceName="itemids" ,allocationSize = 1)
 	@Id
 	private int Id;
+	@Column(unique=true)
 	private String name;
 	private String description;
 	private String imageURL;
@@ -58,6 +59,14 @@ public class ItemModel {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
 	}
 }
 

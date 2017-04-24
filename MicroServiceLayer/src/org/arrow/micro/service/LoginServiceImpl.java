@@ -28,8 +28,10 @@ public class LoginServiceImpl implements LoginService {
 		return loginDao.save(userDetails);
 	}
 
-	private String checkall(UserDetailsModel userDetails) throws Exception {
-		 return "checked";		
+	private String checkIfUserExists(UserDetailsModel userDetails) throws Exception {
+		// TODO:  
+		return "yes";
+			
 		
 	}
 	
