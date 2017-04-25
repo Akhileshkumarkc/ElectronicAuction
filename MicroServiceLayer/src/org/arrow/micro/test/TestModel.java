@@ -157,6 +157,7 @@ public static void main(String args[]){
 	    configuration.addAnnotatedClass(ItemModel.class);
 	    configuration.addAnnotatedClass(AuctionEventModel.class);
 	    configuration.addAnnotatedClass(BidModel.class);
+	    configuration.addAnnotatedClass(PurchasedItemModel.class);
 	    
 	    
 	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(

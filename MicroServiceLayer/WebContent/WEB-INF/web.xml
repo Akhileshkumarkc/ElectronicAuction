@@ -23,4 +23,8 @@
 	<servlet-name>microrest</servlet-name>
 	<url-pattern>/*</url-pattern>
 </servlet-mapping>
+<error-page>
+   <exception-type>404</exception-type>
+   <location>/Error404.html</location>
+</error-page>
 </web-app>

@@ -60,6 +60,24 @@ public class LoginModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+	public String getLocation() {
+		return Location;
+	}
+	public void setLocation(String location) {
+		Location = location;
+	}
 	public static void main(String args[]){
 		LoginModel user = new LoginModel();
 		user.setUserName("Akhilesh");

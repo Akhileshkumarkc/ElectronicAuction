@@ -21,6 +21,6 @@
   <mapping class="org.arrow.micro.model.AuctionStatusModel"></mapping>
   <mapping class="org.arrow.micro.model.BidModel"></mapping>
   <mapping class="org.arrow.micro.model.UserDetailsModel"></mapping>
-  <mapping class="org.arrow.micro.model.UserLoginHistoryModel"></mapping>
+  <mapping class="org.arrow.micro.model.PurchasedItemModel"></mapping>
 </session-factory>
 </hibernate-configuration>
