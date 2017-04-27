@@ -46,7 +46,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from LoginModel");
-		List querylist =  query.list();
+		List<LoginModel> querylist =  query.list();
 		session.getTransaction().commit();
 		
 		return querylist;
@@ -80,35 +80,36 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		try{
-			LoginModel lma = new LoginModel();
-			lma.setUserName("akhilesh");
-			lma.setPassword("password");
-			lma.setLocation("dallas");
-			lma.setLastLogin(new Date(System.currentTimeMillis()));
+//			LoginModel lma = new LoginModel();
+//			lma.setUserName("akhilesh");
+//			lma.setPassword("password");
+//			lma.setLocation("dallas");
+//			lma.setLastLogin(new Date(System.currentTimeMillis()));
+//			
+//
+//			LoginModel lma1 = new LoginModel();
+//			lma1.setUserName("Vivek");
+//			lma1.setPassword("password");
+//			lma1.setLocation("dallas");
+//			lma1.setLastLogin(new Date(System.currentTimeMillis()));
+//			
+//			LoginModel lma2 = new LoginModel();
+//			lma2.setUserName("arvind");
+//			lma2.setPassword("password");
+//			lma2.setLocation("dallas");
+//			lma2.setLastLogin(new Date(System.currentTimeMillis()));
+//			
+//			session.save(lma);
+//			session.save(lma1);
+//			session.save(lma2);
 			
-
-			LoginModel lma1 = new LoginModel();
-			lma1.setUserName("Vivek");
-			lma1.setPassword("password");
-			lma1.setLocation("dallas");
-			lma1.setLastLogin(new Date(System.currentTimeMillis()));
+//			session.getTransaction().commit();
 			
-			LoginModel lma2 = new LoginModel();
-			lma2.setUserName("arvind");
-			lma2.setPassword("password");
-			lma2.setLocation("dallas");
-			lma2.setLastLogin(new Date(System.currentTimeMillis()));
-			
-			session.save(lma);
-			session.save(lma1);
-			session.save(lma2);
-			
-			session.getTransaction().commit();
-			
-			session.beginTransaction();
+//		session.beginTransaction();
 			Query query = session.createQuery("from LoginModel");
-			List<LoginModel> querylist =  query.list();
+			List<LoginModel> querylist =  (List<LoginModel>) query.list();
 			session.getTransaction().commit();
+			
 					}
 		catch (HibernateException e) {
 	         if (tx!=null) tx.rollback();
