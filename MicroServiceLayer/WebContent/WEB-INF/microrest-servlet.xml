@@ -33,6 +33,21 @@
 
 	<beans:bean id="loginDao" class="org.arrow.micro.dao.LoginDaoImpl"  />
 	<beans:bean id="loginService" class="org.arrow.micro.service.LoginServiceImpl" />
+	
+	<beans:bean id="AuctionDao" class="org.arrow.micro.dao.AuctionDaoImpl"  />
+	<beans:bean id="AuctionService" class="org.arrow.micro.service.AuctionServiceImpl" />
+	
+	<beans:bean id="BidDao" class="org.arrow.micro.dao.BidDaoImpl"  />
+	<beans:bean id="BidService" class="org.arrow.micro.service.BidServiceImpl" />
+	
+	<beans:bean id="OrderDao" class="org.arrow.micro.dao.OrderDaoImpl"  />
+	<beans:bean id="OrderService" class="org.arrow.micro.service.OrderServiceImpl" />
+	
+	<beans:bean id="UserDao" class="org.arrow.micro.dao.UserDaoImpl"  />
+	<beans:bean id="UserService" class="org.arrow.micro.service.UserServiceImpl" />
+	
+	
+	
 	<beans:bean id="sessionFactory" 
      class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
 		<beans:property name="dataSource" ref="dataSource" />

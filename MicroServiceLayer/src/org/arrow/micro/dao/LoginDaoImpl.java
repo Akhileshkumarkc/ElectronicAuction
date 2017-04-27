@@ -18,10 +18,7 @@ import java.util.List;
 
 public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	
+
 	@Override
 	public LoginModel getLogin(String loginName) {
 		LoginModel newLogin = new LoginModel();

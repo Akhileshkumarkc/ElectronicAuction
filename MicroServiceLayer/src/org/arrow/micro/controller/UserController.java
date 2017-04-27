@@ -1,11 +1,9 @@
 package org.arrow.micro.controller;
 
-
-
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
-import org.arrow.micro.service.LoginService;
 import org.arrow.micro.service.LoginServiceImpl;
+import org.arrow.micro.service.UserServiceImpl;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,41 +13,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 
 @RestController
-@RequestMapping("loginservices")
-public class LoginController {
-	
+@RequestMapping(MicroWebServicesActions.USERSERVICE)
+public class UserController {
 	@Autowired
-	private LoginServiceImpl loginService;	
+	private UserServiceImpl userService;	
 	
-	@RequestMapping(value="/authenicate",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value=MicroWebServicesActions.profileview,
+			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+		//TODO:
+		return true;
 		
-		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
-		boolean authenicated = false;
-		
-		if(dbLoginModel != null){
-		
-			if(model.getPassword().equals(dbLoginModel.getPassword())){
-				authenicated = true;
-			}
-		}
-		return authenicated;
+//		LoginModel dbLoginModel =userService.getLogin(model.getUserName());
+//		boolean authenicated = false;
+//		
+//		if(dbLoginModel != null){
+//		
+//			if(model.getPassword().equals(dbLoginModel.getPassword())){
+//				authenicated = true;
+//			}
+//		}
+//		return authenicated;
 		
 	}
 	
-	@RequestMapping(value="/register",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value=MicroWebServicesActions.profiledit,
+			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean register(
 		//	@RequestBody UserDetailsModel userDetails 
 			@RequestBody SimpleUserModel userModel
 			){
-		
-		System.out.println("enteredregister");
-		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
-		loginService.Register(userDetailModel);
-		boolean status = true;
-		return status;
+		return true;
+//		System.out.println("enteredregister");
+//		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
+//		loginService.Register(userDetailModel);
+//		boolean status = true;
+//		return status;
 	}
 
 	@RequestMapping(value="/time/1",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -71,4 +73,5 @@ public class LoginController {
 		
 		
 	}
+
 }
