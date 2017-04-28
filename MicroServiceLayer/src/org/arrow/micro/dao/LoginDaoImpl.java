@@ -27,8 +27,10 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
+		System.out.println("reached");
 		Query query = session.createQuery("from LoginModel where userName='"
 				+ loginName +"'");
+		System.out.println(query);
 		newLogin = (LoginModel) query.list().get(0);
 		session.getTransaction().commit();
 		}

@@ -18,6 +18,7 @@ public class MicroServiceCallWrapper {
 	
 	public ResponseEntity<String> call(String actionUrl,String jString){
 		String urlString = microServiceBaseUrl+actionUrl;
+		System.out.println(urlString);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<String>(jString, headers);

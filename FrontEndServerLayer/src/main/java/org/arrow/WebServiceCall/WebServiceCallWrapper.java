@@ -15,10 +15,11 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 public class WebServiceCallWrapper {
 	
-	String WebserviceBasicUrl = "http://localhost:8080/WebServiceLayer/";
+	String WebserviceBasicUrl = "http://localhost:8080/WebServiceLayer";
 	
 	public ResponseEntity<String> call(String actionUrl,String jString){
 		String urlString = WebserviceBasicUrl+actionUrl;
+		System.out.println(urlString);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<String>(jString, headers);
