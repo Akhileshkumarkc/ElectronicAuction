@@ -39,7 +39,12 @@ public static void main(String args[]){
 		LoginModel lma = new LoginModel();
 		lma.setUserName("akhilesh");
 		lma.setPassword("password");
+		lma.setLastLogin(new Date(System.currentTimeMillis()));
+		lma.setLocation("Dallas");
+		
+		//associate login info.
 		akhileshUser.setLoginInfo(lma);
+		
 		// 2b.  fill in normal details.
 		akhileshUser.setFirstName("Akhilesh");
 		akhileshUser.setLastName("kumar");
@@ -49,7 +54,7 @@ public static void main(String args[]){
 		akhileshUser.setUseraddress( new AddressModel("7815", "16101", "Richardson", "Texas", "75252"));
 		akhileshUser.setShippingAddress( new AddressModel("7815", "16101", "Richardson", "Texas", "75252"));
 		
-		//2. Register Vivek
+	  //2. Register Vivek
 				//2a.akhilesh login info,
 				LoginModel lmv = new LoginModel();
 				lmv.setUserName("vivek");
@@ -60,7 +65,7 @@ public static void main(String args[]){
 				VivekUser.setLastName("Kanaparthy");
 				VivekUser.setPhoneNumber("6647655674");
 				VivekUser.setCompany("utdallas");
-				akhileshUser.setEmail("vivek@gmail.com");
+				VivekUser.setEmail("vivek@gmail.com");
 				VivekUser.setUseraddress( new AddressModel("7825", "140", "Richardson", "Texas", "75252"));
 				VivekUser.setShippingAddress( new AddressModel("7815", "140", "Richardson", "Texas", "75252")); 
 		
@@ -97,6 +102,7 @@ public static void main(String args[]){
 	 Iphoneitem.setDescription("Iphone Event");
 	 Iphoneitem.setImageURL("someimage");
 	 Iphoneitem.setCategory("Phone");
+	 Iphoneitem.setImageURL("http://www.images.com/1.jpg");
 	 
 	 AuctionEventIphone.setItem(Iphoneitem);
 	 
@@ -151,7 +157,6 @@ public static void main(String args[]){
 		Configuration configuration = new Configuration();
 	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
 	    configuration.addAnnotatedClass(LoginModel.class);
-	    configuration.addAnnotatedClass(LoginModel.class);
 	    configuration.addAnnotatedClass(AddressModel.class);
 	    configuration.addAnnotatedClass(UserDetailsModel.class);
 	    configuration.addAnnotatedClass(ItemModel.class);
@@ -167,13 +172,16 @@ public static void main(String args[]){
 		Transaction tx = session.beginTransaction();
 		try{
 			
-			session.save(lma);
 			session.save(akhileshUser);
+			session.save(lma);
+			session.save(VivekUser);
+			session.save(lmv);
 			session.save(DellItem);
 			session.save(Iphoneitem);
 			session.save(AuctionEventDell);
+			session.save(AuctionEventIphone);
 			session.save(bd1);
-			session.save(AuctionEventIphone);			
+			
 			session.getTransaction().commit();
 					}
 		catch (HibernateException e) {

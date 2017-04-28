@@ -84,16 +84,18 @@ public class LoginModel {
 		user.setPassword("password");
 		Configuration configuration = new Configuration();
 	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
-	  
+	    
 	    
 	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
 	            configuration.getProperties()).build();
 	    SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+	    configuration.addAnnotatedClass(LoginModel.class);
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		try{
 			user.setUserName("Akhilesh");
 			user.setPassword("password");
+			user.setLastLogin(new Date());
 			session.save(user);
 			session.getTransaction().commit();
 					}
