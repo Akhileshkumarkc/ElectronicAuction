@@ -14,13 +14,18 @@
   <property name="hibernate.default_schema">axk167131</property>
   <property name="hibernate.hbm2ddl.auto">create</property>
   <property name="hibernate.connection.autocommit">false</property> 
+  
+  
   <mapping class="org.arrow.micro.model.LoginModel"></mapping>
-  <mapping class="org.arrow.micro.model.ItemModel"></mapping>
   <mapping class="org.arrow.micro.model.AddressModel"></mapping>
-  <mapping class="org.arrow.micro.model.AuctionEventModel"></mapping>
-  <mapping class="org.arrow.micro.model.AuctionStatusModel"></mapping>
-  <mapping class="org.arrow.micro.model.BidModel"></mapping>
   <mapping class="org.arrow.micro.model.UserDetailsModel"></mapping>
+  
+  <mapping class="org.arrow.micro.model.AuctionEventModel"></mapping>
+  <mapping class="org.arrow.micro.model.ItemModel"></mapping>
+  
+  <mapping class="org.arrow.micro.model.BidModel"></mapping>
   <mapping class="org.arrow.micro.model.PurchasedItemModel"></mapping>
+  
+  
 </session-factory>
 </hibernate-configuration>

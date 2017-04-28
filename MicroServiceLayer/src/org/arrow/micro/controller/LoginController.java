@@ -24,7 +24,9 @@ public class LoginController {
 	@Autowired
 	private LoginServiceImpl loginService;	
 	
-	@RequestMapping(value=MicroWebServicesActions.authenicate,method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value=MicroWebServicesActions.authenicate,
+			method = RequestMethod.POST, 
+			produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
 		System.out.println("entered");
 		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
@@ -40,7 +42,9 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping(value=MicroWebServicesActions.Register,method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value=MicroWebServicesActions.Register,
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean register(
 			@RequestBody SimpleUserModel userModel
 			){

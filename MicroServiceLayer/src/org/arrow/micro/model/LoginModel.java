@@ -36,8 +36,9 @@ public class LoginModel {
 	@Column(name="password")
 	private String password;
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	private Date lastLogin;
+	@Column
 	private String Location;
 		
 	public int getLoginId() {
@@ -78,6 +79,7 @@ public class LoginModel {
 	public void setLocation(String location) {
 		Location = location;
 	}
+	
 	public static void main(String args[]){
 		LoginModel user = new LoginModel();
 		user.setUserName("Akhilesh");

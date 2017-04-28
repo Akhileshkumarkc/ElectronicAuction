@@ -3,6 +3,7 @@ package org.arrow.micro.controller;
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.service.BidServiceImpl;
+import org.arrow.micro.simple.model.BidParamModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -19,7 +20,7 @@ public class BidController {
 	
 	@RequestMapping(value=MicroWebServicesActions.Allbids,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+	public  @ResponseBody boolean fetchAllBidsForItem(@RequestBody BidParamModel model){
 		//TODO:mapping
 		return true;
 //		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
@@ -37,8 +38,8 @@ public class BidController {
 	
 	@RequestMapping(value=MicroWebServicesActions.mybids,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register4(
-			@RequestBody LoginModel model){
+	public  @ResponseBody boolean fetchAllMyBids(
+			@RequestBody  BidParamModel model){
 		
 		//TODO:mapping
 		return true;
@@ -47,8 +48,8 @@ public class BidController {
 		
 	@RequestMapping(value=MicroWebServicesActions.foritem,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register2(
-			@RequestBody LoginModel model){
+	public  @ResponseBody boolean bid(
+			@RequestBody BidParamModel model){
 		
 		//TODO:mapping
 		return true;
@@ -56,9 +57,9 @@ public class BidController {
 	
 	@RequestMapping(value=MicroWebServicesActions.delete,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register3(
+	public  @ResponseBody boolean deleteBid(
 		//	@RequestBody UserDetailsModel userDetails 
-			@RequestBody SimpleUserModel userModel
+			@RequestBody BidParamModel BidParam
 			){
 		
 		//TODO:mapping

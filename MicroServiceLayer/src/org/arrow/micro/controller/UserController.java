@@ -23,7 +23,7 @@ public class UserController {
 	
 	@RequestMapping(value=MicroWebServicesActions.profileview,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+	public  @ResponseBody boolean viewProfile(@RequestBody SimpleUserModel model){
 		//TODO:
 		return true;
 		
@@ -43,7 +43,6 @@ public class UserController {
 	@RequestMapping(value=MicroWebServicesActions.profiledit,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean register(
-		//	@RequestBody UserDetailsModel userDetails 
 			@RequestBody SimpleUserModel userModel
 			){
 		return true;

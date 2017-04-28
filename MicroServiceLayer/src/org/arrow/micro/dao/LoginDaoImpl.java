@@ -53,6 +53,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		
 		return querylist;
 	}
+	
 	@Override
 	public List getAllUserName(){
 		 return getAllLoginData();
@@ -72,6 +73,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		return true;
 		
 	}
+	
 	public static void main(String args[]){
 		Configuration configuration = new Configuration();
 	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
@@ -82,35 +84,11 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		try{
-//			LoginModel lma = new LoginModel();
-//			lma.setUserName("akhilesh");
-//			lma.setPassword("password");
-//			lma.setLocation("dallas");
-//			lma.setLastLogin(new Date(System.currentTimeMillis()));
-//			
-//
-//			LoginModel lma1 = new LoginModel();
-//			lma1.setUserName("Vivek");
-//			lma1.setPassword("password");
-//			lma1.setLocation("dallas");
-//			lma1.setLastLogin(new Date(System.currentTimeMillis()));
-//			
-//			LoginModel lma2 = new LoginModel();
-//			lma2.setUserName("arvind");
-//			lma2.setPassword("password");
-//			lma2.setLocation("dallas");
-//			lma2.setLastLogin(new Date(System.currentTimeMillis()));
-//			
-//			session.save(lma);
-//			session.save(lma1);
-//			session.save(lma2);
-			
-//			session.getTransaction().commit();
-			
-//		session.beginTransaction();
+
 			Query query = session.createQuery("from LoginModel");
 			List<LoginModel> querylist =  (List<LoginModel>) query.list();
 			session.getTransaction().commit();
+			System.out.println();
 			
 					}
 		catch (HibernateException e) {

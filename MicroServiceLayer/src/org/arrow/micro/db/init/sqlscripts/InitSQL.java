@@ -11,6 +11,7 @@ public class InitSQL {
 		LoginModel user = new LoginModel();
 		user.setUserName("Akhilesh");
 		user.setPassword("password");
+		user.setLocation("Dallas");
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

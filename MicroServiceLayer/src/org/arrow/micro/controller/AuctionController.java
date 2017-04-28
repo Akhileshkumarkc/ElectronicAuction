@@ -1,9 +1,11 @@
 package org.arrow.micro.controller;
 
+import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.AuctionServiceImpl;
 import org.arrow.micro.service.LoginServiceImpl;
+import org.arrow.micro.simple.model.SimpleAuctionParamModel;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,26 +26,16 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.create,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+	public  @ResponseBody boolean AuctionCreate(@RequestBody AuctionEventModel model){
 		//TODO:mapping
 		return true;
-//		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
-//		boolean authenicated = false;
-//		
-//		if(dbLoginModel != null){
-//		
-//			if(model.getPassword().equals(dbLoginModel.getPassword())){
-//				authenicated = true;
-//			}
-//		}
-//		return authenicated;
 		
 	}
 	
 	@RequestMapping(value=MicroWebServicesActions.update,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean register(
-			@RequestBody LoginModel model){
+			@RequestBody AuctionEventModel model){
 		
 		//TODO:mapping
 		return true;
@@ -51,8 +43,8 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.AllAvial,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register1(
-			@RequestBody LoginModel model){
+	public  @ResponseBody boolean AllAvaialbleAuctions(
+			@RequestBody SimpleAuctionParamModel auctionParammodel){
 		
 		//TODO:mapping
 		return true;
@@ -60,8 +52,8 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.AllMy,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register2(
-			@RequestBody LoginModel model){
+	public  @ResponseBody boolean AllMyAuctions(
+			@RequestBody SimpleAuctionParamModel auctionParamModel){
 		
 		//TODO:mapping
 		return true;
@@ -69,9 +61,9 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.All,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register3(
+	public  @ResponseBody boolean AllAuctions(
 		//	@RequestBody UserDetailsModel userDetails 
-			@RequestBody SimpleUserModel userModel
+			@RequestBody SimpleAuctionParamModel auctionParamModel
 			){
 		
 		//TODO:mapping
@@ -80,9 +72,9 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.Close,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register4(
+	public  @ResponseBody boolean closeAuction(
 		//	@RequestBody UserDetailsModel userDetails 
-			@RequestBody SimpleUserModel userModel
+			@RequestBody SimpleAuctionParamModel auctionParamModel
 			){
 		
 		//TODO:mapping

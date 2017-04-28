@@ -2,6 +2,7 @@ package org.arrow.micro.controller;
 
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.service.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
 	
 	@Autowired
-	private OrderServiceImpl userService;
+	private OrderServiceImpl orderService;
 	
 	@RequestMapping(value=MicroWebServicesActions.myOrders,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+	public  @ResponseBody PurchasedItemModel order(@RequestBody LoginModel model){
 		//TODO:mapping
-		return true;
+		return new PurchasedItemModel();
 //		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
 //		boolean authenicated = false;
 //		
