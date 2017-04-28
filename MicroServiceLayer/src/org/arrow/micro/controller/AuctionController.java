@@ -34,7 +34,7 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.update,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register(
+	public  @ResponseBody boolean update(
 			@RequestBody AuctionEventModel model){
 		
 		//TODO:mapping
