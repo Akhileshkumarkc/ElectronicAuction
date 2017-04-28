@@ -2,6 +2,7 @@ package org.arrow.micro.controller;
 
 
 
+import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.LoginService;
@@ -17,15 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("loginservices")
+@RequestMapping(MicroWebServicesActions.LOGINSERVICE)
 public class LoginController {
 	
 	@Autowired
 	private LoginServiceImpl loginService;	
 	
-	@RequestMapping(value="/authenicate",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value=MicroWebServicesActions.authenicate,method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
-		
+		System.out.println("entered");
 		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
 		boolean authenicated = false;
 		
@@ -39,9 +40,8 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping(value="/register",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value=MicroWebServicesActions.Register,method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean register(
-		//	@RequestBody UserDetailsModel userDetails 
 			@RequestBody SimpleUserModel userModel
 			){
 		

@@ -27,6 +27,9 @@ public class SimpleUserModel {
 	private String shipping_pinCode;
 	
 	
+	public SimpleUserModel() {
+		super();
+	}
 	public int getUserId() {
 		return userId;
 	}

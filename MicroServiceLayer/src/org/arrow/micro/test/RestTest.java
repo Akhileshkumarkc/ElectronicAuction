@@ -1,6 +1,8 @@
 package org.arrow.micro.test;
 
 import java.util.ArrayList;
+
+import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
@@ -22,18 +24,20 @@ public class RestTest {
 
 		//testRegister();
 		testRegister2();
-		testLogin();
+	//	testLogin();
 	}
 
 	private static void testRegister2() {
 		// TODO Auto-generated method stub
 		
-		String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";
-		String LoginRegister = "loginservice/register";
-		String urlString = microServiceBaseUrl + LoginRegister;
-	
+		String urlString = MicroWebServicesActions.microServiceBaseUrl+
+						   MicroWebServicesActions.LOGINSERVICE +
+						   MicroWebServicesActions.Register;
+		System.out.println(urlString);
 		SimpleUserModel sum = new SimpleUserModel();
 		sum.setUserId(1);
+		sum.setUsername("akhilesh");
+		sum.setPassword("password");
 		sum.setFirstName("Akhilesh");
 		sum.setLastName("Kumar");
 		sum.setEmail("akhi.x319@gmail.com");
@@ -72,6 +76,7 @@ public class RestTest {
 		HttpHeaders headers = new HttpHeaders();headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<String>(jString, headers);
 		RestTemplate restTemplate = new RestTemplate();
+		
 		ResponseEntity<String> loginResponse = restTemplate.exchange(urlString, HttpMethod.POST, entity,
 			String.class);System.out.println(loginResponse.getBody());
 		boolean status = false;if(loginResponse.getStatusCode()==HttpStatus.OK){

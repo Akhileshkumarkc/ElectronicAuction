@@ -2,9 +2,9 @@ package org.arrow.micro.WebServiceCall;
 
 public class MicroWebServicesActions {
 	
-	public static final String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";
-	public static final String loginService_authenicate = "loginservice/authenicate";
-	public static final String loginService_register   = "loginservice/register";
+	public static final String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer";
+	public static final String loginService_authenicate = "loginservices/authenicate";
+	public static final String loginService_register   = "loginservices/register";
 	
 	public static final String LOGINSERVICE = "/loginservices";
 	public static final String USERSERVICE = "/userservices";
