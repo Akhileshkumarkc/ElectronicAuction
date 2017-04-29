@@ -11,7 +11,8 @@ public class SimpleToDBModelConverter {
 	
 	public static UserDetailsModel ConvertToUserDetailsModel(SimpleUserModel sum){
 		UserDetailsModel udm = new UserDetailsModel();
-		udm.setUserId(sum.getUserId());
+		//dont set user id.
+		//udm.setUserId(sum.getUserId());
 		udm.setFirstName(sum.getFirstName());
 		udm.setLastName(sum.getLastName());
 		udm.setCompany(sum.getCompany());

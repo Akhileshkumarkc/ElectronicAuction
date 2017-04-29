@@ -25,6 +25,16 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public boolean Register(UserDetailsModel userDetails) {
+		
+		List<LoginModel> loginList = loginDao.getAllLoginData();
+		
+		for(LoginModel item: loginList){
+			if( item.getUserName().equalsIgnoreCase(
+					userDetails.getLoginInfo().getUserName())) {
+				System.out.println("Already User Exists"+ item.getUserName());
+				return false;
+			}
+		}
 		return loginDao.save(userDetails);
 	}
 

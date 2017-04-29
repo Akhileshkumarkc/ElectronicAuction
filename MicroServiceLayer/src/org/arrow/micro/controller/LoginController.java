@@ -50,8 +50,8 @@ public class LoginController {
 		
 		System.out.println("enteredregister");
 		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
-		loginService.Register(userDetailModel);
-		boolean status = true;
+		boolean status =loginService.Register(userDetailModel);
+		
 		return status;
 	}
 

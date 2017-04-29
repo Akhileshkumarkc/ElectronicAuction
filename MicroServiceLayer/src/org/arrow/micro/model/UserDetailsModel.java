@@ -48,10 +48,7 @@ public class UserDetailsModel {
 	@Column(unique=true)
 	private String phoneNumber;
 	@Column(unique=true)
-	private String email;
-	@Column(unique=true)
-	private String username;
-	
+	private String email;	
 	//*******************************************
 	//LoginInfo
 	//*****************************

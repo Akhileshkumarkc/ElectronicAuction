@@ -42,7 +42,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 	}
 
 	@Override
-	public List getAllLoginData() {
+	public List<LoginModel> getAllLoginData() {
 		
 		
 		Session session = sessionFactory.openSession();
