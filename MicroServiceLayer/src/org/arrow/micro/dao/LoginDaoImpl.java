@@ -74,6 +74,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 			throw e;
 		}
 		lr.status = true;
+		lr.ErrorMessage = "Succesful Registration";
 		return lr;
 		
 	}
