@@ -3,6 +3,8 @@ package org.arrow.micro.controller;
 
 
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
+import org.arrow.micro.exception.ApplicationException;
+import org.arrow.micro.exception.ErrorMessageConstants;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.LoginServiceImpl;
@@ -50,7 +52,17 @@ public class LoginController {
 		
 		System.out.println("enteredregister");
 		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
-		boolean status =loginService.Register(userDetailModel);
+		boolean status;
+		try {
+			status = loginService.register(userDetailModel);
+		} catch (Exception e) {
+			ApplicationException ae = new ApplicationException(
+					ErrorMessageConstants.UserAlreadyExists,
+					ErrorMessageConstants.UserAlreadyExists_code);
+			e.printStackTrace();
+			return false;
+		}
+		
 		
 		return status;
 	}
