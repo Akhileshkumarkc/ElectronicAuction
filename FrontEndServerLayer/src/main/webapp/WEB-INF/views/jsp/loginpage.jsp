@@ -31,8 +31,8 @@
 	<form action="login" method="post">
 		<label> Username</label> <input type="text" name="name"><br>
 		<label>Password</label><input type="password" name="password"><br>
-		<input type="submit" value="login">
-		<button type="button" href="/registration.jsp" >New User? SignUp here</button>
+		<input type="submit" value="Login">
+		<button type="button" href="/registration" >New User? SignUp here</button>
 	</form>
 	</center>
 </div>

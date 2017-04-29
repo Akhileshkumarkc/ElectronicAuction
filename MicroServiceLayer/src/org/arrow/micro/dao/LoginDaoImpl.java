@@ -1,6 +1,7 @@
 package org.arrow.micro.dao;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
+import org.arrow.micro.simple.model.LoginResponseModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,7 +60,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		 return getAllLoginData();
 	}
 	
-	public boolean save(UserDetailsModel UDM) throws HibernateException{
+	public LoginResponseModel save(UserDetailsModel UDM, LoginResponseModel lr) throws HibernateException{
 		try{
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -68,9 +69,12 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		}
 		catch(Exception e){
 			System.out.println(e);
+			lr.setErrorMessage("Unable to register");
+			lr.status = false;
 			throw e;
 		}
-		return true;
+		lr.status = true;
+		return lr;
 		
 	}
 	
@@ -99,6 +103,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 	      }
 
 	}
+
 }
 
 

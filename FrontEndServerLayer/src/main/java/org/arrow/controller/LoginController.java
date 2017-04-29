@@ -119,11 +119,14 @@ public class LoginController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(HttpServletRequest request,ModelMap model){
+		
 		System.out.println("entered");
 		SimpleUserModel simpleusermodel = new SimpleUserModel();
 		simpleusermodel.setFirstName(request.getParameter("firstName"));
 		simpleusermodel.setLastName(request.getParameter("lastName"));
 		simpleusermodel.setCompany(request.getParameter("company"));
+		simpleusermodel.setUsername(request.getParameter("username"));
+		simpleusermodel.setPassword(request.getParameter("password"));
 		simpleusermodel.setEmail(request.getParameter("email"));
 		simpleusermodel.setPhoneNumber(request.getParameter("phoneNumber"));
 		simpleusermodel.setUser_houseNumber(request.getParameter("user_houseNumber"));
@@ -139,6 +142,8 @@ public class LoginController {
 		
 		if(simpleusermodel.getFirstName() == null || 
 			simpleusermodel.getLastName() == null || 
+			simpleusermodel.getUsername() == null ||
+			simpleusermodel.getPassword() == null ||
 			simpleusermodel.getEmail() == null || 
 			simpleusermodel.getPhoneNumber() == null || 
 			simpleusermodel.getUser_houseNumber() == null || 
@@ -150,6 +155,56 @@ public class LoginController {
 			return "registration_error";
 		}
 		System.out.println(simpleusermodel.getEmail()+"------"+simpleusermodel.getPhoneNumber()+"----");
+		
+		//webservice call if successful.
+		LoginResponseModel logRespdef = new LoginResponseModel();
+		logRespdef.ErrorMessage ="not succesful";
+		logRespdef.status = false;
+		logRespdef.userid = 0;
+		logRespdef.username ="";
+	
+		try {
+
+			// convert it to jString.
+			ObjectMapper mapper = new ObjectMapper();
+			//hack : set dummy username and password.
+			String jString = mapper.writeValueAsString(simpleusermodel);
+
+			// Make a webservice call to check user validity with login
+			// information.
+			String actionUrl = WebServicesActions.Register;
+			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+			
+			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
+			if (loginResponse.getStatusCode() == HttpStatus.OK) {
+				String jstring = loginResponse.getBody();
+				try {
+					 LoginResponseModel logResp = mapper.readValue(jstring, LoginResponseModel.class);
+					if(logResp.status= true){
+					 System.out.println("successful"); 
+					 logRespdef = logResp;
+					 
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("Json cast Problem");
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// registration is succesful then redirect to loginpage.
+		
+		if (logRespdef.status == true) {
+			return "loginpage";
+		}
+		else{	
+			model.addAttribute("ERR_MSG", logRespdef.ErrorMessage);	
+			System.out.println("error registering");
+		}
 		return "registration_error";
 	}
 	

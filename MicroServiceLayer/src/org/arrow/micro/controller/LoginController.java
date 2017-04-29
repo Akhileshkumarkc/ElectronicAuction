@@ -31,15 +31,14 @@ public class LoginController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody LoginResponseModel loginAuthenitcate(@RequestBody LoginModel model){
 		System.out.println("entered");
-		LoginResponseModel lr = new LoginResponseModel();
 		
-		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
-
+		LoginResponseModel lr = new LoginResponseModel();
 		lr.status = false;
 		lr.userid = 0;
 		lr.username = "";
 		lr.ErrorMessage = "Error reterving the message";
-		
+
+		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
 		if(dbLoginModel != null){
 		
 			if(model.getPassword().equals(dbLoginModel.getPassword())){
@@ -57,25 +56,29 @@ public class LoginController {
 	@RequestMapping(value=MicroWebServicesActions.Register,
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register(
+	public  @ResponseBody LoginResponseModel register(
 			@RequestBody SimpleUserModel userModel
 			){
 		
+		LoginResponseModel lr = new LoginResponseModel();
+		lr.status = false;
+		lr.userid = 0;
+		lr.username = "";
+		lr.ErrorMessage = "Error reterving the message";
+		
 		System.out.println("enteredregister");
+		
 		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
-		boolean status;
+		
 		try {
-			status = loginService.register(userDetailModel);
+			lr = loginService.register(userDetailModel,lr);
 		} catch (Exception e) {
-			ApplicationException ae = new ApplicationException(
-					ErrorMessageConstants.UserAlreadyExists,
-					ErrorMessageConstants.UserAlreadyExists_code);
-			e.printStackTrace();
-			return false;
+			lr.ErrorMessage = "Problem with registration try again!";
+			return lr;
 		}
 		
 		
-		return status;
+		return lr;
 	}
 
 	@RequestMapping(value="/time/1",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

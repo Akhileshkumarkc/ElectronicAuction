@@ -5,6 +5,7 @@ import org.arrow.micro.dao.LoginDaoImpl;
 import org.arrow.micro.exception.ErrorMessageConstants;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
+import org.arrow.micro.simple.model.LoginResponseModel;
 import org.arrow.micro.exception.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,29 +26,28 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public boolean register(UserDetailsModel userDetails) throws ApplicationException {
+	public  LoginResponseModel register(UserDetailsModel userDetails,LoginResponseModel lr) throws ApplicationException {
 		if (checkIfUserExists(userDetails)) {
-			return false;
+			lr.ErrorMessage = "login User Exists";
+			return lr;
 		}
-		return loginDao.save(userDetails);
+		return loginDao.save(userDetails,lr);
 	}
 
 	private boolean checkIfUserExists(UserDetailsModel userDetails) throws ApplicationException {
-
+		boolean exists = false;
 		List<LoginModel> loginList = loginDao.getAllLoginData();
 
 		for (LoginModel item : loginList) {
-			if (item.getUserName().equalsIgnoreCase(userDetails.getLoginInfo().getUserName())) {
-				System.out.println("Already User Exists" + item.getUserName());
-				
-				ApplicationException ae = new  ApplicationException(
-						ErrorMessageConstants.UserAlreadyExists , 
-						ErrorMessageConstants.UserAlreadyExists_code);
-						
-				throw ae;
+			if (item != null && item.getUserName()!=null 
+					&& item.getUserName().equalsIgnoreCase(
+							userDetails.getLoginInfo().getUserName())) {
+				return true;
 			}
 		
 		}
-		return true;
+		return exists;
 	}
+
+	
 }
