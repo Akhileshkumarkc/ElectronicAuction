@@ -1,5 +1,6 @@
 package org.arrow.webservicelayer.MicroServiceCall;
 
+import org.arrow.webservicelayer.model.LoginResponseModel;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,14 +17,14 @@ public class MicroServiceCallWrapper {
 	
 	public static String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";
 	
-	public ResponseEntity<String> call(String actionUrl,String jString){
+	public ResponseEntity call(String actionUrl,String jString){
 		String urlString = microServiceBaseUrl+actionUrl;
 		System.out.println(urlString);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<String>(jString, headers);
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> Response = restTemplate
+		ResponseEntity Response = restTemplate
 				  .exchange(urlString, HttpMethod.POST, entity, String.class);
 		System.out.println(Response.getBody());
 		return Response;

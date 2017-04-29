@@ -8,6 +8,7 @@ import org.arrow.micro.exception.ErrorMessageConstants;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.LoginServiceImpl;
+import org.arrow.micro.simple.model.LoginResponseModel;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +29,28 @@ public class LoginController {
 	@RequestMapping(value=MicroWebServicesActions.authenicate,
 			method = RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+	public  @ResponseBody LoginResponseModel loginAuthenitcate(@RequestBody LoginModel model){
 		System.out.println("entered");
+		LoginResponseModel lr = new LoginResponseModel();
+		
 		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
-		boolean authenicated = false;
+
+		lr.status = false;
+		lr.userid = 0;
+		lr.username = "";
+		lr.ErrorMessage = "Error reterving the message";
 		
 		if(dbLoginModel != null){
 		
 			if(model.getPassword().equals(dbLoginModel.getPassword())){
-				authenicated = true;
+				lr.status = true;
+				lr.setUserid(dbLoginModel.getUserId());
+				lr.setUsername(dbLoginModel.getUserName());
+				lr.ErrorMessage = "";
+				lr.status = true;
 			}
 		}
-		return authenicated;
+		return lr;
 		
 	}
 	

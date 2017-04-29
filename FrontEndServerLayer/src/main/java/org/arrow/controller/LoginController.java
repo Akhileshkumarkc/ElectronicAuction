@@ -1,10 +1,16 @@
 package org.arrow.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.arrow.WebServiceCall.WebServiceCallWrapper;
 import org.arrow.WebServiceCall.WebServicesActions;
+import org.arrow.authenticate.SessionManagement;
 import org.arrow.beans.LoginBean;
+import org.arrow.model.LoginResponseModel;
+import org.arrow.model.SimpleUserModel;
+import org.arrow.model.UserDetails;
 //import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +32,16 @@ public class LoginController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String landingPage(ModelMap model) {
 		System.out.println("entered login page");
+		return "newuserlogin";
+	}
+	
+	
+	@RequestMapping(value = "/newuserlogin", method = RequestMethod.GET)
+	public String newuserloginPage(ModelMap model) {
+		System.out.println("new user page");
 		return "loginpage";
 	}
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, ModelMap model) {
@@ -36,8 +50,15 @@ public class LoginController {
 		bean.setuserName(request.getParameter("name"));
 		bean.setPassword(request.getParameter("password"));
 		request.setAttribute("bean", bean);
-
-		Boolean status = false;
+		
+		//response model
+		
+		LoginResponseModel logRespdef = new LoginResponseModel();
+		logRespdef.ErrorMessage ="not succesful";
+		logRespdef.status = false;
+		logRespdef.userid = 0;
+		logRespdef.username ="";
+	
 		try {
 
 			// convert it to jString.
@@ -48,19 +69,95 @@ public class LoginController {
 			// information.
 			String actionUrl = WebServicesActions.CheckUserValidity;
 			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+			
+			
+			
 			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 			if (loginResponse.getStatusCode() == HttpStatus.OK) {
-				if (loginResponse.getBody().equalsIgnoreCase("true")) {
-					status = true;
+				String jstring = loginResponse.getBody();
+				try {
+					 LoginResponseModel logResp = mapper.readValue(jstring, LoginResponseModel.class);
+					if(logResp.status= true){
+					 System.out.println("succesful"); 
+					 logRespdef = logResp;
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("Json cast Problem");
 				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if (status == true) {
-			return "welcome-page";
+		
+		
+		if (logRespdef.status == true) {
+			if(logRespdef.username.equalsIgnoreCase(bean.getuserName())){
+				SessionManagement.createSessionUser(request, bean);	
+				return "welcome-page";
+			}
 		}
-		return "login-error";
+		else{
+			
+			String message = "Couldnot find the user,Please register";
+			//TODO: return this to the user.
+		}
+		return "/registration";
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	public String registerPage(ModelMap model) {
+		System.out.println("entered Registration page");
+		return "registration";
+	}
+	
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(HttpServletRequest request,ModelMap model){
+		System.out.println("entered");
+		SimpleUserModel simpleusermodel = new SimpleUserModel();
+		simpleusermodel.setFirstName(request.getParameter("firstName"));
+		simpleusermodel.setLastName(request.getParameter("lastName"));
+		simpleusermodel.setCompany(request.getParameter("company"));
+		simpleusermodel.setEmail(request.getParameter("email"));
+		simpleusermodel.setPhoneNumber(request.getParameter("phoneNumber"));
+		simpleusermodel.setUser_houseNumber(request.getParameter("user_houseNumber"));
+		simpleusermodel.setUser_streetName(request.getParameter("user_streetName"));
+		simpleusermodel.setUser_city(request.getParameter("user_city"));
+		simpleusermodel.setUser_state(request.getParameter("user_state"));
+		simpleusermodel.setUser_pinCode(request.getParameter("user_pinCode"));
+		simpleusermodel.setShipping_houseNumber(request.getParameter("shipping_houseNumber"));
+		simpleusermodel.setShipping_streetName(request.getParameter("shipping_streetName"));
+		simpleusermodel.setShipping_city(request.getParameter("shipping_city"));
+		simpleusermodel.setShipping_state(request.getParameter("shipping_state"));
+		simpleusermodel.setShipping_pinCode(request.getParameter("shipping_pinCode"));
+		
+		if(simpleusermodel.getFirstName() == null || 
+			simpleusermodel.getLastName() == null || 
+			simpleusermodel.getEmail() == null || 
+			simpleusermodel.getPhoneNumber() == null || 
+			simpleusermodel.getUser_houseNumber() == null || 
+			simpleusermodel.getUser_streetName() == null || 
+			simpleusermodel.getUser_city() == null || 
+			simpleusermodel.getUser_state() == null || 
+			simpleusermodel.getUser_pinCode() == null){
+			model.addAttribute("ERR_MSG", "Enter all fields correctly");
+			return "registration_error";
+		}
+		System.out.println(simpleusermodel.getEmail()+"------"+simpleusermodel.getPhoneNumber()+"----");
+		return "registration_error";
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request,ModelMap model){
+		SessionManagement sm = new SessionManagement();
+		sm.logoutSessionUser(request.getSession());
+		return "login";
 	}
 	
 	public static void main(String args[]) throws JsonProcessingException{

@@ -1,9 +1,12 @@
 package org.arrow.webservicelayer.controller;
 
 
+import java.io.IOException;
+
 import org.arrow.webservicelayer.MicroServiceCall.MicroServiceCallWrapper;
 import org.arrow.webservicelayer.MicroServiceCall.MicroServiceWebServiceActions;
 import org.arrow.webservicelayer.model.LoginModel;
+import org.arrow.webservicelayer.model.LoginResponseModel;
 import org.arrow.webservicelayer.service.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +30,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class LoginController {
 	
 	@RequestMapping(value="/checkuservalidity",method = RequestMethod.POST,consumes="application/json",produces = "application/json")
-	public  @ResponseBody boolean loginAuthenitcate(@RequestBody LoginModel model){
+	public  @ResponseBody LoginResponseModel  loginAuthenitcate(@RequestBody LoginModel model){
 		ObjectMapper mapper = new ObjectMapper();
 		String jString = null;
 		try {
@@ -37,17 +40,35 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		 
-		//Make a webservice call to check user validity with login information.			
+		//Make a webservice call to check user validity with login informationre.			
 		String actionUrl = MicroServiceWebServiceActions.loginService;
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
 		ResponseEntity<String> loginResponse = MSC.call(actionUrl, jString);
-		boolean status = false;
+		
+		//default response model.
+		LoginResponseModel logRespdef = new LoginResponseModel();
+		logRespdef.ErrorMessage ="not succesful";
+		logRespdef.status = false;
+		logRespdef.userid = 0;
+		logRespdef.username ="";
+		
 		if(loginResponse.getStatusCode() == HttpStatus.OK){
-			if(loginResponse.getBody().equalsIgnoreCase("true")){
-				status = true;
+			String jstring = loginResponse.getBody();
+			try {
+				 LoginResponseModel logResp = mapper.readValue(jstring, LoginResponseModel.class);
+				if(logResp.status= true){
+				 System.out.println("succesful"); 
+				 logRespdef = logResp;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Json cast Problem");
 			}
+			
+			
 		}
-		return status;
+		return logRespdef;
 		
 	}
 
