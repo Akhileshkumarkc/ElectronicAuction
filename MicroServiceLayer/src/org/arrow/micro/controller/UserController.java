@@ -34,15 +34,10 @@ public class UserController {
 	
 	@RequestMapping(value=MicroWebServicesActions.profiledit,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean register(
+	public  @ResponseBody boolean UpdateProfile(
 			@RequestBody SimpleUserModel userModel
 			){
 		return true;
-//		System.out.println("enteredregister");
-//		UserDetailsModel userDetailModel = SimpleToDBModelConverter.ConvertToUserDetailsModel(userModel);
-//		loginService.Register(userDetailModel);
-//		boolean status = true;
-//		return status;
 	}
 
 	@RequestMapping(value="/time/1",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
