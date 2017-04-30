@@ -1,7 +1,12 @@
 package org.arrow.micro.simple.model;
 
 
+import java.util.Date;
+
 import org.arrow.micro.model.AddressModel;
+import org.arrow.micro.model.AuctionEventModel;
+import org.arrow.micro.model.AuctionStatusModel;
+import org.arrow.micro.model.ItemModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 
@@ -55,6 +60,28 @@ public class SimpleToDBModelConverter {
 		sum.setUsername(udm.getLoginInfo().getUserName());
 		
 		return sum;
+		
+	}
+	public static AuctionEventModel ConvertToAuctionModel(SimpleAuctionRequestModel srm){
+		
+		AuctionEventModel AM = new AuctionEventModel();
+		
+		AM.setStatus(AuctionStatusModel.OPEN);
+		AM.setStartingBid(srm.getStartingBid());
+		AM.setStartDateTime(new Date(System.currentTimeMillis()));
+		AM.setScheduledEndDate(srm.getAcutalEndDate());
+		
+		ItemModel im = new ItemModel();
+		
+		im.setCategory("");
+		im.setDescription("description");
+		im.setImageURL(srm.getImageUrl());
+		im.setDescription(srm.getProductDescription());
+		im.setName(srm.getProductName());
+		
+		//TO DO: userid.
+		
+		return AM;
 		
 	}
 

@@ -32,7 +32,7 @@ public class LoginController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String landingPage(ModelMap model) {
 		System.out.println("entered login page");
-		return "newuserlogin";
+		return "loginpage";
 	}
 	
 	

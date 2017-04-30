@@ -1,6 +1,5 @@
 package org.arrow.micro.model;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -14,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -27,18 +27,14 @@ public class AuctionEventModel {
 	@SequenceGenerator(name="auctionids",sequenceName="auctionids" ,allocationSize = 1)
 	@Id
 	private int auctionId;
-	private String name;
-	private String description;
 	private int status;
 	private Double startingBid;
 	private Date startDateTime;
 	private Date scheduledEndDate;
-	private Date actualEndDate;
-	private Double reserveAmount;
-	private Double minBidIncrement;
-	
 	@OneToOne
-	private ItemModel item;
+	private LoginModel Owner; 
+	@OneToOne @MapsId
+	ItemModel item;
 	
 	@ElementCollection
 	@JoinTable(name="Bids",joinColumns=@JoinColumn(name="AuctionId"))
@@ -51,18 +47,6 @@ public class AuctionEventModel {
 		super();
 	}
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
 	public int getStatus() {
 		return status;
 	}
@@ -87,25 +71,6 @@ public class AuctionEventModel {
 	public void setScheduledEndDate(Date date) {
 		this.scheduledEndDate = date;
 	}
-	public Date getActualEndDate() {
-		return actualEndDate;
-	}
-	public void setActualEndDate(Timestamp actualEndDate) {
-		this.actualEndDate = actualEndDate;
-	}
-	public Double getReserveAmount() {
-		return reserveAmount;
-	}
-	public void setReserveAmount(Double reserveAmount) {
-		this.reserveAmount = reserveAmount;
-	}
-	public Double getMinBidIncrement() {
-		return minBidIncrement;
-	}
-	public void setMinBidIncrement(Double minBidIncrement) {
-		this.minBidIncrement = minBidIncrement;
-	}
-
 	public ItemModel getItem() {
 		return item;
 	}
@@ -120,10 +85,6 @@ public class AuctionEventModel {
 
 	public void setAuctionId(int auctionId) {
 		this.auctionId = auctionId;
-	}
-
-	public void setActualEndDate(Date actualEndDate) {
-		this.actualEndDate = actualEndDate;
 	}
 
 	public Collection<BidModel> getBidModel() {
@@ -146,6 +107,22 @@ public class AuctionEventModel {
 	public void delBidModel(UserDetailsModel um){
 		//BidModel bm = new BidModel(um.getUserId());
 	//	bidModels.remove(bm);
+	}
+
+	public LoginModel getOwner() {
+		return Owner;
+	}
+
+	public void setOwner(LoginModel owner) {
+		Owner = owner;
+	}
+
+	public Collection<BidModel> getBidModels() {
+		return bidModels;
+	}
+
+	public void setBidModels(Collection<BidModel> bidModels) {
+		this.bidModels = bidModels;
 	}
 	
 	

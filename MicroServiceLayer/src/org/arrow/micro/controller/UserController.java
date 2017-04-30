@@ -4,6 +4,7 @@ import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.LoginServiceImpl;
 import org.arrow.micro.service.UserServiceImpl;
+import org.arrow.micro.simple.model.LoginResponseModel;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.arrow.micro.simple.model.UserRequestModel;
@@ -34,10 +35,18 @@ public class UserController {
 	
 	@RequestMapping(value=MicroWebServicesActions.profiledit,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean UpdateProfile(
+	public  @ResponseBody LoginResponseModel UpdateProfile(
 			@RequestBody SimpleUserModel userModel
 			){
-		return true;
+			
+		LoginResponseModel lr = new LoginResponseModel();
+		lr.status = false;
+		lr.userid = 0;
+		lr.username = "";
+		lr.ErrorMessage = "Error reterving the message";
+			
+		return userService.updateUserDetails(userModel,lr);
+		
 	}
 
 	@RequestMapping(value="/time/1",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

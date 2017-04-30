@@ -24,9 +24,9 @@ public class RestTest {
 	public static void main(String args[]){
 
 		//testRegister();
-		//testRegister2();
+		testRegister2();
 	//	testLogin();
-		testUserid();
+		//testUserid();
 	}
 
 	private static void testRegister2() {
@@ -46,11 +46,7 @@ public class RestTest {
 		sum.setPhoneNumber("4696644745");
 		sum.setCompany("SAP");
 		
-		//	this.streetName = streetName;
-		//	this.houseNumber = houseNumber;
-		//	this.city = city;
-		//	this.state = state;
-		//	this.pinCode = pinCode;
+		
 		sum.setUser_streetName("7815");
 		sum.setUser_houseNumber("16101");
 		sum.setUser_city("Richardson");

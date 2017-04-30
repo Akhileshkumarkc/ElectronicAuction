@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
  */
 public class MicroServiceCallWrapper {
 	
-	public static String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";
+	public static String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer";
 	
 	public ResponseEntity call(String actionUrl,String jString){
 		String urlString = microServiceBaseUrl+actionUrl;

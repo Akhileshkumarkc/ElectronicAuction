@@ -83,11 +83,8 @@ public static void main(String args[]){
 	 AuctionEventModel 	AuctionEventIphone = new AuctionEventModel();
 	 AuctionEventModel 	AuctionEventDell = new AuctionEventModel();
 	 
-	 AuctionEventIphone.setName("IphoneSell");
-	 AuctionEventIphone.setDescription("Iphone Event");
 	 AuctionEventIphone.setStatus(AuctionStatusModel.CREATED);
 	 AuctionEventIphone.setStartingBid(new Double(300));
-	 AuctionEventIphone.setMinBidIncrement(new Double(10));
 	 AuctionEventIphone.setStartDateTime(new Date());
 	 
 	 //setting date.
@@ -107,11 +104,8 @@ public static void main(String args[]){
 	 AuctionEventIphone.setItem(Iphoneitem);
 	 
 
-	 AuctionEventDell.setName("DellLaptop");
-	 AuctionEventDell.setDescription("Dell Laptop");
 	 AuctionEventDell.setStatus(AuctionStatusModel.CREATED);
 	 AuctionEventDell.setStartingBid(new Double(300));
-	 AuctionEventDell.setMinBidIncrement(new Double(10));
 	 AuctionEventDell.setStartDateTime(new Date());
 	 
 	 //setting date.
@@ -127,12 +121,12 @@ public static void main(String args[]){
 	 DellItem.setCategory("Laptop");
 	 
 	 AuctionEventIphone.setItem(Iphoneitem);
-	 
+	 AuctionEventIphone.setOwner(lmv);
 	 //Bid on the event.
 	 //UserId,AuctionId
 	 int UserId = VivekUser.getUserId();
 	 
-	 BidModel bd1 = new BidModel( UserId );
+	 BidModel bd1 = new BidModel( VivekUser.getLoginInfo() );
 	 bd1.setBid(new Double(100));
 	 AuctionEventIphone.addBidModel(bd1);
 	
@@ -145,7 +139,14 @@ public static void main(String args[]){
 	 
 	 //TODO:Set price
 	 //pm.setPrice(AuctionEventIphone.getBidModel().);
-	 
+	
+		try{
+			jString = mapper.writeValueAsString(AuctionEventIphone);
+			System.out.println(jString);
+		}catch(JsonProcessingException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	 
 	 
 	 //	 AuctionEventGetAllBids();

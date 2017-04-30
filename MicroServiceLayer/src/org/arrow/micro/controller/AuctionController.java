@@ -5,7 +5,9 @@ import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.AuctionServiceImpl;
 import org.arrow.micro.service.LoginServiceImpl;
+import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.SimpleAuctionParamModel;
+import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
+import org.arrow.micro.simple.model.AuctionResponseModel;
+
 @RestController
 @RequestMapping(MicroWebServicesActions.AUCTIONSERVICE)
 public class AuctionController {
@@ -26,9 +30,11 @@ public class AuctionController {
 	
 	@RequestMapping(value=MicroWebServicesActions.create,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean AuctionCreate(@RequestBody AuctionEventModel model){
-		//TODO:mapping
-		return true;
+	public  @ResponseBody AuctionResponseModel AuctionCreate(@RequestBody SimpleAuctionRequestModel model){
+		
+		AuctionResponseModel defaultArm = new AuctionResponseModel();
+		AuctionService.createAuction(model,defaultArm);
+		return defaultArm;   
 		
 	}
 	
@@ -45,8 +51,11 @@ public class AuctionController {
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean AllAvaialbleAuctions(
 			@RequestBody SimpleAuctionParamModel auctionParammodel){
+		//TODO:
+		AuctionResponseModel defaultArm = new AuctionResponseModel();
+		//AuctionService.createAuction(auctionParammodel,defaultArm);
+	//	return defaultArm;   
 		
-		//TODO:mapping
 		return true;
 	}
 	

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,14 +26,15 @@ public class BidModel {
 	private Date dateTime;
 	private Double amount;
 	private String transactionId;
-	private int userId;//AuctionEvent.close();
+	@OneToOne  @JoinColumn(name= "userId")
+	private LoginModel Login;//AuctionEvent.close();
 	
 	
 	
-	public BidModel(int userid) {
+	public BidModel(LoginModel Login) {
 		//TODO: is to fetch the db object and display the bid model.
 		//if it doesnot exist then create a new.
-		this.userId = userid;
+		this.Login = Login;
 	}
 
 
@@ -60,11 +63,11 @@ public class BidModel {
 	}
 
 	public int getUserId() {
-		return userId;
+		return Login.getUserId();
 	}
 
 	public void setUserId(int userId) {
-		userId = userId;
+		Login.setUserId(userId);
 	}
 
 	

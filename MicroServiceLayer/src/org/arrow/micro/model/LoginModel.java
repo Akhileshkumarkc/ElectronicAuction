@@ -31,9 +31,9 @@ public class LoginModel {
 	@SequenceGenerator(name="loginids",sequenceName="userids" ,allocationSize = 1)
 	@Id
 	private int userId;
-	@Column(name="username", unique =true)
+	@Column(name="username", unique =true,nullable = false, updatable = false)
 	private String userName;
-	@Column(name="password")
+	@Column(name="password", nullable = false, updatable = false)
 	private String password;
 	
 	//@Temporal(TemporalType.DATE)
