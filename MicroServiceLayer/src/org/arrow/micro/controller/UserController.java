@@ -6,6 +6,7 @@ import org.arrow.micro.service.LoginServiceImpl;
 import org.arrow.micro.service.UserServiceImpl;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.SimpleUserModel;
+import org.arrow.micro.simple.model.UserRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,20 +24,11 @@ public class UserController {
 	
 	@RequestMapping(value=MicroWebServicesActions.profileview,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean viewProfile(@RequestBody SimpleUserModel model){
-		//TODO:
-		return true;
-		
-//		LoginModel dbLoginModel =userService.getLogin(model.getUserName());
-//		boolean authenicated = false;
-//		
-//		if(dbLoginModel != null){
-//		
-//			if(model.getPassword().equals(dbLoginModel.getPassword())){
-//				authenicated = true;
-//			}
-//		}
-//		return authenicated;
+	public  @ResponseBody SimpleUserModel viewProfile(@RequestBody UserRequestModel model){
+		  
+		SimpleUserModel   sum =  userService.getUserDetails(model.getUserid());
+		return sum;
+
 		
 	}
 	

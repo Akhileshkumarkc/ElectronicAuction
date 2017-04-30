@@ -7,6 +7,7 @@ import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
+import org.arrow.micro.simple.model.UserRequestModel;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -23,8 +24,9 @@ public class RestTest {
 	public static void main(String args[]){
 
 		//testRegister();
-		testRegister2();
+		//testRegister2();
 	//	testLogin();
+		testUserid();
 	}
 
 	private static void testRegister2() {
@@ -125,7 +127,21 @@ public class RestTest {
 	
 		
 	}
-
+	private static void testUserid(){
+		UserRequestModel urm = new UserRequestModel();
+		urm.setUserid(1);
+		urm.setUserName("test");
+		ObjectMapper mapper = new ObjectMapper();
+		String jString = null;
+		try{
+			jString = mapper.writeValueAsString(urm);
+			System.out.println(jString);
+		}catch(JsonProcessingException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	private static void testRegister() {
 		String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";
 		String LoginRegister = "loginservice/register";

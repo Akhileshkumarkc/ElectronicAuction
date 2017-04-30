@@ -32,5 +32,30 @@ public class SimpleToDBModelConverter {
 		return udm;
 		
 	}
+	public static SimpleUserModel ConvertToSimpleUserModel(UserDetailsModel udm){
+		
+		SimpleUserModel sum = new SimpleUserModel();
+		sum.setCompany(udm.getCompany());
+		sum.setEmail(udm.getEmail());
+		sum.setFirstName(udm.getFirstName());
+		sum.setLastName(udm.getLastName());
+		sum.setPassword("");
+		sum.setPhoneNumber(udm.getPhoneNumber());
+		sum.setShipping_city(udm.getShippingAddress().getCity());
+		sum.setShipping_houseNumber(udm.getShippingAddress().getHouseNumber());
+		sum.setShipping_pinCode(udm.getShippingAddress().getHouseNumber());
+		sum.setShipping_state(udm.getShippingAddress().getState());
+		sum.setShipping_streetName(udm.getShippingAddress().getStreetName());
+		sum.setUser_city(udm.getUseraddress().getCity());
+		sum.setUser_houseNumber(udm.getUseraddress().getHouseNumber());
+		sum.setUser_pinCode(udm.getUseraddress().getPinCode());
+		sum.setUser_state(udm.getUseraddress().getState());
+		sum.setUser_streetName(udm.getUseraddress().getStreetName());
+		sum.setUserId(udm.getUserId());
+		sum.setUsername(udm.getLoginInfo().getUserName());
+		
+		return sum;
+		
+	}
 
 }
