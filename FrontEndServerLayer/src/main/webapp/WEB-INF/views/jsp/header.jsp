@@ -1,4 +1,6 @@
 <!-- header-->
+<style>
+</style>
 <div class="container">
   <div class="row">
     <div class="span12">
@@ -23,7 +25,11 @@
                         </li>
 
                         <li>
-                            <a href="#">Search</a>
+                        <form id="search" style="margin:9px">
+                        <a href="#" style="color:#777777">Search</a>
+                        <input type="text">
+                        </form>
+                
                         </li>
 
                         <li>
@@ -41,3 +47,7 @@
     </div>
   </div>
 </div>
+
+
+
+

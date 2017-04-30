@@ -311,6 +311,7 @@ html { height: 100%;}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="resources/js/jquery-1.10.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -325,6 +326,12 @@ html { height: 100%;}
           window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
         });
     </script>
+    <style>
+    	th, td{
+    		padding:15px;
+    		background-color: #E0FFFF;
+    	}
+    </style>
 </head>
 <body >
 <%@ include file="header.jsp" %>
@@ -340,7 +347,7 @@ html { height: 100%;}
                     </a>
                 </li>
                 <li>
-                    <a href="http:">User FirstName LastName</a>
+                    <a href="http:">Edit User Details</a>
                 </li>
                 <li>
                     <a href="http:">User Last Login time</a>
@@ -371,13 +378,15 @@ html { height: 100%;}
             </button>
             <div class="container1">
             <center>
-              <table><img src = "resources/images/buysell.jpg" height="150" width="150">
-                <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/add.jpg" height="75" width="75">  Create a new Auction&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
+              <img src = "resources/images/buysell.jpg" height="150" width="150">
+              <table >
+                <tr><td><h3><a href="createnewauction"><img src = "resources/images/add.jpg" height="75" width="75">  Create a new Auction&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">Available Auctions  <img src = "resources/images/available.jpg" height="75" width="75"></a></h3></td></tr>
                 <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/auction.jpg" height="75" width="75">  All My Auctions&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">  Items in Cart  <img src = "resources/images/cart.jpg" height="100" width="75"></a></h3></td></tr>
                 <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/posted.jpg" height="50" width="100">  Posted Items for Sale&nbsp;&nbsp;&nbsp;&nbsp; </a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">  My Purchased Items  <img src = "resources/images/items.jpg" height="100" width="100"></a></h3></td></tr>
+              
               </table>
             </center>
             </div>
@@ -387,9 +396,9 @@ html { height: 100%;}
     </div>
     <!-- /#wrapper -->
 	
-<footer>
+<div id="footer">
 <%@ include file="footer.jsp" %>
-</footer>
+</div>
 <script type="text/javascript">
 	$(document).ready(function () {
   var trigger = $('.hamburger'),
@@ -419,5 +428,6 @@ html { height: 100%;}
         $('#wrapper').toggleClass('toggled');
   });  
 });
+	
 	</script>
 </body></html>

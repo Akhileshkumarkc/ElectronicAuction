@@ -42,6 +42,12 @@ public class LoginController {
 		return "loginpage";
 	}
 	
+	@RequestMapping(value = "/createnewauction", method = RequestMethod.GET)
+	public String createnewauction(ModelMap model) {
+		System.out.println("entered new auction page");
+		return "newauction";
+	}
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, ModelMap model) {
