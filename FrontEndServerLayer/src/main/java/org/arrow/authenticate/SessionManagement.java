@@ -6,13 +6,16 @@ import javax.servlet.http.HttpSession;
 import org.arrow.beans.LoginBean;
 
 public class SessionManagement {
-	public static void createSessionUser(HttpServletRequest request, LoginBean bean){
+	public static final String SessionUSER = "USER";
+	public static final String SessionUserId = "USERID";
+	public static void createSessionUser(HttpServletRequest request, LoginBean bean,int userid){
 	HttpSession session = request.getSession();
-	session.setAttribute("USER", bean.getuserName());
+	session.setAttribute(SessionUSER, bean.getuserName());
+	session.setAttribute(SessionUserId, userid);
 	
 	}
 	public static int validSessionUser(HttpSession session){
-		if(session.getAttribute("USER")!=null || session.getAttribute("USER")!=""){
+		if(session.getAttribute(SessionUSER)!=null || session.getAttribute(SessionUSER)!=""){
 			return 1;
 		}else{
 			return 0;

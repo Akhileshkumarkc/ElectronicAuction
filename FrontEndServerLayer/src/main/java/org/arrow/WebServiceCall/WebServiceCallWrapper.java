@@ -20,6 +20,7 @@ public class WebServiceCallWrapper {
 	public ResponseEntity<String> call(String actionUrl,String jString){
 		String urlString = WebserviceBasicUrl+actionUrl;
 		System.out.println(urlString);
+		System.out.println(jString);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<String>(jString, headers);

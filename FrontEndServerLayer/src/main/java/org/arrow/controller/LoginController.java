@@ -38,15 +38,21 @@ public class LoginController {
 	
 	@RequestMapping(value = "/newuserlogin", method = RequestMethod.GET)
 	public String newuserloginPage(ModelMap model) {
-		System.out.println("new user page");
+		System.out.println("new user login page");
 		return "loginpage";
 	}
 	
-	@RequestMapping(value = "/createnewauction", method = RequestMethod.GET)
-	public String createnewauction(ModelMap model) {
-		System.out.println("entered new auction page");
-		return "newauction";
+	@RequestMapping(value = "/newuserregistration", method = RequestMethod.GET)
+	public String newuserregistrationPage(ModelMap model) {
+		System.out.println("new user registration page");
+		return "registration";
 	}
+	
+//	@RequestMapping(value = "/createnewauction", method = RequestMethod.GET)
+//	public String createnewauction(ModelMap model) {
+//		System.out.println("entered new auction page");
+//		return "newauction";
+//	}
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -101,8 +107,8 @@ public class LoginController {
 		
 		if (logRespdef.status == true) {
 			if(logRespdef.username.equalsIgnoreCase(bean.getuserName())){
-				SessionManagement.createSessionUser(request, bean);	
-				return "welcome-page";
+				SessionManagement.createSessionUser(request, bean,logRespdef.userid);	
+				return "homepage";
 			}
 		}
 		else{
@@ -218,7 +224,7 @@ public class LoginController {
 	public String logout(HttpServletRequest request,ModelMap model){
 		SessionManagement sm = new SessionManagement();
 		sm.logoutSessionUser(request.getSession());
-		return "login";
+		return "loginpage";
 	}
 	
 	public static void main(String args[]) throws JsonProcessingException{
