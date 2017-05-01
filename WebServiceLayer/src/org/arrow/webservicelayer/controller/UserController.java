@@ -22,7 +22,11 @@ import org.arrow.webservicelayer.model.LoginResponseModel;
 import org.arrow.webservicelayer.model.SimpleUserModel;
 
 @RestController
+<<<<<<< HEAD
+@RequestMapping("/userservices")
+=======
 @RequestMapping(WebServicesActions.USERSERVICE)
+>>>>>>> branch 'master' of https://github.com/Akhileshkumarkc/ElectronicAuction.git
 public class UserController {
 
 	@RequestMapping(value = WebServicesActions.profileview, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,10 +41,16 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+		 
+		//Make a webservice call to check user validity with login informationre.			
+		String actionUrl = MicroServiceWebServiceActions.userprofileview;
+=======
 
 		// Make a webservice call to check user validity with login
 		// informationre.
 		String actionUrl = MicroServiceWebServiceActions.profileview;
+>>>>>>> branch 'master' of https://github.com/Akhileshkumarkc/ElectronicAuction.git
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
 		ResponseEntity<String> userResponse = MSC.call(actionUrl, jString);
 
