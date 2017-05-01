@@ -4,6 +4,7 @@ public class BidParamModel {
 	
 	int auctionId;
 	int userId;
+	String userName;
 	Double bidvalue;
 	
 	public int getAuctionId() {
