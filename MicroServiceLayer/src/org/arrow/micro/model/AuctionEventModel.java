@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -33,15 +32,48 @@ public class AuctionEventModel {
 	private Date scheduledEndDate;
 	@OneToOne
 	private LoginModel Owner; 
-	@OneToOne @MapsId
-	ItemModel item;
-	
+	private String name;
+	private String description;
+	private String imageURL;
+	private String category;
 	@ElementCollection
 	@JoinTable(name="Bids",joinColumns=@JoinColumn(name="AuctionId"))
 	@GenericGenerator(name="native-gen", strategy="native")
 	@CollectionId(columns = { @Column(name="BidId")}, generator = "native-gen",
 							type = @Type(type="long"))
 	private Collection<BidModel> bidModels = new ArrayList<BidModel>();
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	
 	public AuctionEventModel() {
 		super();
@@ -71,14 +103,7 @@ public class AuctionEventModel {
 	public void setScheduledEndDate(Date date) {
 		this.scheduledEndDate = date;
 	}
-	public ItemModel getItem() {
-		return item;
-	}
-
-	public void setItem(ItemModel item) {
-		this.item = item;
-	}
-	
+		
 	public int getAuctionId() {
 		return this.auctionId;
 	}

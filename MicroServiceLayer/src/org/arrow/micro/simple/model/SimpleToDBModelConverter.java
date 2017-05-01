@@ -6,7 +6,6 @@ import java.util.Date;
 import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.AuctionStatusModel;
-import org.arrow.micro.model.ItemModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 
@@ -70,18 +69,11 @@ public class SimpleToDBModelConverter {
 		AM.setStartingBid(srm.getStartingBid());
 		AM.setStartDateTime(new Date(System.currentTimeMillis()));
 		AM.setScheduledEndDate(srm.getAcutalEndDate());
-		
-		ItemModel im = new ItemModel();
-		
-		im.setCategory("");
-		im.setDescription("description");
-		im.setImageURL(srm.getImageURL());
-		im.setDescription(srm.getProductDescription());
-		im.setName(srm.getProductName());
-		
-		AM.setItem(im);
-		//TO DO: userid.
-		
+		AM.setCategory("");
+		AM.setDescription("description");
+		AM.setImageURL(srm.getImageURL());
+		AM.setDescription(srm.getProductDescription());
+		AM.setName(srm.getProductName());
 		
 		return AM;
 		

@@ -22,7 +22,6 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 			AuctionEventModel AM = getAuctionByName(model.getAuctionId());
 			resp.setAuctionid(AM.getAuctionId());
 			resp.setErrorMessage("Succesfully Added");
-			resp.setItemid(AM.getItem().getId());
 			resp.setResponseStatus(true);
 			resp.setUserid(AM.getOwner().getUserId());
 			}
