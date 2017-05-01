@@ -12,7 +12,7 @@
  <!--  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property> -->
   <property name="show_sql">true</property>
   <property name="hibernate.default_schema">axk167131</property>
-  <property name="hibernate.hbm2ddl.auto">create</property>
+  <property name="hibernate.hbm2ddl.auto">drop</property>
   <property name="hibernate.connection.autocommit">false</property> 
   
   <mapping class="org.arrow.micro.model.LoginModel"></mapping>
