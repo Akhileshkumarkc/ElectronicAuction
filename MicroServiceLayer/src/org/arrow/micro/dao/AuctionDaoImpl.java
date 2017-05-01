@@ -3,7 +3,10 @@ package org.arrow.micro.dao;
 import java.util.List;
 
 import org.arrow.micro.model.AuctionEventModel;
+import org.arrow.micro.model.AuctionStatusModel;
+import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.simple.model.AuctionResponseModel;
+import org.arrow.micro.simple.model.UserRequestModel;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -71,26 +74,17 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		
 	}
 	
-	public AuctionEventModel getMyAuctions(int userId){
+	public AuctionEventModel getMyAuctions(UserRequestModel userModel){
 		//TODO: Join.
 		AuctionEventModel aem = null;
-		try{
-			Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
+		// new Auction Event
+		// userId
 			session.beginTransaction();
-			
-			session.beginTransaction();
-			Query query = session.createQuery("from AuctionEventModel where name = "+ userId);
-			aem =  (AuctionEventModel)query.list().get(0);
+			Query query = session.createQuery("from AuctionEventModel where userId = "+ userModel.getUserid() );
+			aem =  (AuctionEventModel)query.list();
 			session.getTransaction().commit();
-		}
-		catch(Exception e){
-			System.out.println("Error while applying the state");
-			aem = null;
-		}
-
 		return (AuctionEventModel) aem;
-
-		
 	}
 	
 	public AuctionResponseModel update(AuctionEventModel model, AuctionResponseModel resp) {
@@ -116,4 +110,46 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 			return resp;
 						
 		}
+	
+	
+	public List<AuctionEventModel> getAllMyAuctions(UserRequestModel userModel) {
+		List<AuctionEventModel> aem = null;
+		try{
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from AuctionEventModel where Owner_userId != "+ 
+					+ userModel.getUserid() 
+					+" and status ="+AuctionStatusModel.OPEN);
+			aem =  (List<AuctionEventModel>)query.list();
+			session.getTransaction().commit();
+		}
+		catch(Exception e){
+			System.out.println("Error while applying the state");
+			aem = null;
+		}
+
+		return  aem;
+		
+	}
+
+	
+	public List<AuctionEventModel> getAvailableAuctions(UserRequestModel userModel) {
+		List<AuctionEventModel> aem = null;
+		try{
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			Query query = session.createQuery("from AuctionEventModel where Owner_userId != "+ 
+					+ userModel.getUserid() 
+					+" and status ="+AuctionStatusModel.OPEN);
+			aem =  (List<AuctionEventModel>)query.list();
+			session.getTransaction().commit();
+		}
+		catch(Exception e){
+			System.out.println("Error while applying the state");
+			aem = null;
+		}
+
+		return  aem;
+		
+	}
 }
