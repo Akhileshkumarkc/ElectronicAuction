@@ -2,8 +2,6 @@ package org.arrow.webservicelayer.controller;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 import org.arrow.webservicelayer.MicroServiceCall.MicroServiceCallWrapper;
@@ -12,7 +10,6 @@ import org.arrow.webservicelayer.WebServiceCall.WebServicesActions;
 import org.arrow.webservicelayer.model.AuctionResponseModel;
 import org.arrow.webservicelayer.model.SimpleAuctionListResponseModel;
 import org.arrow.webservicelayer.model.SimpleAuctionRequestModel;
-import org.arrow.webservicelayer.model.SimpleAuctionResponseModel;
 import org.arrow.webservicelayer.model.UserRequestModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
