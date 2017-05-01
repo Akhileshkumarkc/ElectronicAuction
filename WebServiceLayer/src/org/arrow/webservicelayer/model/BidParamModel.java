@@ -1,4 +1,4 @@
-package org.arrow.micro.simple.model;
+package org.arrow.webservicelayer.model;
 
 public class BidParamModel {
 	

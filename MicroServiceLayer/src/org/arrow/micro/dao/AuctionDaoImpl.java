@@ -55,9 +55,7 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 	public AuctionEventModel getAuctionById(int auctionId){
 		AuctionEventModel aem = null;
 		try{
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			
+			Session session = sessionFactory.openSession();			
 			session.beginTransaction();
 			Query query = session.createQuery("from AuctionEventModel where auctionId = "+ auctionId);
 			aem =  (AuctionEventModel)query.list().get(0);
@@ -94,4 +92,28 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 
 		
 	}
+	
+	public AuctionResponseModel update(AuctionEventModel model, AuctionResponseModel resp) {
+		try{
+			//create
+			Session session = sessionFactory.openSession();
+			
+			session.beginTransaction();
+			session.update(model);
+			session.getTransaction().commit();
+			}
+			
+			catch(Exception e){
+				System.out.println(e);
+				resp.setErrorMessage("Unable to create Auction or bidding");
+				resp.setResponseStatus(true);
+				throw e;
+			}
+			resp.setAuctionid(model.getAuctionId());
+			resp.setErrorMessage("Succesfully Added");
+			resp.setResponseStatus(true);
+			resp.setUserid(model.getOwner().getUserId());	
+			return resp;
+						
+		}
 }

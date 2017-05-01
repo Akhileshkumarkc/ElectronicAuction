@@ -69,7 +69,7 @@ public class SimpleToDBModelConverter {
 		AM.setStartingBid(srm.getStartingBid());
 		AM.setStartDateTime(new Date(System.currentTimeMillis()));
 		AM.setScheduledEndDate(srm.getAcutalEndDate());
-		AM.setCategory("");
+		AM.setCategory(srm.getCategory());
 		AM.setDescription("description");
 		AM.setImageURL(srm.getImageURL());
 		AM.setDescription(srm.getProductDescription());

@@ -24,9 +24,12 @@ public class AuctionServiceImpl {
 		auctionDao.create(aem,defaultArm);
 	}
 	
-	public void closeAuction(int Auctionid){
+	public boolean closeAuction(int auctionid){
+		AuctionEventModel aem = auctionDao.getAuctionById(auctionid);
+		return false;
 		
-	//	auctionDao.getAuction(Auctionid);
+		
+	
 	}
 	
 	public void getAllAuctions(){

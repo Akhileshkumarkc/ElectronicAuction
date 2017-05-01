@@ -3,6 +3,7 @@ package org.arrow.micro.controller;
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.service.BidServiceImpl;
+import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.BidParamModel;
 import org.arrow.micro.simple.model.BidResponseModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
@@ -49,13 +50,13 @@ public class BidController {
 		
 	@RequestMapping(value=MicroWebServicesActions.foritem,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody BidResponseModel bid(
+	public  @ResponseBody AuctionResponseModel bid(
 			@RequestBody BidParamModel model){
 		
-		BidResponseModel brm = new BidResponseModel();
-		BidService.bid(model,brm);
+		AuctionResponseModel arm = new AuctionResponseModel();
+		BidService.bid(model,arm);
 		
-		return brm;
+		return arm;
 	}
 	
 	@RequestMapping(value=MicroWebServicesActions.delete,

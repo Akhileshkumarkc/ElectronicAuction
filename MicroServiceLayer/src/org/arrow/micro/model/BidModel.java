@@ -25,11 +25,12 @@ public class BidModel {
 	@Column(name = "PUBLISHED")
 	private Date dateTime;
 	private Double amount;
-	private String transactionId;
 	@OneToOne  @JoinColumn(name= "userId")
 	private LoginModel Login;//AuctionEvent.close();
 	
-	
+	public BidModel(){
+		
+	}
 	
 	public BidModel(LoginModel Login) {
 		//TODO: is to fetch the db object and display the bid model.
@@ -52,14 +53,6 @@ public class BidModel {
 
 	public void setBid(Double amount) {
 		this.amount = amount;
-	}
-
-	public String getTransactionId() {
-		return transactionId;
-	}
-
-	public void setTransactionId(String transactionId) {
-		this.transactionId = transactionId;
 	}
 
 	public int getUserId() {

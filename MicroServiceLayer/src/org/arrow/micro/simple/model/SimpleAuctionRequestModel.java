@@ -10,10 +10,17 @@ public class SimpleAuctionRequestModel {
 	public String productDescription;
 	public Double startingBid;
 	public String imageURL;
+	public String category;
 	
 	
 	public String getUserName() {
 		return userName;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public void setUserName(String userName ) {
 		this.userName = userName;

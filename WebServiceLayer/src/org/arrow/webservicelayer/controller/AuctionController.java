@@ -8,8 +8,6 @@ import org.arrow.webservicelayer.MicroServiceCall.MicroServiceWebServiceActions;
 import org.arrow.webservicelayer.WebServiceCall.WebServicesActions;
 import org.arrow.webservicelayer.model.AuctionResponseModel;
 import org.arrow.webservicelayer.model.SimpleAuctionRequestModel;
-import org.arrow.webservicelayer.model.SimpleUserModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

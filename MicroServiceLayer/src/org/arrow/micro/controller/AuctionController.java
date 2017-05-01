@@ -1,15 +1,10 @@
 package org.arrow.micro.controller;
 
 import org.arrow.micro.model.AuctionEventModel;
-import org.arrow.micro.model.LoginModel;
-import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.service.AuctionServiceImpl;
-import org.arrow.micro.service.LoginServiceImpl;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.SimpleAuctionParamModel;
 import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
-import org.arrow.micro.simple.model.SimpleToDBModelConverter;
-import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
-import org.arrow.micro.simple.model.AuctionResponseModel;
 
 @RestController
 @RequestMapping(MicroWebServicesActions.AUCTIONSERVICE)
@@ -53,8 +47,7 @@ public class AuctionController {
 			@RequestBody SimpleAuctionParamModel auctionParammodel){
 		//TODO:
 		AuctionResponseModel defaultArm = new AuctionResponseModel();
-		//AuctionService.createAuction(auctionParammodel,defaultArm);
-	//	return defaultArm;   
+		
 		
 		return true;
 	}
@@ -82,12 +75,11 @@ public class AuctionController {
 	@RequestMapping(value=MicroWebServicesActions.Close,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean closeAuction(
-		//	@RequestBody UserDetailsModel userDetails 
 			@RequestBody SimpleAuctionParamModel auctionParamModel
 			){
 		
-		//TODO:mapping
-				return true;
+			return AuctionService.closeAuction(auctionParamModel.getAuctionid());
+		
 	}
 	
 
