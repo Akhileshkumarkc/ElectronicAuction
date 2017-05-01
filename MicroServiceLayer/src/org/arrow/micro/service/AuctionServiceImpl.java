@@ -1,6 +1,5 @@
 package org.arrow.micro.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.arrow.micro.dao.AuctionDaoImpl;
@@ -9,7 +8,6 @@ import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
-import org.arrow.micro.simple.model.SimpleAuctionResponseModel;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +50,15 @@ public class AuctionServiceImpl {
 		 
 		
 		
+	}
+
+	public List<AuctionEventModel> getAllAuctions(UserRequestModel userModel) {
+		
+		List<AuctionEventModel> sarm = auctionDao.getAllMyAuctions(userModel);
+
+		 return sarm;
+
+	
 	}
 
 }

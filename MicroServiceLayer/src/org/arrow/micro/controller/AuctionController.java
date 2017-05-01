@@ -91,7 +91,7 @@ public class AuctionController {
 		return salrm;
 	}
 	
-	@RequestMapping(value=MicroWebServicesActions.AllMy,
+	@RequestMapping(value=MicroWebServicesActions.AllMyActive,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody SimpleAuctionListResponseModel AllMyAuctions(
 			@RequestBody UserRequestModel UserModel){
@@ -131,16 +131,52 @@ public class AuctionController {
 		
 		return salrm;
 	}
+	//
+	
+	
+	//
 	
 	@RequestMapping(value=MicroWebServicesActions.All,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean AllAuctions(
-		//	@RequestBody UserDetailsModel userDetails 
-			@RequestBody SimpleAuctionParamModel auctionParamModel
-			){
+	public  @ResponseBody SimpleAuctionListResponseModel AllAuctions(
+			@RequestBody UserRequestModel UserModel){
 		
-		//TODO:mapping
-				return true;
+		//TODO: 
+		List<AuctionEventModel> aemlist = new ArrayList<AuctionEventModel>();
+		
+		aemlist = AuctionService.getAllAuctions(UserModel);
+		//def
+		SimpleAuctionListResponseModel salrm = new SimpleAuctionListResponseModel();
+		salrm.setErrorMessage("failed");
+		salrm.setStatus(false);
+		
+		List<SimpleAuctionResponseModel> ARMList = new ArrayList<SimpleAuctionResponseModel>();
+		if(aemlist == null){
+			return salrm;
+		}
+		else{
+			for(int i = 0;i < aemlist.size(); i++){
+				AuctionEventModel aem = aemlist.get(i);
+				SimpleAuctionResponseModel sarm = new SimpleAuctionResponseModel();
+				sarm.setUserName(aem.getOwner().getUserName());
+				sarm.setAcutalEndDate(aem.getScheduledEndDate());
+				sarm.setProductName(aem.getName());
+				sarm.setProductDescription(aem.getDescription());
+				sarm.setStartingBid(aem.getStartingBid());
+				sarm.setImageURL(aem.getImageURL());
+				sarm.setCategory(aem.getCategory());
+				
+				ARMList.add(sarm);
+			}
+			salrm.setErrorMessage("successful");
+			salrm.setStatus(true);
+			salrm.setSARM(ARMList);
+		}
+		
+		
+		
+		return salrm;
+
 	}
 	
 	@RequestMapping(value=MicroWebServicesActions.Close,

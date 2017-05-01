@@ -26,15 +26,14 @@ public  class WebServicesActions {
 	public static final String create = "/create";
 	public static final String update = "/update";
 	public static final String AllAvial = "/allavailauctions";
-	public static final String AllMy ="/allmyauctions";
+	public static final String AllMyActive = "/allmyactiveauctions";
 	public static final String All = "/allauctions";
 	public static final String Close = "/closeAuction";
 	
 	public static final String createAuction = AUCTIONSERVICE+create;
 	public static final String updateAuction = AUCTIONSERVICE+update;
 	public static final String AllAvialAuctions = AUCTIONSERVICE+AllAvial;
-	public static final String AllMyAuctions = AUCTIONSERVICE+AllMy;
-	public static final String AllAuctions = AUCTIONSERVICE +All;
+	public static final String AllMyActiveAuctions = AUCTIONSERVICE +AllMyActive;
 	public static final String CloseMyAuction = AUCTIONSERVICE +Close;
 	
 	//bid
