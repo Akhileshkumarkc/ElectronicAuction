@@ -68,8 +68,6 @@ public class AuctionController {
 		}
 		return armd;
 		
-	
-		
 	}
 	
 	@RequestMapping(value=WebServicesActions.AllAvial,
@@ -113,9 +111,6 @@ public class AuctionController {
 
 		}
 		return salrmdef;
-
-		
-	
 	}
 	
 	
