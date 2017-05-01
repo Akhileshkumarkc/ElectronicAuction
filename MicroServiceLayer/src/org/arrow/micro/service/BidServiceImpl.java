@@ -21,8 +21,8 @@ public class BidServiceImpl {
 		//get the auctionid.
 		
 		AuctionEventModel aem = auctionDao.getAuctionById(model.getAuctionId());
-		LoginModel lm = loginDao.getLogin(model.getAuctionId());
-		aem.addBidModel(bm);
+	//	LoginModel lm = loginDao.getLogin(model.getAuctionId());
+	//	aem.addBidModel(bm);
 		//aem.
 		//LoginModel lm = loginDao.getLogin(loginName)
 		//create a new bid.with userid
