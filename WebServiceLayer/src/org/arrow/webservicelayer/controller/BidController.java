@@ -28,7 +28,6 @@ public class BidController {
 	@RequestMapping(value=WebServicesActions.Allbids,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean fetchAllBidsForItem(@RequestBody BidParamModel model){
-			
 		
 		return true;
 	}
@@ -37,7 +36,6 @@ public class BidController {
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean fetchAllMyBids(
 			@RequestBody  BidParamModel model){
-		//TODO:mapping
 		return true;
 	}
 	
@@ -85,7 +83,6 @@ public class BidController {
 	@RequestMapping(value=WebServicesActions.delete,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean deleteBid(
-		//	@RequestBody UserDetailsModel userDetails 
 			@RequestBody BidParamModel BidParam
 			){
 		

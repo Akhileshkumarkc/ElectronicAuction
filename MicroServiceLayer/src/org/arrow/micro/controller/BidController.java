@@ -23,7 +23,7 @@ public class BidController {
 	@RequestMapping(value=MicroWebServicesActions.Allbids,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody boolean fetchAllBidsForItem(@RequestBody BidParamModel model){
-		//TODO:mapping
+		//TODO:mapping not doing.
 		return true;
 //		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
 //		boolean authenicated = false;
