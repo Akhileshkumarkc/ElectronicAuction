@@ -53,7 +53,7 @@ public class BidController {
 			@RequestBody BidParamModel model){
 		
 		BidResponseModel brm = new BidResponseModel();
-		//BidService.bid(model,brm);
+		BidService.bid(model,brm);
 		
 		return brm;
 	}

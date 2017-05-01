@@ -2,6 +2,10 @@ package org.arrow.micro.simple.model;
 
 public class BidParamModel {
 	
+	int auctionId;
+	int userId;
+	Double bidvalue;
+	
 	public int getAuctionId() {
 		return auctionId;
 	}
@@ -20,8 +24,6 @@ public class BidParamModel {
 	public void setBidvalue(Double bidvalue) {
 		this.bidvalue = bidvalue;
 	}
-	int auctionId;
-	int userId;
-	Double bidvalue;
+
 
 }

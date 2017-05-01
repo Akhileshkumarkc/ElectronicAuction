@@ -52,7 +52,7 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		return querylist;
 	}
 	
-	public AuctionEventModel getAuctionByName(int auctionId){
+	public AuctionEventModel getAuctionById(int auctionId){
 		AuctionEventModel aem = null;
 		try{
 			Session session = sessionFactory.openSession();
