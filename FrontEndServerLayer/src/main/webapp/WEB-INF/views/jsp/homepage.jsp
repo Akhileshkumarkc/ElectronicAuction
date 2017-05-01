@@ -344,7 +344,7 @@ html { height: 100%;}
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <h3>
+                    <h3 style="color:#FF4500">
                        <%= session.getAttribute(SessionManagement.SessionUSER) %>
                     </h3>
                 </li>
@@ -378,10 +378,11 @@ html { height: 100%;}
             </button>
             <div class="container1">
             <center>
+            	<h2>${ERR_MSG}</h2>
               <img src = "resources/images/buysell.jpg" height="150" width="150">
               <table >
                 <tr><td><h3><a href="createnewauction"><img src = "resources/images/add.jpg" height="75" width="75">  Create a new Auction&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
-                <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">Available Auctions  <img src = "resources/images/available.jpg" height="75" width="75"></a></h3></td></tr>
+                <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="availablebids">Available Auctions  <img src = "resources/images/available.jpg" height="75" width="75"></a></h3></td></tr>
                 <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/auction.jpg" height="75" width="75">  All My Auctions&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">  Items in Cart  <img src = "resources/images/cart.jpg" height="100" width="75"></a></h3></td></tr>
                 <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/posted.jpg" height="50" width="100">  Posted Items for Sale&nbsp;&nbsp;&nbsp;&nbsp; </a></h3></td>

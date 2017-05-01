@@ -1,6 +1,4 @@
 <!-- header-->
-<style>
-</style>
 <div class="container">
   <div class="row">
     <div class="span12">
@@ -25,17 +23,15 @@
                         </li>
 
                         <li>
+                            <a href="#">Search</a>
+                        </li>
+
+                        <li>
                             <a href="#">Bids</a>
                         </li>
 
                         <li>
                             <a href="#">Contact</a>
-                        </li>
-                         <li>
-                        <form id="search" style="margin:9px">
-                        <a href="#" style="color:#777777">Search</a>
-                        <input type="text">
-                        </form>
                         </li>
                     </ul>
                 </div>
@@ -45,7 +41,3 @@
     </div>
   </div>
 </div>
-
-
-
-

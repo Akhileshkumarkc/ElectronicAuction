@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
     <meta name="robots" content="noindex">
+    <%@ page import = "org.arrow.authenticate.SessionManagement" %>
+    
 
     <title>Products Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,12 +24,15 @@
     </head>
     <body>
     	<%@ include file="header.jsp" %>
+    	<% String username=(String)session.getAttribute(SessionManagement.SessionUSER); %>
     	<center>
     	<h3 style="color: green">Enter your product details</h3><br><br>
-    	<form action="" id="auctionform">
+    	<form action="newauction" id="auctionform" method="POST">
+    	  <input type="hidden" name="username" value=<%=username %>>
     		<table cellspacing="10" style="background-color: #E8E8E8">
     		<tr><td><h4>Product Name </h4></td><td><input type="text" name="productName" required="true" autofocus="true"></td></tr>
     		<tr><td><h4>Product Description </h4></td><td><input type="text" name="productDescription" required="true" style="width: 300px; height: 100px"></td></tr>
+    		<tr><td><h4>Product Category </h4></td><td><input type="text" name="category" required="true"></td></tr>
     		<tr><td><h4>Initial Bid Price </h4></td><td><input type="number" name="startingBid" required="true"></td></tr>
     		<tr><td><h4>Auction End Date </h4></td><td><input type="date" name="actualEndDate" required="true"></td></tr>
     		<tr><td><h4>Image Url for Product </h4></td><td><input type="text" name="imageURL" required="true"></td></tr>

@@ -2,6 +2,7 @@
 <html>
 <head>
 <%@ page import = "org.arrow.controller.UserController" %>
+<%@ page import = "org.arrow.model.SimpleUserModel" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration Page</title>
 <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">

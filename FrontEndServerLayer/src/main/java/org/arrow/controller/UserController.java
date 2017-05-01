@@ -89,12 +89,13 @@ public class UserController {
 		simpleusermodel.setShipping_city(request.getParameter("shipping_city"));
 		simpleusermodel.setShipping_state(request.getParameter("shipping_state"));
 		simpleusermodel.setShipping_pinCode(request.getParameter("shipping_pinCode"));
+		simpleusermodel.setUserId((Integer)request.getSession().getAttribute(SessionManagement.SessionUserId));
 		
 		LoginResponseModel logRespdef = new LoginResponseModel();
-		logRespdef.ErrorMessage ="not succesful";
-		logRespdef.status = false;
-		logRespdef.userid = 0;
-		logRespdef.username ="";
+		logRespdef.setErrorMessage("not succesful");
+		logRespdef.setStatus(false);
+		logRespdef.setUserid((Integer)request.getSession().getAttribute(SessionManagement.SessionUserId));
+		logRespdef.setUsername((String)request.getSession().getAttribute(SessionManagement.SessionUSER));
 	
 		try {
 
@@ -105,7 +106,7 @@ public class UserController {
 
 			// Make a webservice call to check user validity with login
 			// information.
-			String actionUrl = WebServicesActions.Register;
+			String actionUrl = WebServicesActions.userprofiledit;
 			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 			
 			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
@@ -116,6 +117,7 @@ public class UserController {
 					if(logResp.status= true){
 					 System.out.println("successful"); 
 					 logRespdef = logResp;
+					 model.addAttribute("userDetails", simpleusermodel);
 					 
 					}
 				} catch (IOException e) {
@@ -137,6 +139,7 @@ public class UserController {
 		System.out.println("entered edit deatils controller");
 		UserRequestModel urm = new UserRequestModel();
 		urm.setUserName((String)req.getSession().getAttribute(SessionManagement.SessionUSER));
+		urm.setUserid((Integer)req.getSession().getAttribute(SessionManagement.SessionUserId));
 		SimpleUserModel sum = new SimpleUserModel();
 		// web service call
 		try {
@@ -152,7 +155,9 @@ public class UserController {
 						String jstring = loginResponse.getBody();
 						try {
 							 sum = mapper.readValue(jstring, SimpleUserModel.class);
-							 model.addObject("userDetails", sum);
+							 model.addAttribute("userDetails", sum);
+							 System.out.println(sum.getFirstName());
+							 return "profileedit";
 							}
 						 catch (IOException e) {
 							// TODO Auto-generated catch block
@@ -167,5 +172,33 @@ public class UserController {
 
 		return "profileedit";
 	}
+	
+	
+//	@RequestMapping(value = "/editdetails", method = RequestMethod.GET)
+//	public String detailsforprofileedit(HttpServletRequest req, ModelMap model) {
+//		System.out.println("entered edit deatils controller");
+//		SimpleUserModel sum = new SimpleUserModel();
+//		
+//		sum.setUsername((String)req.getSession().getAttribute(SessionManagement.SessionUSER));
+//		sum.setFirstName(req.getParameter("firstName"));
+//		sum.setLastName(req.getParameter("lastName"));
+//		sum.setLastName(req.getParameter("password"));
+//		sum.setLastName(req.getParameter("company"));
+//		sum.setLastName(req.getParameter("phoneNumber"));
+//		sum.setLastName(req.getParameter("email"));
+//		sum.setLastName(req.getParameter("user_streetName"));
+//		sum.setLastName(req.getParameter("user_houseNumber"));
+//		sum.setLastName(req.getParameter("user_city"));
+//		sum.setLastName(req.getParameter("user_state"));
+//		sum.setLastName(req.getParameter("user_pinCode"));
+//		sum.setLastName(req.getParameter("shipping_streetName"));
+//		sum.setLastName(req.getParameter("shipping_houseNumber"));
+//		sum.setLastName(req.getParameter("shipping_city"));
+//		sum.setLastName(req.getParameter("shipping_state"));
+//		sum.setLastName(req.getParameter("shipping_pinCode"));
+//		
+//		model.addAttribute("userDetails", sum);
+//		return "profileedit";
+//	}
 	
 }
