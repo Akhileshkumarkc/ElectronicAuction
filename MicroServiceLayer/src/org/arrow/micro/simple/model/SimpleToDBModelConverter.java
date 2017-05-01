@@ -75,11 +75,13 @@ public class SimpleToDBModelConverter {
 		
 		im.setCategory("");
 		im.setDescription("description");
-		im.setImageURL(srm.getImageUrl());
+		im.setImageURL(srm.getImageURL());
 		im.setDescription(srm.getProductDescription());
 		im.setName(srm.getProductName());
 		
+		AM.setItem(im);
 		//TO DO: userid.
+		
 		
 		return AM;
 		

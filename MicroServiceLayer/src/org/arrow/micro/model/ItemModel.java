@@ -10,9 +10,8 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class ItemModel {
 	
-	@Column(name="Itemid")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "itemids")
-	@SequenceGenerator(name="itemids",sequenceName="itemids" ,allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "auctionids")
+	@SequenceGenerator(name="auctionids",sequenceName="auctionids" ,allocationSize = 1)
 	@Id
 	private int Id;
 	@Column(unique=true)

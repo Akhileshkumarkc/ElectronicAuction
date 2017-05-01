@@ -1,6 +1,16 @@
 package org.arrow.micro.simple.model;
 
 public class AuctionResponseModel {
+	public void setResponseStatus(boolean responseStatus) {
+		this.responseStatus = responseStatus;
+	}
+
+	public void setAuctionName(String auctionName) {
+		this.auctionName = auctionName;
+	}
+
+
+
 	int auctionid;
 	int itemid;
 	int userid;
@@ -48,17 +58,12 @@ public class AuctionResponseModel {
 		return responseStatus;
 	}
 
-	public void setResponseStatus(boolean responseStatus) {
-		responseStatus = responseStatus;
-	}
+
 
 	public String getAuctionName() {
 		return auctionName;
 	}
 
-	public void setAuctionName(String auctionName) {
-		auctionName = auctionName;
-	}
-	
+
 
 }

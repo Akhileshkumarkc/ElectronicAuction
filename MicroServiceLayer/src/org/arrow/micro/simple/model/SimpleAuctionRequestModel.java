@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class SimpleAuctionRequestModel {
 	
-	String userName;
-	Date acutalEndDate;
-	String productName;
-	String productDescription;
-	Double startingBid;
-	String imageURL;
+	public String userName;
+	public Date acutalEndDate;
+	public String productName;
+	public String productDescription;
+	public Double startingBid;
+	public String imageURL;
 	
 	
 	public String getUserName() {
@@ -22,31 +22,31 @@ public class SimpleAuctionRequestModel {
 		return acutalEndDate;
 	}
 	public void setAcutalEndDate(Date acutalEndDate) {
-		acutalEndDate = acutalEndDate;
+		this.acutalEndDate = acutalEndDate;
 	}
 	public String getProductName() {
 		return productName;
 	}
 	public void setProductName(String productName) {
-		productName = productName;
+		this.productName = productName;
 	}
 	public String getProductDescription() {
 		return productDescription;
 	}
 	public void setProductDescription(String productDescription) {
-		productDescription = productDescription;
+		this.productDescription = productDescription;
 	}
 	public Double getStartingBid() {
 		return startingBid;
 	}
 	public void setStartingBid(Double startingBid) {
-		startingBid = startingBid;
+		this.startingBid = startingBid;
 	}
-	public String getImageUrl() {
+	public String getImageURL() {
 		return imageURL;
 	}
-	public void setImageUrl(String imageUrl) {
+	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-
+	
 }

@@ -13,6 +13,7 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		try{
 			//create
 			Session session = sessionFactory.openSession();
+			
 			session.beginTransaction();
 			session.save(model);
 			session.getTransaction().commit();
