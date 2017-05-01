@@ -8,6 +8,7 @@ import org.arrow.WebServiceCall.WebServiceCallWrapper;
 import org.arrow.WebServiceCall.WebServicesActions;
 import org.arrow.authenticate.SessionManagement;
 import org.arrow.beans.LoginBean;
+import org.arrow.beans.UserRequestModel;
 import org.arrow.model.LoginResponseModel;
 import org.arrow.model.SimpleUserModel;
 import org.arrow.model.UserDetails;
@@ -47,13 +48,6 @@ public class LoginController {
 		System.out.println("new user registration page");
 		return "registration";
 	}
-	
-//	@RequestMapping(value = "/createnewauction", method = RequestMethod.GET)
-//	public String createnewauction(ModelMap model) {
-//		System.out.println("entered new auction page");
-//		return "newauction";
-//	}
-	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, ModelMap model) {
@@ -103,6 +97,7 @@ public class LoginController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		
 		
 		if (logRespdef.status == true) {

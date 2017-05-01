@@ -2,6 +2,7 @@
 <!-- saved from url=(0063)file:///Users/aravindchowdary/Desktop/homepage_files/y8kpE.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page import = "org.arrow.controller.UserController" %>
+<%@ page import = "org.arrow.authenticate.SessionManagement" %>
     
     <meta name="robots" content="noindex">
 
@@ -344,7 +345,7 @@ html { height: 100%;}
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <h3>
-                       ${userDetails.getUsername()}
+                       <%= session.getAttribute(SessionManagement.SessionUSER) %>
                     </h3>
                 </li>
                 <li>

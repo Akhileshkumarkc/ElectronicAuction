@@ -68,9 +68,9 @@
 	<div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <a href="http:">Edit Profile</a>
+           <a href="editdetails">Edit Profile</a>
 
-        <a href="http:">Logout</a>
+        <a href="logout">Logout</a>
        <br>
 <p class=" text-info">May 05,2014,03:00 pm </p>
       </div>
@@ -122,8 +122,8 @@
                     </tbody>
                   </table>
                   
-                  <a href="/Users/aravindchowdary/Desktop/itempage_files/items.html" class="btn btn-primary">Go to Bid</a>
-                  <a href="/Users/aravindchowdary/Desktop/itempage_files/items.html" class="btn btn-primary">Go to Cart</a>
+                  <a href="" class="btn btn-primary">Go to Bid</a>
+                  <a href="" class="btn btn-primary">Go to Cart</a>
                 </div>
               </div>
             </div>
