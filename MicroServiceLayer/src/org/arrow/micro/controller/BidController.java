@@ -4,6 +4,7 @@ import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.service.BidServiceImpl;
 import org.arrow.micro.simple.model.BidParamModel;
+import org.arrow.micro.simple.model.BidResponseModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -48,11 +49,13 @@ public class BidController {
 		
 	@RequestMapping(value=MicroWebServicesActions.foritem,
 			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean bid(
+	public  @ResponseBody BidResponseModel bid(
 			@RequestBody BidParamModel model){
 		
-		//TODO:mapping
-		return true;
+		BidResponseModel brm = new BidResponseModel();
+		//BidService.bid(model,brm);
+		
+		return brm;
 	}
 	
 	@RequestMapping(value=MicroWebServicesActions.delete,
