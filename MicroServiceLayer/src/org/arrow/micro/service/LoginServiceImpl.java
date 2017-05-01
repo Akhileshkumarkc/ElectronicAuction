@@ -1,5 +1,6 @@
 package org.arrow.micro.service;
 
+import java.util.Date;
 import java.util.List;
 import org.arrow.micro.dao.LoginDaoImpl;
 import org.arrow.micro.exception.ErrorMessageConstants;
@@ -48,6 +49,13 @@ public class LoginServiceImpl implements LoginService {
 		}
 		return exists;
 	}
+
+	public void updateLastLogin(LoginModel dbLoginModel) {
+		dbLoginModel.setLastLogin(new Date(System.currentTimeMillis()));
+		loginDao.update(dbLoginModel);		
+	}
+
+	
 
 	
 }

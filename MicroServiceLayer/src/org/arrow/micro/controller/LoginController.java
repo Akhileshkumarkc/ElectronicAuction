@@ -47,6 +47,8 @@ public class LoginController {
 				lr.setUsername(dbLoginModel.getUserName());
 				lr.ErrorMessage = "";
 				lr.status = true;
+				//save the time()
+				loginService.updateLastLogin(dbLoginModel);
 			}
 		}
 		return lr;

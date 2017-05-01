@@ -10,10 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 
@@ -78,6 +75,12 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 		return lr;
 		
 	}
+	public void update(LoginModel lm){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(lm);
+		session.getTransaction().commit();
+	}
 	
 	public static void main(String args[]){
 		Configuration configuration = new Configuration();
@@ -94,8 +97,7 @@ public class LoginDaoImpl extends AbsHibernateSession implements LoginDao  {
 			List<LoginModel> querylist =  (List<LoginModel>) query.list();
 			session.getTransaction().commit();
 			System.out.println();
-			
-					}
+		}
 		catch (HibernateException e) {
 	         if (tx!=null) tx.rollback();
 	         e.printStackTrace(); 
