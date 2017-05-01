@@ -5,7 +5,6 @@ import java.io.File;
 import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.BidModel;
-import org.arrow.micro.model.ItemModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.model.UserDetailsModel;

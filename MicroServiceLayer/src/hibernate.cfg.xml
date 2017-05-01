@@ -20,8 +20,7 @@
   <mapping class="org.arrow.micro.model.UserDetailsModel"></mapping>
   
   <mapping class="org.arrow.micro.model.AuctionEventModel"></mapping>
-  <mapping class="org.arrow.micro.model.ItemModel"></mapping>
-  
+
   <mapping class="org.arrow.micro.model.BidModel"></mapping>
   <mapping class="org.arrow.micro.model.PurchasedItemModel"></mapping>
   

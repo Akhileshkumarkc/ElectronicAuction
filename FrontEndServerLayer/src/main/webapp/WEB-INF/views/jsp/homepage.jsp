@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0063)file:///Users/aravindchowdary/Desktop/homepage_files/y8kpE.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page import = "org.arrow.controller.UserController" %>
     
     <meta name="robots" content="noindex">
 
@@ -342,28 +343,26 @@ html { height: 100%;}
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/y8kpE#">
-                       UserName
-                    </a>
+                    <h3>
+                       ${userDetails.getUsername()}
+                    </h3>
                 </li>
                 <li>
-                    <a href="http:">Edit User Details</a>
+                    <a href="profileview">My Profile</a>
                 </li>
                 <li>
                     <a href="http:">User Last Login time</a>
                 </li>
+                
                 <li>
-                    <a href="http:">User Location</a>
-                </li>
-                <li>
-                    <a href="http:">Edit Profile</a>
+                    <a href="logout">Logout</a>
                 </li>
                 
                 <li>
-                    <a href="http:">Contact</a>
+                    <a href="http:">Help</a>
                 </li>
                 <li>
-                    <a href="https:">Follow me</a>
+                    <a href="https:">Follow us</a>
                 </li>
             </ul>
         </nav>

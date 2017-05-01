@@ -7,7 +7,6 @@ import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.AuctionStatusModel;
 import org.arrow.micro.model.BidModel;
-import org.arrow.micro.model.ItemModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.model.UserDetailsModel;
@@ -94,15 +93,6 @@ public static void main(String args[]){
 	 AuctionEventIphone.setScheduledEndDate(d1);
 	 
 	 //create the item:
-	 ItemModel Iphoneitem = new ItemModel();
-	 Iphoneitem.setName("Iphone");
-	 Iphoneitem.setDescription("Iphone Event");
-	 Iphoneitem.setImageURL("someimage");
-	 Iphoneitem.setCategory("Phone");
-	 Iphoneitem.setImageURL("http://www.images.com/1.jpg");
-	 
-	 AuctionEventIphone.setItem(Iphoneitem);
-	 
 
 	 AuctionEventDell.setStatus(AuctionStatusModel.CREATED);
 	 AuctionEventDell.setStartingBid(new Double(300));
@@ -114,16 +104,6 @@ public static void main(String args[]){
 	 AuctionEventIphone.setScheduledEndDate(d1);
 	 
 	 //create the item:
-	 ItemModel DellItem = new ItemModel();
-	 DellItem.setName("Dell laptop");
-	 DellItem.setDescription("Dell laptop powerd by I70 Processor");
-	 DellItem.setImageURL("someimage");
-	 DellItem.setCategory("Laptop");
-	 
-	 AuctionEventIphone.setItem(Iphoneitem);
-	 AuctionEventIphone.setOwner(lmv);
-	 //Bid on the event.
-	 //UserId,AuctionId
 	 int UserId = VivekUser.getUserId();
 	 
 	 BidModel bd1 = new BidModel( VivekUser.getLoginInfo() );
@@ -160,7 +140,6 @@ public static void main(String args[]){
 	    configuration.addAnnotatedClass(LoginModel.class);
 	    configuration.addAnnotatedClass(AddressModel.class);
 	    configuration.addAnnotatedClass(UserDetailsModel.class);
-	    configuration.addAnnotatedClass(ItemModel.class);
 	    configuration.addAnnotatedClass(AuctionEventModel.class);
 	    configuration.addAnnotatedClass(BidModel.class);
 	    configuration.addAnnotatedClass(PurchasedItemModel.class);
@@ -177,8 +156,6 @@ public static void main(String args[]){
 			session.save(lma);
 			session.save(VivekUser);
 			session.save(lmv);
-			session.save(DellItem);
-			session.save(Iphoneitem);
 			session.save(AuctionEventDell);
 			session.save(AuctionEventIphone);
 			session.save(bd1);

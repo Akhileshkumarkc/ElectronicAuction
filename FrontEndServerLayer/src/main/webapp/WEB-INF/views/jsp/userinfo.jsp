@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <!-- saved from url=(0054)http://bootsnipp-env.elasticbeanstalk.com/iframe/9XRdX -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page import = "org.arrow.controller.UserController" %>
     
     <meta name="robots" content="noindex">
 
     <title>User Profile Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./bootstrap.min(1).css" rel="stylesheet" id="bootstrap-css">
+    <link href="resources/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
     <style type="text/css">
     .user-row {
     margin-bottom: 14px;
@@ -43,8 +46,11 @@
 }
 
     </style>
-    <script src="./jquery-1.10.2.min.js"></script>
-    <script src="./bootstrap.min(2).js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="resources/js/jquery-1.10.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -62,9 +68,9 @@
 	<div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/edit.html">Edit Profile</a>
+           <a href="http:">Edit Profile</a>
 
-        <a href="http://bootsnipp-env.elasticbeanstalk.com/iframe/edit.html">Logout</a>
+        <a href="http:">Logout</a>
        <br>
 <p class=" text-info">May 05,2014,03:00 pm </p>
       </div>
@@ -73,47 +79,44 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Aravind Chowdary</h3>
+              <h3 class="panel-title">${userDetails.getUsername()} </h3>
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="resouces/images/User Pic" src="user.jpg" class="img-circle img-responsive"> </div>
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="resources/images/user.jpg" class="img-circle img-responsive"> </div>
                
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
                         <td>FirstName:</td>
-                        <td>----</td>
+                        <td>${userDetails.getFirstName()}</td>
                       </tr>
                       <tr>
                         <td>LastName:</td>
-                        <td>----</td>
+                        <td>${userDetails.getLastName()}</td>
                       </tr>
                       <tr>
-                        <td>Address:</td>
-                        <td>----</td>
+                        <td>User Address:</td>
+                        <td>${userDetails.getUser_streetName()},&nbsp;${userDetails.getUser_houseNumber()},&nbsp;${userDetails.getUser_city()},<br>
+                        ${userDetails.getUser_state()},&nbsp;${userDetails.getUser_pinCode()}</td>
                       </tr>
-                   
-                         <tr>
-                             </tr><tr>
-                        <td>Company:</td>
-                        <td>----</td>
+                      <tr>
+                        <td>Shipping Address:</td>
+                        <td>${userDetails.getShipping_streetName()},&nbsp;${userDetails.getShipping_houseNumber()},&nbsp;${userDetails.getShipping_city()},<br>
+                        ${userDetails.getShipping_state()},&nbsp;${userDetails.getShipping_pinCode()}</td>
                       </tr>
                         <tr>
                         <td>PhoneNumber:</td>
-                        <td>----</td>
+                        <td>${userDetails.getPhoneNumber()}</td>
                       </tr>
                       <tr>
                         <td>Email:</td>
-                        <td>----</td>
-                      </tr>
-                        <tr><td>Last Login Location:</td>
-                        <td>----</td>
+                        <td>${userDetails.getEmail()}</td>
                       </tr>
                       <tr>
                         <td>Last Login Time:</td>
-                        <td>----</td>
+                        <td>Under Construction </td>
                       <tr>
                      
                     </tbody>

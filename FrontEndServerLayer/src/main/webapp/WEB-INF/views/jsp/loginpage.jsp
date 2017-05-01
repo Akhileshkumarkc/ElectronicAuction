@@ -32,7 +32,7 @@
 		<label> Username</label> <input type="text" name="name"><br>
 		<label>Password</label><input type="password" name="password"><br>
 		<input type="submit" value="Login">
-		<button type="button" href="/registration" >New User? SignUp here</button>
+		<a href="newuserregistration" >New User? SignUp here</a>
 	</form>
 	</center>
 </div>

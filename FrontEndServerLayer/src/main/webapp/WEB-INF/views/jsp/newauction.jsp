@@ -28,9 +28,10 @@
     		<table cellspacing="10" style="background-color: #E8E8E8">
     		<tr><td><h4>Product Name </h4></td><td><input type="text" name="productName" required="true" autofocus="true"></td></tr>
     		<tr><td><h4>Product Description </h4></td><td><input type="text" name="productDescription" required="true" style="width: 300px; height: 100px"></td></tr>
-    		<tr><td><h4>Product Price </h4></td><td><input type="text" name="productPrice" required="true"></td></tr>
-    		<tr><td><h4>Image Url for Product </h4></td><td><input type="text" name="productUrl" required="true"></td></tr>
-    		</table>
+    		<tr><td><h4>Initial Bid Price </h4></td><td><input type="number" name="startingBid" required="true"></td></tr>
+    		<tr><td><h4>Auction End Date </h4></td><td><input type="date" name="actualEndDate" required="true"></td></tr>
+    		<tr><td><h4>Image Url for Product </h4></td><td><input type="text" name="imageURL" required="true"></td></tr>
+    		</table><br>
     		<input type="submit" value="submit">
     	</form>
     	</center>

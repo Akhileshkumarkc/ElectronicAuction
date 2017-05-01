@@ -51,7 +51,7 @@
 			<tr><td><h4>Shipping PinCode </h4></td><td><input type="text" name="shipping_pinCode" placeholder="Shipping pincode" size="14" required="true" autocomplete="off"></td></tr>
 		</table>
 			<input type="submit" value="register">
-			<button type="button" href="newuserlogin">Already a user! Login here</button>
+			<a href="newuserlogin">Already a user! Login here</a>
 		</form>
 	</center>
 	</div>
