@@ -40,7 +40,7 @@ public class OrderController {
 			e.printStackTrace();
 		}
 		//Make a webservice call to check user validity with login information.			
-		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		String actionUrl = MicroServiceWebServiceActions.viewmyOrders;
 		// Make a webservice call to check user validity with login
 		// informationre.
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
@@ -82,7 +82,7 @@ public class OrderController {
 			e.printStackTrace();
 		}
 		//Make a webservice call to check user validity with login information.			
-		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		String actionUrl = MicroServiceWebServiceActions.viewmyCarts;
 		// Make a webservice call to check user validity with login
 		// informationre.
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
