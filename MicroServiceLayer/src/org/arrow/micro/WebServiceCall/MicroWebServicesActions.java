@@ -50,6 +50,8 @@ public class MicroWebServicesActions {
 	
 	//order
 	public static final String myOrders = "/myorders";
+	public static final String myCarts = "/myCarts";
 	public static final String viewmyOrders = ORDERSERVICE+ myOrders;
+	public static final String viewmyCarts = ORDERSERVICE+ myCarts;
 
 }

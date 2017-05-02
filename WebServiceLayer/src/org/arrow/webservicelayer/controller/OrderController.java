@@ -68,7 +68,48 @@ public class OrderController {
 		}
 		return salrmdef;
 	}
+	
+	@RequestMapping(value=WebServicesActions.myCarts,
+			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public  @ResponseBody SimpleAuctionListResponseModel myCarts(@RequestBody UserRequestModel UserModel){
 		
+		ObjectMapper mapper = new ObjectMapper();
+		String jString = null;
+		try {
+			jString = mapper.writeValueAsString(UserModel);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Make a webservice call to check user validity with login information.			
+		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		// Make a webservice call to check user validity with login
+		// informationre.
+		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
+		ResponseEntity<String> userResponse = MSC.call(actionUrl, jString);
+		
+		SimpleAuctionListResponseModel salrmdef = new SimpleAuctionListResponseModel();
+		salrmdef.setErrorMessage("failed");
+		salrmdef.setStatus(false);
+		// default response model.
+		
+
+		if (userResponse.getStatusCode() == HttpStatus.OK) {
+			String jstring = userResponse.getBody();
+			try {
+				SimpleAuctionListResponseModel salrm = mapper.readValue(jstring, SimpleAuctionListResponseModel.class);
+				System.out.println("succesful");
+				salrmdef = salrm;
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Json cast Problem");
+			}
+
+		}
+		return salrmdef;
+	}
 		
 }
 

@@ -48,8 +48,9 @@ public  class WebServicesActions {
 	public static final String bidforitem = BIDSERVICE+foritem;
 	public static final String deletebid = BIDSERVICE+delete;
 	
-	//order
 	public static final String myOrders = "/myorders";
+	public static final String myCarts = "/myCarts";
 	public static final String viewmyOrders = ORDERSERVICE+ myOrders;
+	public static final String viewmyCarts = ORDERSERVICE+ myCarts;
 }
 

@@ -29,7 +29,7 @@ public class BidServiceImpl {
 	}
 
 	public SimpleAuctionListResponseModel getbids(UserRequestModel model,SimpleAuctionListResponseModel SALR) {
-			return bidDao.getbids(model,SALR);
+			return bidDao.getCarts(model,SALR);
 		
 	}
 

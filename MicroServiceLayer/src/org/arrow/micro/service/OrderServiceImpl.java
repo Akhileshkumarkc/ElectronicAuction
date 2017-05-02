@@ -16,4 +16,9 @@ public class OrderServiceImpl {
 		return  bidDao.getorders(model, sALR);
 
 	}
+
+	public SimpleAuctionListResponseModel getCarts(UserRequestModel userModel, SimpleAuctionListResponseModel salr) {
+		// TODO Auto-generated method stub
+		return bidDao.getCarts(userModel, salr);
+	}
 }

@@ -73,7 +73,7 @@ public class BidDaoImpl extends AbsHibernateSession {
 
 	}
 
-	public SimpleAuctionListResponseModel getbids(UserRequestModel model, SimpleAuctionListResponseModel sALR) {
+	public SimpleAuctionListResponseModel getCarts(UserRequestModel model, SimpleAuctionListResponseModel sALR) {
 		
 		AuctionEventModel aem = null;
 		Session session = sessionFactory.openSession();
@@ -164,4 +164,7 @@ public SimpleAuctionListResponseModel getorders(UserRequestModel model, SimpleAu
 		sALR.setStatus(true);
 		return sALR;	
 	}
+
+
+
 }

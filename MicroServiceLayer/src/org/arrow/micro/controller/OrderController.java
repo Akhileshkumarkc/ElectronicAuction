@@ -30,7 +30,15 @@ public class OrderController {
 		salr.setErrorMessage("unable get orders");
 		return orderDaoImpl.getorders(UserModel,salr);
 		
-		
+	}
+	
+	@RequestMapping(value=MicroWebServicesActions.myCarts,
+			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public  @ResponseBody SimpleAuctionListResponseModel carts(@RequestBody UserRequestModel UserModel){
+		SimpleAuctionListResponseModel salr = new SimpleAuctionListResponseModel();
+		salr.setStatus(false);
+		salr.setErrorMessage("unable get orders");
+		return orderDaoImpl.getCarts(UserModel,salr);
 		
 	}
 
