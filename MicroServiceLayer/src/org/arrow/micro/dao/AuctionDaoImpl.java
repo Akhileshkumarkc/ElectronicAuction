@@ -192,8 +192,10 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 				}
 			}
 		}
-		
+		aem.setStatus(AuctionStatusModel.CLOSE);
 		if(maxbm != null){
+			
+			session.update(aem);
 			PurchasedItemModel pm = new PurchasedItemModel();
 			pm.setAuction(aem);
 			pm.setPrice(maxbm.getBid());
@@ -204,7 +206,7 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 			
 		}
 		//close the Auction.
-		aem.setStatus(AuctionStatusModel.CLOSE);
+		
 		
 
 		return true;

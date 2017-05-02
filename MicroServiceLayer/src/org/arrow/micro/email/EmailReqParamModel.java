@@ -1,8 +1,12 @@
 package org.arrow.micro.email;
 
-import org.arrow.micro.model.UserDetailsModel;
 
 public class EmailReqParamModel {
+	
+	
+	String userName;
+	String Templateclass;
+	String emailAddress;
 	
 	public String getTemplateclass() {
 		return Templateclass;
@@ -10,13 +14,20 @@ public class EmailReqParamModel {
 	public void setTemplateclass(String templateclass) {
 		Templateclass = templateclass;
 	}
-	public UserDetailsModel getUser() {
-		return user;
+	
+	public String getEmailAddress() {
+		return emailAddress;
 	}
-	public void setUser(UserDetailsModel user) {
-		this.user = user;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
-	String Templateclass;
-	UserDetailsModel user;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 
 }
+
