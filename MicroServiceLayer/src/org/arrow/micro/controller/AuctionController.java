@@ -71,7 +71,7 @@ public class AuctionController {
 			for(int i = 0;i < aemlist.size(); i++){
 				AuctionEventModel aem = aemlist.get(i);
 				SimpleAuctionResponseModel sarm = new SimpleAuctionResponseModel();
-				sarm.setAuctionId(aem.getAuctionId());
+				sarm.setAuctionid(aem.getAuctionId());
 				sarm.setUserName(aem.getOwner().getUserName());
 				sarm.setAcutalEndDate(aem.getScheduledEndDate());
 				sarm.setProductName(aem.getName());
@@ -114,7 +114,7 @@ public class AuctionController {
 				AuctionEventModel aem = aemlist.get(i);
 				SimpleAuctionResponseModel sarm = new SimpleAuctionResponseModel();
 				sarm.setUserName(aem.getOwner().getUserName());
-				sarm.setAuctionId(aem.getAuctionId());
+				sarm.setAuctionid(aem.getAuctionId());
 				sarm.setAcutalEndDate(aem.getScheduledEndDate());
 				sarm.setProductName(aem.getName());
 				sarm.setProductDescription(aem.getDescription());
@@ -161,7 +161,7 @@ public class AuctionController {
 				AuctionEventModel aem = aemlist.get(i);
 				SimpleAuctionResponseModel sarm = new SimpleAuctionResponseModel();
 				sarm.setUserName(aem.getOwner().getUserName());
-				sarm.setAuctionId(aem.getAuctionId());
+				sarm.setAuctionid(aem.getAuctionId());
 				sarm.setAcutalEndDate(aem.getScheduledEndDate());
 				sarm.setProductName(aem.getName());
 				sarm.setProductDescription(aem.getDescription());

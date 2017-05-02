@@ -10,6 +10,8 @@ public class SimpleAuctionResponseModel {
 	public Double startingBid;
 	public String imageURL;
 	public String category;
+	public int auctionid;
+	
 	
 	
 	public String getUserName() {
@@ -53,6 +55,13 @@ public class SimpleAuctionResponseModel {
 	}
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+	}
+	
+	public int getAuctionid() {
+		return auctionid;
+	}
+	public void setAuctionid(int auctionid) {
+		this.auctionid = auctionid;
 	}
 
 }

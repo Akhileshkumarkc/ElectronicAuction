@@ -11,8 +11,15 @@ public class SimpleAuctionRequestModel {
 	public Double startingBid;
 	public String imageURL;
 	public String category;
+	public int auctionid;
 	
 	
+	public int getAuctionid() {
+		return auctionid;
+	}
+	public void setAuctionid(int auctionid) {
+		this.auctionid = auctionid;
+	}
 	public String getUserName() {
 		return userName;
 	}
