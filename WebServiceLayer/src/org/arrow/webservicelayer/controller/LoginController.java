@@ -72,21 +72,21 @@ public class LoginController {
 		}
 		
 		//Email controller.
-		EmailReqParamModel email = new EmailReqParamModel();
-		email.setTemplateclass("Registration_email");
-		ObjectMapper mapper1 = new ObjectMapper();
-		String jString1 = null;
-		try {
-			jString1 = mapper1.writeValueAsString(model);
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		//Make a webservice call to check user validity with login informationre.			
-		String actionUrl2 = MicroServiceWebServiceActions.EmailService_SendEmail;
-		MicroServiceCallWrapper MSC2 = new MicroServiceCallWrapper();
-		ResponseEntity<String> loginResponse1 = MSC2.call(actionUrl2, jString1);
+//		EmailReqParamModel email = new EmailReqParamModel();
+//		email.setTemplateclass("Registration_email");
+//		ObjectMapper mapper1 = new ObjectMapper();
+//		String jString1 = null;
+//		try {
+//			jString1 = mapper1.writeValueAsString(model);
+//		} catch (JsonProcessingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		 
+//		//Make a webservice call to check user validity with login informationre.			
+//		String actionUrl2 = MicroServiceWebServiceActions.EmailService_SendEmail;
+//		MicroServiceCallWrapper MSC2 = new MicroServiceCallWrapper();
+//		ResponseEntity<String> loginResponse1 = MSC2.call(actionUrl2, jString1);
 		
 		
 		
