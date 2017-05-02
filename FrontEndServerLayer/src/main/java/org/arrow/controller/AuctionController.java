@@ -221,7 +221,7 @@ public class AuctionController {
 			String jString = mapper.writeValueAsString(urm);
 					// Make a webservice call to check user validity with login
 					// information.
-					String actionUrl = WebServicesActions.AllMyActiveAuctions;
+					String actionUrl = WebServicesActions.AllAuctions;
 					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 					if (loginResponse.getStatusCode() == HttpStatus.OK) {
@@ -302,21 +302,13 @@ public class AuctionController {
 			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 			if (loginResponse.getStatusCode() == HttpStatus.OK) {
-				String jstring = loginResponse.getBody();
-				try {
-					 AuctionResponseModel AucResp = mapper.readValue(jstring, AuctionResponseModel.class);
-					if(AucResp.getResponseStatus()==true ){
-					 System.out.println("successful"); 
-					 logRespdef = AucResp;
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-					System.out.println("Json cast Problem");
-				}
+	
+				logRespdef.setResponseStatus(true);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch(Exception e){
+			
 		}
+			
 		if (logRespdef.getResponseStatus() == true) {
 			model.addAttribute("ERR_MSG", "Bid is closed and you can't purchase this item anymore");
 			return "homepage";
@@ -339,7 +331,7 @@ public class AuctionController {
 			String jString = mapper.writeValueAsString(urm);
 					// Make a webservice call to check user validity with login
 					// information.
-					String actionUrl = WebServicesActions.viewmyCarts;
+					String actionUrl = WebServicesActions.AllAuctions;
 					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 					if (loginResponse.getStatusCode() == HttpStatus.OK) {
@@ -379,7 +371,7 @@ public class AuctionController {
 			String jString = mapper.writeValueAsString(urm);
 					// Make a webservice call to check user validity with login
 					// information.
-					String actionUrl = WebServicesActions.viewmyOrders;
+					String actionUrl = WebServicesActions.AllAuctions;
 					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 					if (loginResponse.getStatusCode() == HttpStatus.OK) {

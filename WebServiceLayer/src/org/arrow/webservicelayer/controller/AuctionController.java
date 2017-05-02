@@ -214,29 +214,14 @@ public class AuctionController {
 			e.printStackTrace();
 		}
 		//Make a webservice call to check user validity with login information.			
-		String actionUrl = MicroServiceWebServiceActions.Close;
+		String actionUrl = MicroServiceWebServiceActions.CloseMyAuction;
 		// Make a webservice call to check user validity with login
 		// informationre.
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
 		ResponseEntity<String> userResponse = MSC.call(actionUrl, jString);
-	
 		
-
-		if (userResponse.getStatusCode() == HttpStatus.OK) {
-			String jstring = userResponse.getBody();
-			try {
-				SimpleAuctionListResponseModel salrm = mapper.readValue(jstring, SimpleAuctionListResponseModel.class);
-				System.out.println("succesful");
-				status=true;
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("Json cast Problem");
-			}
-
-		}
-		return status;
+	
+		return true;
 		
 	}
 

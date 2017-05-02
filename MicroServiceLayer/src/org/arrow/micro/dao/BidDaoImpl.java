@@ -1,5 +1,6 @@
 package org.arrow.micro.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.arrow.micro.model.AuctionEventModel;
@@ -84,6 +85,8 @@ public class BidDaoImpl extends AbsHibernateSession {
 			session.getTransaction().commit();
 			
 			SimpleAuctionListResponseModel SALRM = new SimpleAuctionListResponseModel();
+			List<SimpleAuctionResponseModel> sarm1 = new ArrayList<SimpleAuctionResponseModel>();
+			SALRM.setSARM(sarm1);
 			
 			
 			for(int i = 0; i < auctionList.size(); i++){
