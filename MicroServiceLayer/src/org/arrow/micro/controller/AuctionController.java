@@ -184,7 +184,7 @@ public class AuctionController {
 			){
 		
 			return AuctionService.closeAuction(auctionParamModel.getAuctionid());
-		
+			
 	}
 	
 

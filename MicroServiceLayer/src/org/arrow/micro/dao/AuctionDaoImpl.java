@@ -2,6 +2,8 @@ package org.arrow.micro.dao;
 
 import java.util.List;
 
+import org.arrow.micro.email.EmailModel;
+import org.arrow.micro.email.EmailTemplateClass;
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.AuctionStatusModel;
 import org.arrow.micro.model.BidModel;
@@ -11,6 +13,7 @@ import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.mail.SimpleMailMessage;
 
 public class AuctionDaoImpl extends AbsHibernateSession{
 
@@ -195,13 +198,14 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		aem.setStatus(AuctionStatusModel.CLOSE);
 		if(maxbm != null){
 			
-			session.update(aem);
-			PurchasedItemModel pm = new PurchasedItemModel();
-			pm.setAuction(aem);
-			pm.setPrice(maxbm.getBid());
-			pm.setUser(aem.getOwner());
-			session.save(pm);
-			session.getTransaction().commit();
+//			SimpleMailMessage message = new SimpleMailMessage();
+//			EmailTemplateClass.init();
+//			EmailModel em = EmailTemplateClass.getTemplate(EmailTemplateClass.BID_PURCHASED);
+//			System.out.println(em);
+//			message.setTo(user.getEmailAddress());
+//			message.setSubject(em.subject);
+//			message.setText("Hi "+ user.getUserName()+"  "+em.messageBody);
+//			mailsender.send(message);
 
 			
 		}

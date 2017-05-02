@@ -127,7 +127,7 @@ public class AuctionController {
 			e.printStackTrace();
 		}
 		//Make a webservice call to check user validity with login information.			
-		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		String actionUrl = MicroServiceWebServiceActions.AllMyActiveAuctions;
 		// Make a webservice call to check user validity with login
 		// informationre.
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
@@ -170,7 +170,7 @@ public class AuctionController {
 			e.printStackTrace();
 		}
 		//Make a webservice call to check user validity with login information.			
-		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		String actionUrl = MicroServiceWebServiceActions.AllAuctions;
 		// Make a webservice call to check user validity with login
 		// informationre.
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
@@ -214,7 +214,7 @@ public class AuctionController {
 			e.printStackTrace();
 		}
 		//Make a webservice call to check user validity with login information.			
-		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		String actionUrl = MicroServiceWebServiceActions.Close;
 		// Make a webservice call to check user validity with login
 		// informationre.
 		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
