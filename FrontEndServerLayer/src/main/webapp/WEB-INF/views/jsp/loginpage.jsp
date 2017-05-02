@@ -25,7 +25,7 @@
     </script>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="headerhome.jsp" %>
 <div id="body">
 <center>
 	<h2 style="color:red">${ERR_MSG}</h2>

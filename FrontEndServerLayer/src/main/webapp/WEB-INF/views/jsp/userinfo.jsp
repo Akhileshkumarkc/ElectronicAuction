@@ -124,7 +124,7 @@
                       </tr>
                       <tr>
                         <td>Last Login Time:</td>
-                        <td>Under Construction </td>
+                        <td>${lastLogin} </td>
                       <tr>
                      
                     </tbody>

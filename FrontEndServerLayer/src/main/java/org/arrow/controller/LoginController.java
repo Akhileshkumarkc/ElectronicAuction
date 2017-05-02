@@ -8,10 +8,9 @@ import org.arrow.WebServiceCall.WebServiceCallWrapper;
 import org.arrow.WebServiceCall.WebServicesActions;
 import org.arrow.authenticate.SessionManagement;
 import org.arrow.beans.LoginBean;
-import org.arrow.beans.UserRequestModel;
+import org.arrow.cache.cacheImpl;
 import org.arrow.model.LoginResponseModel;
 import org.arrow.model.SimpleUserModel;
-import org.arrow.model.UserDetails;
 //import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -87,7 +85,10 @@ public class LoginController {
 			// information.
 			String actionUrl = WebServicesActions.CheckUserValidity;
 			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
-			
+//			if(cacheImpl.getFromCache(bean.getuserName()) != null)
+//			{
+//			System.out.println("Value :"+cacheImpl.getFromCache(bean.getuserName()));	
+//			}
 			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 			if (loginResponse.getStatusCode() == HttpStatus.OK) {
 				String jstring = loginResponse.getBody();
@@ -199,7 +200,8 @@ public class LoginController {
 				try {
 					 LoginResponseModel logResp = mapper.readValue(jstring, LoginResponseModel.class);
 					if(logResp.status= true){
-					 System.out.println("successful"); 
+					 System.out.println("successful");
+					// cacheImpl.addToCache(simpleusermodel.getUsername(), "Kept in Cache");
 					 logRespdef = logResp;
 					 
 					}

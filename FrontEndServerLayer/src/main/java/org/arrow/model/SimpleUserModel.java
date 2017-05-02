@@ -1,6 +1,6 @@
 package org.arrow.model;
 
-
+import java.util.Date;
 
 public class SimpleUserModel {
 	
@@ -24,10 +24,16 @@ public class SimpleUserModel {
 	private String shipping_city;
 	private String shipping_state;
 	private String shipping_pinCode;
-	private String lastLogin;
+	private Date lastLogin;
 	
 	
 	
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
 	public SimpleUserModel() {
 		super();
 	}

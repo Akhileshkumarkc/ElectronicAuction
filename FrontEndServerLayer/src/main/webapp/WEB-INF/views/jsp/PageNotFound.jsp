@@ -28,11 +28,12 @@
  </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="headerhome.jsp" %>
 
 <h1 id="error1" >Oops!! Page not found!</h1>
 <h3 id="error2">Error Code: 404</h3>
 <center>
+<a href="newuserlogin">Click here to login again!!!</a>
 <img src="resources/images/404.gif" height="313px" width="428px">
 </center>
 <%@ include file="footer.jsp" %>

@@ -1,4 +1,5 @@
 package org.arrow.WebServiceCall;
+
 public  class WebServicesActions {
 	
 	//main Services.
@@ -33,6 +34,7 @@ public  class WebServicesActions {
 	public static final String updateAuction = AUCTIONSERVICE+update;
 	public static final String AllAvialAuctions = AUCTIONSERVICE+AllAvial;
 	public static final String AllMyActiveAuctions = AUCTIONSERVICE +AllMyActive;
+	public static final String AllAuctions = AUCTIONSERVICE + All;
 	public static final String CloseMyAuction = AUCTIONSERVICE +Close;
 	
 	//bid
@@ -46,8 +48,9 @@ public  class WebServicesActions {
 	public static final String bidforitem = BIDSERVICE+foritem;
 	public static final String deletebid = BIDSERVICE+delete;
 	
-	//order
 	public static final String myOrders = "/myorders";
+	public static final String myCarts = "/myCarts";
 	public static final String viewmyOrders = ORDERSERVICE+ myOrders;
+	public static final String viewmyCarts = ORDERSERVICE+ myCarts;
 }
 

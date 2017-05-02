@@ -52,6 +52,9 @@ public class UserController {
 						try {
 							 sum = mapper.readValue(jstring, SimpleUserModel.class);
 							 model.addObject("userDetails", sum);
+							 SessionManagement.createSessionLastlogin(req, sum);
+							 System.out.println("last login  : "+req.getSession().getAttribute(SessionManagement.Lastlogin));
+							 model.addAttribute("lastLogin", req.getSession().getAttribute(SessionManagement.Lastlogin));
 							}
 						 catch (IOException e) {
 							// TODO Auto-generated catch block
@@ -63,7 +66,7 @@ public class UserController {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
+		
 		return "userinfo";
 	}
 	

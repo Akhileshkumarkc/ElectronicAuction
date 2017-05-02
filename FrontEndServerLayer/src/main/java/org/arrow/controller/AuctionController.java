@@ -16,8 +16,8 @@ import org.arrow.beans.UserRequestModel;
 import org.arrow.model.AuctionResponseModel;
 import org.arrow.model.BidParamModel;
 import org.arrow.model.SimpleAuctionListResponseModel;
+import org.arrow.model.SimpleAuctionParamModel;
 import org.arrow.model.SimpleAuctionRequestModel;
-import org.arrow.model.SimpleUserModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -221,7 +221,7 @@ public class AuctionController {
 			String jString = mapper.writeValueAsString(urm);
 					// Make a webservice call to check user validity with login
 					// information.
-					String actionUrl = WebServicesActions.AllAvialAuctions;
+					String actionUrl = WebServicesActions.AllMyActiveAuctions;
 					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 					if (loginResponse.getStatusCode() == HttpStatus.OK) {
@@ -283,15 +283,124 @@ public class AuctionController {
 	}
 	
 	
-	@RequestMapping(value = "/myactiveauctions", method = RequestMethod.POST)
+	@RequestMapping(value = "/closebid", method = RequestMethod.POST)
 	public String myactiveauctions(HttpServletRequest request, ModelMap model) {
-		System.out.println("entered my active auctions page");
-		model.addAttribute("auctionid", request.getParameter("auctionid"));
-		model.addAttribute("bidprice1", request.getParameter("bidprice"));
-		System.out.println("auction id productauction"+request.getParameter("auctionid"));
-		System.out.println("bidprice productauction"+request.getParameter("bidprice"));
+		System.out.println("entered close bid controller");
+		SimpleAuctionParamModel sapm = new SimpleAuctionParamModel();
+		sapm.setUserName((Integer)request.getSession().getAttribute(SessionManagement.SessionUserId));
+		sapm.setAuctionid(Integer.parseInt(request.getParameter("auctionid")));
+		
+		AuctionResponseModel logRespdef = new AuctionResponseModel();
+		logRespdef.setErrorMessage("not succesful");
+		logRespdef.setResponseStatus(false);
+		logRespdef.setUserid(0);
+	
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String jString = mapper.writeValueAsString(sapm);
+			String actionUrl = WebServicesActions.CloseMyAuction;
+			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
+			if (loginResponse.getStatusCode() == HttpStatus.OK) {
+				String jstring = loginResponse.getBody();
+				try {
+					 AuctionResponseModel AucResp = mapper.readValue(jstring, AuctionResponseModel.class);
+					if(AucResp.getResponseStatus()==true ){
+					 System.out.println("successful"); 
+					 logRespdef = AucResp;
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("Json cast Problem");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (logRespdef.getResponseStatus() == true) {
+			model.addAttribute("ERR_MSG", "Bid is closed and you can't purchase this item anymore");
+			return "homepage";
+		}
 
-	return "bidprice";
+	return "error";
 	}
+	
+	@RequestMapping(value = "/itemsincartcontroller", method = RequestMethod.GET)
+	public String itemsincart(HttpServletRequest req, ModelMap model) {
+		System.out.println("entered Items cart");
+		UserRequestModel urm = new UserRequestModel();
+		urm.setUserName((String)req.getSession().getAttribute(SessionManagement.SessionUSER));
+		urm.setUserid((Integer)req.getSession().getAttribute(SessionManagement.SessionUserId));
+		
+		SimpleAuctionListResponseModel salrm = new SimpleAuctionListResponseModel();
+		try {
+			// convert it to jString.
+			ObjectMapper mapper = new ObjectMapper();
+			String jString = mapper.writeValueAsString(urm);
+					// Make a webservice call to check user validity with login
+					// information.
+					String actionUrl = WebServicesActions.viewmyCarts;
+					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
+					if (loginResponse.getStatusCode() == HttpStatus.OK) {
+						String jstring = loginResponse.getBody();
+						System.out.println("welcome in items cart");
+						try {
+							 salrm = mapper.readValue(jstring, SimpleAuctionListResponseModel.class);
+							 model.addAttribute("productDetails", salrm.getSARM());
+							}
+						 catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							System.out.println("Json cast Problem");
+						}
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+		return "itemsincart";
+	}
+	
+	
+	
+	@RequestMapping(value = "/purchaseditems", method = RequestMethod.GET)
+	public String purchaseditems(HttpServletRequest req, ModelMap model) {
+		System.out.println("entered purchased items");
+		UserRequestModel urm = new UserRequestModel();
+		urm.setUserName((String)req.getSession().getAttribute(SessionManagement.SessionUSER));
+		urm.setUserid((Integer)req.getSession().getAttribute(SessionManagement.SessionUserId));
+		
+		SimpleAuctionListResponseModel salrm = new SimpleAuctionListResponseModel();
+		try {
+			// convert it to jString.
+			ObjectMapper mapper = new ObjectMapper();
+			String jString = mapper.writeValueAsString(urm);
+					// Make a webservice call to check user validity with login
+					// information.
+					String actionUrl = WebServicesActions.viewmyOrders;
+					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
+					if (loginResponse.getStatusCode() == HttpStatus.OK) {
+						String jstring = loginResponse.getBody();
+						try {
+							 salrm = mapper.readValue(jstring, SimpleAuctionListResponseModel.class);
+							 model.addAttribute("productDetails", salrm.getSARM());
+							}
+						 catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							System.out.println("Json cast Problem");
+						}
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+		return "purchaseditems";
+	}
+	
 	
 }
