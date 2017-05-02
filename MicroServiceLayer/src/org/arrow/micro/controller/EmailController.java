@@ -32,6 +32,7 @@ public class EmailController {
 		SimpleMailMessage message = new SimpleMailMessage();
 		EmailTemplateClass.init();
 		EmailModel em = EmailTemplateClass.getTemplate(user.getTemplateclass());
+		System.out.println(em);
 		message.setTo(user.getEmailAddress());
 		message.setSubject(em.subject);
 		message.setText("Hi "+ user.getUserName()+"  "+em.messageBody);

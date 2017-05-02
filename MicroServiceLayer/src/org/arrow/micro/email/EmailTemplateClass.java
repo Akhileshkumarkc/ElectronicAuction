@@ -45,6 +45,12 @@ public class EmailTemplateClass {
 		return EmailTemplates.get(name);
 		
 	}
+	
+	public static void main(String args[]){
+		EmailModel em = EmailTemplateClass.getTemplate(REGISTERATION_EMAIL);
+		System.out.println(em.messageBody);
+		
+	}
 	 
 
 }
