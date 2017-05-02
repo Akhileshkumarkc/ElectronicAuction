@@ -88,8 +88,6 @@ public class LoginController {
 			String actionUrl = WebServicesActions.CheckUserValidity;
 			WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 			
-			
-			
 			ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 			if (loginResponse.getStatusCode() == HttpStatus.OK) {
 				String jstring = loginResponse.getBody();
@@ -113,13 +111,14 @@ public class LoginController {
 		
 		
 		if (logRespdef.status == true) {
+			model.addAttribute("ERR_MSG", "Login Successful");
 			if(logRespdef.username.equalsIgnoreCase(bean.getuserName())){
 				SessionManagement.createSessionUser(request, bean,logRespdef.userid);	
 				return "homepage";
 			}
 		}
 		else{
-			
+			model.addAttribute("ERR_MSG", "Couldnot find the user,Please register");
 			String message = "Couldnot find the user,Please register";
 			//TODO: return this to the user.
 		}
@@ -218,10 +217,11 @@ public class LoginController {
 		// registration is succesful then redirect to loginpage.
 		
 		if (logRespdef.status == true) {
+			model.addAttribute("ERR_MSG", "Registration successful");
 			return "loginpage";
 		}
 		else{	
-			model.addAttribute("ERR_MSG", logRespdef.ErrorMessage);	
+			model.addAttribute("ERR_MSG", "Error in Registering");	
 			System.out.println("error registering");
 		}
 		return "registration_error";

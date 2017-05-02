@@ -2,7 +2,10 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
     <meta name="robots" content="noindex">
     <%@ page import="java.util.*" %>
-<%@ page import = "org.arrow.model.SimpleAuctionRequestModel" %>
+        <%@ page import = "org.arrow.authenticate.SessionManagement" %>
+<%@ page import = "org.arrow.model.SimpleAuctionListResponseModel" %>
+<%@ page import = "org.arrow.model.SimpleAuctionResponseModel" %>
+
 
     <title>Products Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,74 +40,50 @@
 	<div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
     <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><button onclick="sortTable_Name()">Name</button></li>
-      <li><button onclick="sortTable_Date()">Date</button></li>
-      <li><button onclick="sortTable_Price()">Price</button></li>
-      <li><button onclick="sortTable_Category()">Category</button></li>
-    </ul>
+    <div class="dropdown-menu">
+      <button onclick="sortTable_Name()">Name</button>
+      <button onclick="sortTable_Date()">Date</button>
+      <button onclick="sortTable_Price()">Price</button>
+      <button onclick="sortTable_Category()">Category</button>
+    </div>
   	</div>
 	</div>
-<%
-	List<SimpleAuctionRequestModel> products = (ArrayList<SimpleAuctionRequestModel>)request.getAttribute(responselist);
-	for(SimpleAuctionRequestModel i : products){
 	
-%>
+
 	<div class = "container">
 		<center>
-			<table width="100" id="product_table" cellpadding="10">
+		<table width="100" id="product_table1" cellpadding="10">
   				<tr>
-    			<th align="center">Product</th>
-   				<th align="center">Description</th>
-   				<th align="center">Bid Ending Date</th>
-   				<th align="center">Price</th>
+    			<th align="center">Product&nbsp;&nbsp;&nbsp;</th>
+   				<th align="center">Description&nbsp;&nbsp;&nbsp;</th>
+   				<th align="center">Bid Ending Date&nbsp;&nbsp;&nbsp;</th>
+   				<th align="center">Price&nbsp;&nbsp;&nbsp;</th>
    				<th align="center">Category</th>
   				</tr>
+  		</table>
+		<%
+	List<SimpleAuctionResponseModel> products = (ArrayList<SimpleAuctionResponseModel>)request.getAttribute("productDetails");
+	for(SimpleAuctionResponseModel i : products){
+    %>
+		<form action="productauction" method="POST">
+		<% String username=(String)session.getAttribute(SessionManagement.SessionUSER); %>
+			<table width="100" id="product_table" cellpadding="10">
   				<tr>
-    			<td><img src="5s.jpg" height="150" width="150"></td>
-    			<td><b>Iphone 5s</b><br>Apple iPhone 5s 64GB (GSM Unlocked) 4G iOS Smartphone - Gold/Silver/Space Gray</td>
-    			<td>2017/04/12</td>
-    			<td>$210.00</td>
-    			<td>Phone</td>
+    			<td><img src="<%=i.getImageURL() %>" height="150" width="150"></td>
+    			<td><b><%=i.getProductName()%></b><br><%= i.getProductDescription()%></td>
+    			<td><%=i.getAcutalEndDate()%></td>
+    			<td><%=i.getStartingBid() %></td>
+    			<td><%=i.getCategory() %></td>
   				</tr>
-  				<tr>
-   				<td><img src="s7edge.jpg" height="150" width="150"></td>
-    			<td><b>Samsung Galaxy s7 edge</b><br>Samsung Galaxy S7 Edge G935F 32 GB Factory Unlocked 4G LTE GSM Smartphone</td>
-    			<td>2017/03/23</td>
-    			<td>$301.00</td>
-    			<td>Phone</td>
-  				</tr>
-  				<tr>
-    			<td><img src="i7plus.jpg" height="150" width="150"></td>
-    			<td><b>IPhone 7 plus</b><br>NEW Apple iPhone 7 PLUS 5.5" UNLOCKED 256GB RED 4G LTE GLOBAL GSM FULL WARRANTY</td>
-    			<td>2016/12/03</td>
-    			<td>$410.00</td>
-    			<td>Phone</td>
-  				</tr>
-  				<tr>
-    			<td><img src="mac.jpg" height="100" width="150"></td>
-    			<td><b>Macbook Pro</b><br>Apple MacBook Pro 13" Laptop 2.53GHz / 4GB Memory / 500GB Drive / Yosemite</td>
-    			<td>2017/04/12</td>
-    			<td>$720.00</td>
-    			<td>Laptop</td>
-  				</tr>
-  				<tr>
-    			<td><img src="dell.jpg" height="100" width="150"></td>
-    			<td><b>Dell Inspiron</b><br>New Dell Inspiron 15 15.6"HD i3-5015U 2.1GHz 4GBRAM 1TB HDD HDMI DVD-RW W10H 1Yr</td>
-    			<td>2017/03/11</td>
-    			<td>$520.00</td>
-    			<td>Laptop</td>
-  				</tr>
-  				<tr>
-    			<td><img src="hp.jpg" height="100" width="150"></td>
-    			<td><b>HP Spectre X360</b><br>HP Spectre X360 13-4116DX 13.3" 2.5GHz i7 16GB 512GB IPS Touch Notebook/Tablet</td>
-    			<td>2017/02/14</td>
-    			<td>$635.00</td>
-    			<td>Laptop</td>
-  				</tr>
-			</table>
+  				<input type="hidden" name="auctionid" value="<%=i.getAuctionid() %>">
+  				<input type="hidden" name="bidprice" value="<%=i.getStartingBid() %>">
+  				<%} %>
+  				
+  				</form>
+  				</table>
+  				
 
-	<%@ include file="header.jsp" %>
+	<%@ include file="footer.jsp" %>
 		
 	<script>
 	function sortTable_Name() {

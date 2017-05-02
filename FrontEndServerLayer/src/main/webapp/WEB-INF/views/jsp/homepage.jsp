@@ -353,6 +353,9 @@ html { height: 100%;}
                     <a href="profileview">My Profile</a>
                 </li>
                 <li>
+                    <a href="editdetails">Edit Profile</a>
+                </li>
+                <li>
                     <a href="http:">User Last Login time</a>
                 </li>
                 
@@ -379,14 +382,14 @@ html { height: 100%;}
             </button>
             <div class="container1">
             <center>
-            	<h2>${ERR_MSG}</h2>
+            	<h2 style="color:red">${ERR_MSG}</h2>
               <img src = "resources/images/buysell.jpg" height="150" width="150">
               <table >
                 <tr><td><h3><a href="createnewauction"><img src = "resources/images/add.jpg" height="75" width="75">  Create a new Auction&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="availableauctions">Available Auctions  <img src = "resources/images/available.jpg" height="75" width="75"></a></h3></td></tr>
-                <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/auction.jpg" height="75" width="75">  All My Auctions&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
+                <tr><td><h3><a href="allmyauctions"><img src = "resources/images/auction.jpg" height="75" width="75">  All My Auctions&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">  Items in Cart  <img src = "resources/images/cart.jpg" height="100" width="75"></a></h3></td></tr>
-                <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/posted.jpg" height="50" width="100">  Posted Items for Sale&nbsp;&nbsp;&nbsp;&nbsp; </a></h3></td>
+                <tr><td><h3><a href="posteditemsforsale"><img src = "resources/images/posted.jpg" height="50" width="100">  Posted Items for Sale&nbsp;&nbsp;&nbsp;&nbsp; </a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">  My Purchased Items  <img src = "resources/images/items.jpg" height="100" width="100"></a></h3></td></tr>
               
               </table>

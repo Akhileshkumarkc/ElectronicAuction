@@ -7,6 +7,9 @@
 <title>Registration Error</title>
 </head>
 <body>
-	<%@ include file="registration.jsp" %>
+	<center>
+	<h2 style="color:red">${ERR_MSG}</h2>
+	</center>
+	<%@ include file="error.jsp" %>
 </body>
 </html>

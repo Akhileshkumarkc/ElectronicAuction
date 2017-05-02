@@ -10,8 +10,21 @@ public class SimpleAuctionResponseModel {
 	public Double startingBid;
 	public String imageURL;
 	public String category;
+	public int auctionid;
+	public Date lastLogin;
 	
-	
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+	public int getAuctionid() {
+		return auctionid;
+	}
+	public void setAuctionid(int auctionid) {
+		this.auctionid = auctionid;
+	}
 	public String getUserName() {
 		return userName;
 	}

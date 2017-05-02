@@ -65,7 +65,7 @@
 	List<SimpleAuctionResponseModel> products = (ArrayList<SimpleAuctionResponseModel>)request.getAttribute("productDetails");
 	for(SimpleAuctionResponseModel i : products){
     %>
-		<form action="productauction" method="POST">
+		<form action="myactiveauctions" method="POST">
 		<% String username=(String)session.getAttribute(SessionManagement.SessionUSER); %>
 			<table width="100" id="product_table" cellpadding="10">
   				<tr>
@@ -74,7 +74,7 @@
     			<td><%=i.getAcutalEndDate()%></td>
     			<td><%=i.getStartingBid() %></td>
     			<td><%=i.getCategory() %></td>
-    			<td> <input style="background-color: #3CB371" type="submit" value="Bid this Item"></td>
+    			<td> <input style="background-color: #3CB371" type="submit" value="Cancel Bid"></td>
   				</tr>
   				<input type="hidden" name="auctionid" value="<%=i.getAuctionid() %>">
   				<input type="hidden" name="bidprice" value="<%=i.getStartingBid() %>">

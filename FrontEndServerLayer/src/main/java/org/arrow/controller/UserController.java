@@ -117,7 +117,7 @@ public class UserController {
 					 System.out.println("successful"); 
 					 logRespdef = logResp;
 					 model.addAttribute("userDetails", simpleusermodel);
-					 
+					 model.addAttribute("ERR_MSG", "Updated Profile Details");
 					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -172,32 +172,5 @@ public class UserController {
 		return "profileedit";
 	}
 	
-	
-//	@RequestMapping(value = "/editdetails", method = RequestMethod.GET)
-//	public String detailsforprofileedit(HttpServletRequest req, ModelMap model) {
-//		System.out.println("entered edit deatils controller");
-//		SimpleUserModel sum = new SimpleUserModel();
-//		
-//		sum.setUsername((String)req.getSession().getAttribute(SessionManagement.SessionUSER));
-//		sum.setFirstName(req.getParameter("firstName"));
-//		sum.setLastName(req.getParameter("lastName"));
-//		sum.setLastName(req.getParameter("password"));
-//		sum.setLastName(req.getParameter("company"));
-//		sum.setLastName(req.getParameter("phoneNumber"));
-//		sum.setLastName(req.getParameter("email"));
-//		sum.setLastName(req.getParameter("user_streetName"));
-//		sum.setLastName(req.getParameter("user_houseNumber"));
-//		sum.setLastName(req.getParameter("user_city"));
-//		sum.setLastName(req.getParameter("user_state"));
-//		sum.setLastName(req.getParameter("user_pinCode"));
-//		sum.setLastName(req.getParameter("shipping_streetName"));
-//		sum.setLastName(req.getParameter("shipping_houseNumber"));
-//		sum.setLastName(req.getParameter("shipping_city"));
-//		sum.setLastName(req.getParameter("shipping_state"));
-//		sum.setLastName(req.getParameter("shipping_pinCode"));
-//		
-//		model.addAttribute("userDetails", sum);
-//		return "profileedit";
-//	}
-	
+
 }

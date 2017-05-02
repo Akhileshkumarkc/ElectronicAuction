@@ -2,6 +2,7 @@
 <!-- saved from url=(0054)http://bootsnipp-env.elasticbeanstalk.com/iframe/9XRdX -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page import = "org.arrow.controller.UserController" %>
+<%@ page import="java.util.Date"%>
     
     <meta name="robots" content="noindex">
 
@@ -72,7 +73,7 @@
 
         <a href="logout">Logout</a>
        <br>
-<p class=" text-info">May 05,2014,03:00 pm </p>
+<p class=" text-info"><%= new java.util.Date() %></p>
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
    
@@ -87,6 +88,7 @@
                
                 <div class=" col-md-9 col-lg-9 "> 
                 <center>
+                <h2 style="color:red">${ERR_MSG}</h2>
                 <form action="editdetails" method="get">
                   <table class="table table-user-information">
                     <tbody>
