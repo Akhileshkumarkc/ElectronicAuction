@@ -25,7 +25,7 @@ public class PurchasedItemModel {
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
-	UserDetailsModel user;
+	LoginModel user;
 	
 	Double price;
 	
@@ -36,10 +36,10 @@ public class PurchasedItemModel {
 	public void setAuction(AuctionEventModel auction) {
 		this.auction = auction;
 	}
-	public UserDetailsModel getUser() {
+	public LoginModel getUser() {
 		return user;
 	}
-	public void setUser(UserDetailsModel user) {
+	public void setUser(LoginModel user) {
 		this.user = user;
 	}
 	public Double getPrice() {

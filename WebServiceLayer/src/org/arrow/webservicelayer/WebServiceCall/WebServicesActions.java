@@ -34,6 +34,7 @@ public  class WebServicesActions {
 	public static final String updateAuction = AUCTIONSERVICE+update;
 	public static final String AllAvialAuctions = AUCTIONSERVICE+AllAvial;
 	public static final String AllMyActiveAuctions = AUCTIONSERVICE +AllMyActive;
+	public static final String AllAuctions = AUCTIONSERVICE + All;
 	public static final String CloseMyAuction = AUCTIONSERVICE +Close;
 	
 	//bid

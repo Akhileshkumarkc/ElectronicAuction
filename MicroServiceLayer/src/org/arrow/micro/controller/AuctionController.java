@@ -173,9 +173,6 @@ public class AuctionController {
 			salrm.setStatus(true);
 			salrm.setSARM(ARMList);
 		}
-		
-		
-		
 		return salrm;
 
 	}

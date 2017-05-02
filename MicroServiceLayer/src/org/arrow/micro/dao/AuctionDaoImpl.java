@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.AuctionStatusModel;
+import org.arrow.micro.model.BidModel;
 import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.hibernate.Session;
@@ -150,6 +152,63 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		}
 
 		return  aem;
+		
+	}
+	public void savePurchaseModel(PurchasedItemModel pm) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(pm);
+		session.getTransaction().commit();
+		
+	}
+	public boolean closeAuction(int auctionid) {
+		
+		//Auction id
+
+		AuctionEventModel aem = null;
+		try{
+			Session session = sessionFactory.openSession();			
+			session.beginTransaction();
+			Query query = session.createQuery("from AuctionEventModel where auctionId = "+ auctionid);
+			aem =  (AuctionEventModel)query.list().get(0);
+			session.getTransaction().commit();
+		}
+		catch(Exception e){
+		System.out.println("Hello");
+		}
+		//
+		BidModel  maxbm = new BidModel();
+		List<BidModel> bmlist = (List<BidModel>) aem.getBidModels();
+		if( bmlist.size()!= 0){
+			maxbm = bmlist.get(0);		
+		}
+		for(int i = 0; i < bmlist.size(); i++){
+			BidModel bd = bmlist.get(i);
+			if(bd != null && bd.getBid()!=null){
+				if(bd.getBid() > maxbm.getBid()){
+					maxbm =bd;
+				}
+			}
+		}
+		
+		if(maxbm != null){
+			PurchasedItemModel pm = new PurchasedItemModel();
+			pm.setAuction(aem);
+			pm.setPrice(maxbm.getBid());
+			pm.setUser(aem.getOwner());
+			Session session = sessionFactory.openSession();			
+			session.beginTransaction();
+			session.save(pm);
+			session.getTransaction().commit();
+
+			
+		}
+		//close the Auction.
+		aem.setStatus(AuctionStatusModel.CLOSE);
+		
+
+		return true;
 		
 	}
 }

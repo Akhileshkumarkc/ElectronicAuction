@@ -5,12 +5,16 @@ import java.util.List;
 import org.arrow.micro.dao.AuctionDaoImpl;
 import org.arrow.micro.dao.LoginDaoImpl;
 import org.arrow.micro.model.AuctionEventModel;
+import org.arrow.micro.model.AuctionStatusModel;
 import org.arrow.micro.model.BidModel;
 import org.arrow.micro.model.LoginModel;
+import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
 import org.arrow.micro.simple.model.SimpleToDBModelConverter;
 import org.arrow.micro.simple.model.UserRequestModel;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AuctionServiceImpl {
@@ -29,18 +33,8 @@ public class AuctionServiceImpl {
 	}
 	
 	public boolean closeAuction(int auctionid){
-		AuctionEventModel aem = auctionDao.getAuctionById(auctionid);
-		BidModel  maxbm = new BidModel();
-		List<BidModel> bmlist = (List<BidModel>) aem.getBidModels();
-		if( bmlist.size()!= 0){
-			maxbm = bmlist.get(0);		
-		}
-		for(int i = 0; i < bmlist.size(); i++){
-			BidModel bd = bmlist.get(i);
-			bd.getBid();
-		}
-		
-		return false;
+		return auctionDao.closeAuction(auctionid);
+
 	}
 	
 	public List<AuctionEventModel> getAllMyAuctions(UserRequestModel userModel){

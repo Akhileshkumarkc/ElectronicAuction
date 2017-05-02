@@ -15,8 +15,8 @@ public class SimpleAuctionParamModel {
 	public int getAuctionid() {
 		return Auctionid;
 	}
-	public void setAuctionid(int auctionid) {
-		Auctionid = auctionid;
+	public void setAuctionid(int Auctionid) {
+		this.Auctionid = Auctionid;
 	}
 
 }

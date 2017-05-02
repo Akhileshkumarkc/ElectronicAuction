@@ -115,7 +115,7 @@ public static void main(String args[]){
 	 //AuctionEventclose.
 	 PurchasedItemModel pm = new PurchasedItemModel();
 	 pm.setAuction(AuctionEventIphone);
-	 pm.setUser(VivekUser);
+	// pm.setUser(VivekUser);
 	 
 	 //TODO:Set price
 	 //pm.setPrice(AuctionEventIphone.getBidModel().);

@@ -9,6 +9,7 @@ import org.arrow.micro.model.AddressModel;
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
+import org.arrow.micro.simple.model.SimpleAuctionParamModel;
 import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.arrow.micro.simple.model.UserRequestModel;
@@ -40,7 +41,8 @@ public class RestTest {
 	//	testLogin();
 		//testUserid();
 	//	testAuction();
-		testBids();
+//		testBids();
+		sample();
 	}
 
 	private static void testBids() {
@@ -146,7 +148,26 @@ public class RestTest {
 		}
 		System.out.println(status);
 	}
-
+    private static void sample(){
+    	
+    	SimpleAuctionParamModel sum = new SimpleAuctionParamModel();
+    	
+    	sum.setAuctionid(1);
+    	sum.setUserName(41);
+    	
+    	
+    	ObjectMapper mapper = new ObjectMapper();
+		String jString = null;
+		try{
+			jString = mapper.writeValueAsString(sum);
+			System.out.println(jString);
+		}catch(JsonProcessingException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+    	
+    }
 	private static void testLogin() {
 		String microServiceBaseUrl = "http://localhost:8080/MicroServiceLayer/";
 		String LoginRegister = "loginservice/authenicate";
