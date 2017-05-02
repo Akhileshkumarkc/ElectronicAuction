@@ -24,7 +24,7 @@ public class PurchasedItemModel {
 	AuctionEventModel auction;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "Login_ID")
 	LoginModel user;
 	
 	Double price;

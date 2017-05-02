@@ -51,6 +51,10 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	public void updateLastLogin(LoginModel dbLoginModel) {
+		if(dbLoginModel.getLastLogin() == null){
+			dbLoginModel.setLastLogin(new Date(System.currentTimeMillis()));
+		}
+		dbLoginModel.setPreviousLogin(dbLoginModel.getLastLogin());
 		dbLoginModel.setLastLogin(new Date(System.currentTimeMillis()));
 		loginDao.update(dbLoginModel);		
 	}

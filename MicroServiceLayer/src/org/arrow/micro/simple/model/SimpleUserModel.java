@@ -1,7 +1,6 @@
 package org.arrow.micro.simple.model;
 
-
-import org.arrow.micro.model.AddressModel;
+import java.util.Date;
 
 public class SimpleUserModel {
 	
@@ -10,6 +9,7 @@ public class SimpleUserModel {
 	private String password;
 	private String firstName;
 	private String lastName;
+	
 	
 	private String company;
 	private String phoneNumber;
@@ -25,8 +25,9 @@ public class SimpleUserModel {
 	private String shipping_city;
 	private String shipping_state;
 	private String shipping_pinCode;
+	private Date lastLogin;
 	
-	
+
 	public SimpleUserModel() {
 		super();
 	}
@@ -139,4 +140,10 @@ public class SimpleUserModel {
 		this.password = password;
 	}
 	
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date date) {
+		this.lastLogin = date;
+	}
 }

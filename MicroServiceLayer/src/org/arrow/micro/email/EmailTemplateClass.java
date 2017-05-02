@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class EmailTemplateClass {
 	
-	Map<String,EmailModel> EmailTemplates;
+	public static Map<String,EmailModel> EmailTemplates;
 	public static final String REGISTERATION_EMAIL = "Registration_email";
 	public static final String LOGIN_EMAIL = "Login_email";
 	
-	public void init(){
+	public  static void init(){
 		EmailTemplates = new HashMap<String,EmailModel>();
 		
 		// new email.
@@ -32,7 +32,7 @@ public class EmailTemplateClass {
 		EmailTemplates.put(LOGIN_EMAIL, emnewuser);
 	}
 	
-	public EmailModel getTemplate(String name){
+	public static EmailModel  getTemplate(String name){
 		return EmailTemplates.get(name);
 		
 	}

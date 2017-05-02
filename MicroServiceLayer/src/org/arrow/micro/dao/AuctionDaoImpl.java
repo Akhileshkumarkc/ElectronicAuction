@@ -167,12 +167,13 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		//Auction id
 
 		AuctionEventModel aem = null;
+		Session session = sessionFactory.openSession();			
 		try{
-			Session session = sessionFactory.openSession();			
+			
 			session.beginTransaction();
 			Query query = session.createQuery("from AuctionEventModel where auctionId = "+ auctionid);
 			aem =  (AuctionEventModel)query.list().get(0);
-			session.getTransaction().commit();
+			
 		}
 		catch(Exception e){
 		System.out.println("Hello");
@@ -197,8 +198,6 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 			pm.setAuction(aem);
 			pm.setPrice(maxbm.getBid());
 			pm.setUser(aem.getOwner());
-			Session session = sessionFactory.openSession();			
-			session.beginTransaction();
 			session.save(pm);
 			session.getTransaction().commit();
 
@@ -211,4 +210,5 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 		return true;
 		
 	}
+	
 }

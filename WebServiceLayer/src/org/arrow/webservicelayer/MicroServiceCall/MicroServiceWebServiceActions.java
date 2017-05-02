@@ -52,4 +52,8 @@ public class MicroServiceWebServiceActions {
 	//order
 	public static final String myOrders = "/myorders";
 	public static final String viewmyOrders = ORDERSERVICE+ myOrders;
+	
+	// Email Service 
+	public static final String EmailService = "/Emailservice";
+	public static final String EmailService_SendEmail = EmailService + "/Sendemail"; 
 }

@@ -32,7 +32,7 @@ public class SimpleToDBModelConverter {
 		lm.setUserName(sum.getUsername());
 		lm.setPassword(sum.getPassword());
 		udm.setLoginInfo(lm);
-		
+		udm.getLoginInfo().setLastLogin(sum.getLastLogin());
 		return udm;
 		
 	}
@@ -57,7 +57,7 @@ public class SimpleToDBModelConverter {
 		sum.setUser_streetName(udm.getUseraddress().getStreetName());
 		sum.setUserId(udm.getUserId());
 		sum.setUsername(udm.getLoginInfo().getUserName());
-		
+		sum.setLastLogin(udm.getLoginInfo().getPreviousLogin());
 		return sum;
 		
 	}

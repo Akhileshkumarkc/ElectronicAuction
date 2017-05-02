@@ -41,9 +41,17 @@ public class LoginModel {
 	
 	//@Temporal(TemporalType.DATE)
 	private Date lastLogin;
+	
+	private Date previousLogin;
 	@Column
 	private String Location;
 		
+	public Date getPreviousLogin() {
+		return previousLogin;
+	}
+	public void setPreviousLogin(Date previousLogin) {
+		this.previousLogin = previousLogin;
+	}
 	public int getLoginId() {
 		return userId;
 	}

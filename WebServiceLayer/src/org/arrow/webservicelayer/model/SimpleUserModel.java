@@ -1,6 +1,6 @@
 package org.arrow.webservicelayer.model;
 
-
+import java.util.Date;
 
 public class SimpleUserModel {
 	
@@ -24,6 +24,7 @@ public class SimpleUserModel {
 	private String shipping_city;
 	private String shipping_state;
 	private String shipping_pinCode;
+	private Date lastLogin;
 	
 	
 	
@@ -138,5 +139,10 @@ public class SimpleUserModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
 }
