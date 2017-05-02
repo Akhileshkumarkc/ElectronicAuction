@@ -1,15 +1,25 @@
 package org.arrow.micro.test;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
 import org.arrow.micro.model.AddressModel;
+import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.UserDetailsModel;
 import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
 import org.arrow.micro.simple.model.UserRequestModel;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.hibernate.service.ServiceRegistry;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -29,7 +39,35 @@ public class RestTest {
 	//	testRegister2();
 	//	testLogin();
 		//testUserid();
-		testAuction();
+	//	testAuction();
+		testBids();
+	}
+
+	private static void testBids() {
+		Configuration configuration = new Configuration();
+	    configuration.configure(new File("./WebContent/WEB-INF/hibernate.cfg.xml") );
+	    configuration.addAnnotatedClass(LoginModel.class);
+	    configuration.addAnnotatedClass(UserDetailsModel.class);
+	    configuration.addAnnotatedClass(AuctionEventModel.class);
+	    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+	            configuration.getProperties()).build();
+	    SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		try{
+			tx.begin();
+			session.beginTransaction();
+			Query query = session.createQuery("from AuctionEventModel" );
+			AuctionEventModel aem = (AuctionEventModel) query.list().get(0);
+			session.getTransaction().commit();
+					}
+		catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      }finally {
+	    	 session.close();
+	      }
+
 	}
 
 	private static void testAuction() {

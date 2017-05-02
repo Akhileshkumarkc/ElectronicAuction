@@ -24,11 +24,15 @@ public class BidController {
 	
 	@RequestMapping(value=MicroWebServicesActions.Allbids,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-		public  @ResponseBody SimpleAuctionListResponseModel fetchAllBidsForItem(
+	public  @ResponseBody SimpleAuctionListResponseModel fetchAllBidsForItem(
 				@RequestBody UserRequestModel model){
-			//BidService.bid(model, arm);
+		
+		SimpleAuctionListResponseModel SALR = new SimpleAuctionListResponseModel();
+		BidService.getbids(model,SALR);
+		return SALR;
+		
 		//TODO:
-		return new SimpleAuctionListResponseModel();
+		//return ;
 			
 		
 	}
