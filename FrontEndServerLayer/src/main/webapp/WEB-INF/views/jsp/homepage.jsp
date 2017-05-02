@@ -344,9 +344,10 @@ html { height: 100%;}
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <h3 style="color:#FF4500">
-                       <%= session.getAttribute(SessionManagement.SessionUSER) %>
-                    </h3>
+                <center>
+                    <h4 style="color:#FF4500">
+                       Good Evening!<br>Welcome&nbsp;<%= session.getAttribute(SessionManagement.SessionUSER) %>
+                    </h4></center>
                 </li>
                 <li>
                     <a href="profileview">My Profile</a>
@@ -360,7 +361,7 @@ html { height: 100%;}
                 </li>
                 
                 <li>
-                    <a href="http:">Help</a>
+                    <a href="contactus">Contact Us</a>
                 </li>
                 <li>
                     <a href="https:">Follow us</a>
@@ -382,7 +383,7 @@ html { height: 100%;}
               <img src = "resources/images/buysell.jpg" height="150" width="150">
               <table >
                 <tr><td><h3><a href="createnewauction"><img src = "resources/images/add.jpg" height="75" width="75">  Create a new Auction&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
-                <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="availablebids">Available Auctions  <img src = "resources/images/available.jpg" height="75" width="75"></a></h3></td></tr>
+                <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="availableauctions">Available Auctions  <img src = "resources/images/available.jpg" height="75" width="75"></a></h3></td></tr>
                 <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/auction.jpg" height="75" width="75">  All My Auctions&nbsp;&nbsp;&nbsp;&nbsp;</a></h3></td>
                 <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.google.com">  Items in Cart  <img src = "resources/images/cart.jpg" height="100" width="75"></a></h3></td></tr>
                 <tr><td><h3><a href="http://www.google.com"><img src = "resources/images/posted.jpg" height="50" width="100">  Posted Items for Sale&nbsp;&nbsp;&nbsp;&nbsp; </a></h3></td>

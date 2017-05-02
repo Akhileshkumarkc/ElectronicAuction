@@ -49,6 +49,18 @@ public class LoginController {
 		return "registration";
 	}
 	
+	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
+	public String homePage(ModelMap model) {
+		System.out.println("entered homepage");
+		return "homepage";
+	}
+	
+	@RequestMapping(value = "/contactus", method = RequestMethod.GET)
+	public String contactus(ModelMap model) {
+		System.out.println("entered contactus");
+		return "contactus";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, ModelMap model) {
 
@@ -111,7 +123,7 @@ public class LoginController {
 			String message = "Couldnot find the user,Please register";
 			//TODO: return this to the user.
 		}
-		return "/registration";
+		return "login-error";
 	}
 	
 	

@@ -1,4 +1,4 @@
-package org.arrow.webservicelayer.model;
+package org.arrow.model;
 
 import java.util.Date;
 

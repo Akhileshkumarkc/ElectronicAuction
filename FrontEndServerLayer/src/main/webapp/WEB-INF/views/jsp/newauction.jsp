@@ -31,7 +31,7 @@
     	  <input type="hidden" name="username" value=<%=username %>>
     		<table cellspacing="10" style="background-color: #E8E8E8">
     		<tr><td><h4>Product Name </h4></td><td><input type="text" name="productName" required="true" autofocus="true"></td></tr>
-    		<tr><td><h4>Product Description </h4></td><td><input type="text" name="productDescription" required="true" style="width: 300px; height: 100px"></td></tr>
+    		<tr><td><h4>Product Description </h4></td><td><input type="text" name="productDescription" maxlength="75" required="true" style="width: 300px; height: 100px"></td></tr>
     		<tr><td><h4>Product Category </h4></td><td><input type="text" name="category" required="true"></td></tr>
     		<tr><td><h4>Initial Bid Price </h4></td><td><input type="number" name="startingBid" required="true"></td></tr>
     		<tr><td><h4>Auction End Date </h4></td><td><input type="date" name="actualEndDate" required="true"></td></tr>

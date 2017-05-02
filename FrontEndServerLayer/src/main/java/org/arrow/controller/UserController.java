@@ -28,7 +28,6 @@ public class UserController {
 		return "newauction";
 	}
 	
-	
 	@RequestMapping(value = "/profileview", method = RequestMethod.GET)
 	public String profileview(HttpServletRequest req, ModelMap model) {
 		System.out.println("entered profile view page");

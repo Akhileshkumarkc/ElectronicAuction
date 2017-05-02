@@ -21,21 +21,38 @@
                 <div class="container">
                     <ul class="nav">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="homepage">Home</a>
                         </li>
-
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="#">Bids</a>
+                            <a href="#">All Auctions</a>
                         </li>
-
+						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="profileview">View Profile</a>
                         </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="contactus">Contact Us</a>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        
+                        
                          <li>
                         <form id="search" style="margin:9px">
                         <a href="#" style="color:#777777">Search</a>
                         <input type="text">
                         </form>
+                        </li>
+                        <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
+                        <li>
+                            <a href="logout">Logout</a>
                         </li>
                     </ul>
                 </div>

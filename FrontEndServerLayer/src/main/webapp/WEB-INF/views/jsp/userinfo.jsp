@@ -65,6 +65,7 @@
     </script>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 	<div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -96,6 +97,10 @@
                       <tr>
                         <td>LastName:</td>
                         <td>${userDetails.getLastName()}</td>
+                      </tr>
+                      <tr>
+                        <td>Company:</td>
+                        <td>${userDetails.getCompany()}</td>
                       </tr>
                       <tr>
                         <td>User Address:</td>
@@ -136,5 +141,5 @@
     </div>
 	
 
-
+<%@ include file="footer.jsp" %>
 </body></html>

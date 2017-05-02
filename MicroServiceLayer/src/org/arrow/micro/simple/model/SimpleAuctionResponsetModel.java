@@ -1,8 +1,9 @@
-package org.arrow.webservicelayer.model;
+package org.arrow.micro.simple.model;
 
 import java.util.Date;
 
-public class SimpleAuctionResponseModel {
+public class SimpleAuctionResponsetModel {
+	
 	public String userName;
 	public Date acutalEndDate;
 	public String productName;
@@ -54,6 +55,5 @@ public class SimpleAuctionResponseModel {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-
-
+	
 }

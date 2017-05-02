@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.arrow.WebServiceCall.WebServiceCallWrapper;
 import org.arrow.WebServiceCall.WebServicesActions;
 import org.arrow.authenticate.SessionManagement;
+import org.arrow.beans.UserRequestModel;
 import org.arrow.model.AuctionResponseModel;
-import org.arrow.model.LoginResponseModel;
+import org.arrow.model.SimpleAuctionListResponseModel;
 import org.arrow.model.SimpleAuctionRequestModel;
+import org.arrow.model.SimpleUserModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class AuctionController {
-
+	
+	@RequestMapping(value = "/productauction", method = RequestMethod.GET)
+	public String itemauction(ModelMap model) {
+		System.out.println("entered new auction page");
+		
+		return "";
+	}
+	
+	
 	@RequestMapping(value = "/newauction", method = RequestMethod.POST)
 	public String newauction(HttpServletRequest req, ModelMap model) throws ParseException {
 		System.out.println("new auction posted");
@@ -97,9 +107,44 @@ public class AuctionController {
 	
 	
 	
-	@RequestMapping(value = "/availablebids", method = RequestMethod.GET)
-	public String availablebids(ModelMap model) {
-		System.out.println("entered Registration page");
+	@RequestMapping(value = "/availableauctions", method = RequestMethod.GET)
+	public String availableauctions(HttpServletRequest req, ModelMap model) {
+		System.out.println("entered All Auctions page");
+		UserRequestModel urm = new UserRequestModel();
+		urm.setUserName((String)req.getSession().getAttribute(SessionManagement.SessionUSER));
+		urm.setUserid((Integer)req.getSession().getAttribute(SessionManagement.SessionUserId));
+		
+		SimpleAuctionListResponseModel salrm = new SimpleAuctionListResponseModel();
+		try {
+			// convert it to jString.
+			ObjectMapper mapper = new ObjectMapper();
+			String jString = mapper.writeValueAsString(urm);
+					// Make a webservice call to check user validity with login
+					// information.
+					String actionUrl = WebServicesActions.AllAvialAuctions;
+					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
+					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
+					if (loginResponse.getStatusCode() == HttpStatus.OK) {
+						String jstring = loginResponse.getBody();
+						try {
+							 salrm = mapper.readValue(jstring, SimpleAuctionListResponseModel.class);
+							 model.addAttribute("productDetails", salrm.getSARM());
+							}
+						 catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							System.out.println("Json cast Problem");
+						}
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+		
+		
+		
+		
 		return "products";
 	}
 }
