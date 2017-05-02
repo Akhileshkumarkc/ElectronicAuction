@@ -7,7 +7,6 @@ import org.arrow.micro.simple.model.SimpleAuctionListResponseModel;
 import org.arrow.micro.simple.model.SimpleAuctionParamModel;
 import org.arrow.micro.simple.model.SimpleAuctionRequestModel;
 import org.arrow.micro.simple.model.SimpleAuctionResponseModel;
-import org.arrow.micro.simple.model.SimpleUserModel;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
