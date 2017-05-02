@@ -1,6 +1,7 @@
 package org.arrow.micro.controller;
 
 import org.arrow.micro.model.AuctionEventModel;
+import org.arrow.micro.model.AuctionStatusModel;
 import org.arrow.micro.service.AuctionServiceImpl;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.SimpleAuctionListResponseModel;
@@ -119,8 +120,10 @@ public class AuctionController {
 				sarm.setStartingBid(aem.getStartingBid());
 				sarm.setImageURL(aem.getImageURL());
 				sarm.setCategory(aem.getCategory());
-				
-				ARMList.add(sarm);
+				if(! (aem.getStatus() == AuctionStatusModel.CLOSE)){
+					ARMList.add(sarm);
+				}
+					
 			}
 			salrm.setErrorMessage("successful");
 			salrm.setStatus(true);

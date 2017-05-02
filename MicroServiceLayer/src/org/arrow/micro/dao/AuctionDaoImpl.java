@@ -13,10 +13,16 @@ import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 
-public class AuctionDaoImpl extends AbsHibernateSession{
 
+
+public class AuctionDaoImpl extends AbsHibernateSession{
+	
+	@Autowired
+	LoginDaoImpl loginDao;
+	
 	public AuctionResponseModel create(AuctionEventModel model, AuctionResponseModel resp) {
 		try{
 			//create
@@ -201,8 +207,8 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 //			SimpleMailMessage message = new SimpleMailMessage();
 //			EmailTemplateClass.init();
 //			EmailModel em = EmailTemplateClass.getTemplate(EmailTemplateClass.BID_PURCHASED);
-//			System.out.println(em);
-//			message.setTo(user.getEmailAddress());
+//			loginDao = new 		
+//			message.setTo(maxbm.setUserId(userId));
 //			message.setSubject(em.subject);
 //			message.setText("Hi "+ user.getUserName()+"  "+em.messageBody);
 //			mailsender.send(message);
