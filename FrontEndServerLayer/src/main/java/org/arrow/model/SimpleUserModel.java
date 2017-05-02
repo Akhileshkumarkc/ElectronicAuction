@@ -24,6 +24,7 @@ public class SimpleUserModel {
 	private String shipping_city;
 	private String shipping_state;
 	private String shipping_pinCode;
+	private String lastLogin;
 	
 	
 	

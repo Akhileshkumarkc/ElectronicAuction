@@ -9,6 +9,7 @@ import org.arrow.webservicelayer.MicroServiceCall.MicroServiceWebServiceActions;
 import org.arrow.webservicelayer.WebServiceCall.WebServicesActions;
 import org.arrow.webservicelayer.model.AuctionResponseModel;
 import org.arrow.webservicelayer.model.SimpleAuctionListResponseModel;
+import org.arrow.webservicelayer.model.SimpleAuctionParamModel;
 import org.arrow.webservicelayer.model.SimpleAuctionRequestModel;
 import org.arrow.webservicelayer.model.UserRequestModel;
 import org.springframework.http.HttpStatus;
@@ -198,6 +199,45 @@ public class AuctionController {
 		return salrmdef;
 	}
 
+	@RequestMapping(value=WebServicesActions.Close,
+			method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	public  @ResponseBody boolean closeAuction(
+			@RequestBody SimpleAuctionParamModel auctionParamModel
+			){
+		boolean status = false;
+		ObjectMapper mapper = new ObjectMapper();
+		String jString = null;
+		try {
+			jString = mapper.writeValueAsString(auctionParamModel);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Make a webservice call to check user validity with login information.			
+		String actionUrl = MicroServiceWebServiceActions.AllAvialAuctions;
+		// Make a webservice call to check user validity with login
+		// informationre.
+		MicroServiceCallWrapper MSC = new MicroServiceCallWrapper();
+		ResponseEntity<String> userResponse = MSC.call(actionUrl, jString);
 	
+		
+
+		if (userResponse.getStatusCode() == HttpStatus.OK) {
+			String jstring = userResponse.getBody();
+			try {
+				SimpleAuctionListResponseModel salrm = mapper.readValue(jstring, SimpleAuctionListResponseModel.class);
+				System.out.println("succesful");
+				status=true;
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Json cast Problem");
+			}
+
+		}
+		return status;
+		
+	}
 
 }

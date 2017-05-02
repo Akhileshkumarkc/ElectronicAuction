@@ -10,17 +10,18 @@ public class SessionManagement {
 	public static final String SessionUSER = "USER";
 	public static final String SessionUserId = "USERID";
 	public static final String LastLogin = "Lastlogin";
+	
 	public static void createSessionUser(HttpServletRequest request, LoginBean bean,int userid){
 	HttpSession session = request.getSession();
 	session.setAttribute(SessionUSER, bean.getuserName());
 	session.setAttribute(SessionUserId, userid);
 	
 	}
-	public static void createSessionUser(HttpServletRequest request, SimpleUserModel sum){
-		HttpSession session = request.getSession();
-		session.setAttribute(LastLogin, sum.get);
-		
-	}
+//	public static void createSessionUser(HttpServletRequest request, SimpleUserModel sum){
+//		HttpSession session = request.getSession();
+//		session.setAttribute(LastLogin, sum.getLastName());
+//		
+//	}
 	
 	public static int validSessionUser(HttpSession session){
 		if(session.getAttribute(SessionUSER)!=null || session.getAttribute(SessionUSER)!=""){
