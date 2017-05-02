@@ -10,8 +10,14 @@ public class SimpleAuctionResponseModel {
 	public Double startingBid;
 	public String imageURL;
 	public String category;
+	public int auctionId;
 	
-	
+	public int getAuctionId() {
+		return auctionId;
+	}
+	public void setAuctionId(int i) {
+		auctionId = i;
+	}
 	public String getUserName() {
 		return userName;
 	}

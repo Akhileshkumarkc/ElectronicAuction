@@ -6,7 +6,9 @@ import org.arrow.micro.service.BidServiceImpl;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.BidParamModel;
 import org.arrow.micro.simple.model.BidResponseModel;
+import org.arrow.micro.simple.model.SimpleAuctionListResponseModel;
 import org.arrow.micro.simple.model.SimpleUserModel;
+import org.arrow.micro.simple.model.UserRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,19 +24,12 @@ public class BidController {
 	
 	@RequestMapping(value=MicroWebServicesActions.Allbids,
 			method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody boolean fetchAllBidsForItem(@RequestBody BidParamModel model){
-		//TODO:mapping not doing.
-		return true;
-//		LoginModel dbLoginModel =loginService.getLogin(model.getUserName());
-//		boolean authenicated = false;
-//		
-//		if(dbLoginModel != null){
-//		
-//			if(model.getPassword().equals(dbLoginModel.getPassword())){
-//				authenicated = true;
-//			}
-//		}
-//		return authenicated;
+		public  @ResponseBody SimpleAuctionListResponseModel fetchAllBidsForItem(
+				@RequestBody UserRequestModel model){
+			//BidService.bid(model, arm);
+		//TODO:
+		return new SimpleAuctionListResponseModel();
+			
 		
 	}
 	
