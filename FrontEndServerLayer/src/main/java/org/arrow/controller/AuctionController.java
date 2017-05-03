@@ -331,7 +331,7 @@ public class AuctionController {
 			String jString = mapper.writeValueAsString(urm);
 					// Make a webservice call to check user validity with login
 					// information.
-					String actionUrl = WebServicesActions.AllAuctions;
+					String actionUrl = WebServicesActions.viewmyCarts;
 					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 					if (loginResponse.getStatusCode() == HttpStatus.OK) {
@@ -371,7 +371,7 @@ public class AuctionController {
 			String jString = mapper.writeValueAsString(urm);
 					// Make a webservice call to check user validity with login
 					// information.
-					String actionUrl = WebServicesActions.AllAuctions;
+					String actionUrl = WebServicesActions.viewmyOrders;
 					WebServiceCallWrapper WSC = new WebServiceCallWrapper();
 					ResponseEntity<String> loginResponse = WSC.call(actionUrl, jString);
 					if (loginResponse.getStatusCode() == HttpStatus.OK) {

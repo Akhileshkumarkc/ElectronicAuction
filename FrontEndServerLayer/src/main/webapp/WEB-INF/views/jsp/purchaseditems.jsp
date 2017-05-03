@@ -30,6 +30,9 @@
 		th {
 			height: 50px;
 		}
+tr:hover{
+		background-color:lightgrey;
+		}
 
 
 </style>

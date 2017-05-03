@@ -25,7 +25,7 @@
                         </li>
                         <li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
-                            <a href="#">All Auctions</a>
+                            <a href="availableauctions">All Auctions</a>
                         </li>
 						<li><h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></li>
                         <li>
@@ -45,7 +45,7 @@
                         
                         
                          <li>
-                        <form id="search" style="margin:9px">
+                        <form id="search" style="margin:9px" action="availableauctions">
                         <a href="#" style="color:#777777">Search</a>
                         <input type="text">
                         </form>

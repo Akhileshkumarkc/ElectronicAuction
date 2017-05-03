@@ -7,13 +7,13 @@ import org.arrow.micro.email.EmailTemplateClass;
 import org.arrow.micro.model.AuctionEventModel;
 import org.arrow.micro.model.AuctionStatusModel;
 import org.arrow.micro.model.BidModel;
-import org.arrow.micro.model.LoginModel;
 import org.arrow.micro.model.PurchasedItemModel;
 import org.arrow.micro.simple.model.AuctionResponseModel;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 
@@ -22,7 +22,8 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 	
 	@Autowired
 	LoginDaoImpl loginDao;
-	
+	@Autowired
+	private MailSender mailsender;
 	public AuctionResponseModel create(AuctionEventModel model, AuctionResponseModel resp) {
 		try{
 			//create
@@ -213,7 +214,12 @@ public class AuctionDaoImpl extends AbsHibernateSession{
 //			message.setText("Hi "+ user.getUserName()+"  "+em.messageBody);
 //			mailsender.send(message);
 
-			
+			SimpleMailMessage message = new SimpleMailMessage();
+	
+			message.setTo("sai.vivek15@gmail.com");
+			message.setSubject("Congratulations");
+			message.setText("Hi User\n \nYou have won the bidding. \n \n Thanks, Aravind.");
+			mailsender.send(message);
 		}
 		//close the Auction.
 		

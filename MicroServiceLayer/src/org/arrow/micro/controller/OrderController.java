@@ -1,11 +1,12 @@
 package org.arrow.micro.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.arrow.micro.WebServiceCall.MicroWebServicesActions;
-import org.arrow.micro.model.LoginModel;
-import org.arrow.micro.model.PurchasedItemModel;
-import org.arrow.micro.service.AuctionServiceImpl;
 import org.arrow.micro.service.OrderServiceImpl;
 import org.arrow.micro.simple.model.SimpleAuctionListResponseModel;
+import org.arrow.micro.simple.model.SimpleAuctionResponseModel;
 import org.arrow.micro.simple.model.UserRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,6 +29,10 @@ public class OrderController {
 		SimpleAuctionListResponseModel salr = new SimpleAuctionListResponseModel();
 		salr.setStatus(false);
 		salr.setErrorMessage("unable get orders");
+		List<SimpleAuctionResponseModel> sarm = new ArrayList<SimpleAuctionResponseModel>();
+		salr.setSARM(sarm);
+		salr.setStatus(false);
+		salr.setErrorMessage("unable to get orders");
 		return orderDaoImpl.getorders(UserModel,salr);
 		
 	}
@@ -38,6 +43,8 @@ public class OrderController {
 		SimpleAuctionListResponseModel salr = new SimpleAuctionListResponseModel();
 		salr.setStatus(false);
 		salr.setErrorMessage("unable get orders");
+		List<SimpleAuctionResponseModel> sarm = new ArrayList<SimpleAuctionResponseModel>();
+		salr.setSARM(sarm);
 		return orderDaoImpl.getCarts(UserModel,salr);
 		
 	}
